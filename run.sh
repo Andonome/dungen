@@ -5,5 +5,5 @@ while true;do
 		printf '='
 	done
 	echo "" 
-	sleep 5
+	sleep 1
 done

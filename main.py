@@ -13,29 +13,27 @@ location = random.choice(cause_list)
 
 #print("Location: " + location)
 
-# now we list which areas  are in our current map
-
 map1 = []
 
-for loc in areas:
-    for no in range(areas[loc][0]):
-        #if location in areas[loc][1]:
-            if random.randint(1,2) == 1:
-                map1.append(loc)
+# now we list which areas  are in our current map
 
-random.shuffle(map1)
-
-def norepeat(map):
-    for entry in range(len(map)-2):
+def noRepeat(map):
+    for entry in range(0,len(map)-3):
         if map[entry] == map[entry + 1]:
             map.remove(map[entry])
 
 
-map1[0] = 'entrance'
+def chooseAreas(map):
+    for loc in areas:
+        for no in range(areas[loc][0]):
+            #if location in areas[loc][1]:
+                if random.randint(1,2) == 1:
+                    map.append(loc)
+    random.shuffle(map)
 
-
-def genmap(map):
-    norepeat(map1)
+def joinMap(map):
+    map[0] = 'entrance'
+    noRepeat(map)
     for entry in range(len(map)-1):
         current = '[ ' + str(entry) + ': ' + str(map[entry]) + ' ]'
         connector=random.randint(entry,len(map)-1)
@@ -45,4 +43,10 @@ def genmap(map):
             current += ' --> [ ' + str(entry +1) + ': ' + map[entry + 1] +' ]'
         print(current)
 
-genmap(map1)
+def makeMap(map):
+    chooseAreas(map)
+    noRepeat(map)
+    joinMap(map)
+
+makeMap(map1)
+
