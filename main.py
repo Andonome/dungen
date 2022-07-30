@@ -18,17 +18,20 @@ map1 = []
 # now we list which areas  are in our current map
 
 def noRepeat(map):
-    for entry in range(1,len(map)-2):
-        if map[entry] == map[entry - 1]:
-            map.remove(map[entry])
-
+    for entry in range(0,len(map)-2):
+        try:
+            if map[entry] == map[entry+1]:
+                map.remove(map[entry])
+        except:
+            pass
 
 def chooseAreas(map):
-    for loc in areas:
-        for no in range(areas[loc][0]):
-            #if location in areas[loc][1]:
-                if random.randint(1,2) == 1:
-                    map.append(loc)
+    while len(map) < 10:
+        for loc in areas:
+            for no in range(areas[loc][0]):
+                #if location in areas[loc][1]:
+                    if random.randint(1,2) == 1 and len(map) < 18:
+                        map.append(loc)
     random.shuffle(map)
 
 def joinMap(map):
