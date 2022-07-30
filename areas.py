@@ -59,7 +59,7 @@ It probably contains a magical trap, fuelled by the mana.
 """
     ],
 
-"fungusGarden": [
+"fungus": [
     1,
     ["deep","mine"],
     """

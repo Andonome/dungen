@@ -21,6 +21,9 @@ roomList = []
 # now we list which areas  are in our current map
 
 roomList = makeMap(map1)
+map2 = civilization(map1)
 
+showDungeon(roomList,map2)
 
-showDungeon(roomList,map1)
+roomList
+

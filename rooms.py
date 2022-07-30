@@ -4,7 +4,6 @@
 rooms = {
 
 "pitTrap": [
-    2,
     ["elves","dwarves","gnomes"],
     """
 Lots of nothing, disguised as floor.
@@ -13,7 +12,6 @@ Lots of nothing, disguised as floor.
     ],
 
 "bedroom": [
-    2,
     ["elves","dwarves","gnomes"],
     """
 Somewhere to sleep.
@@ -21,8 +19,15 @@ Somewhere to sleep.
 """
     ],
 
+"fungalGarden": [
+    ["dwarves","gnomes"],
+    """
+Somewhere to sleep.
+
+"""
+    ],
+
 "bedroom": [
-    2,
     ["elves","dwarves","gnomes"],
     """
 Somewhere to sleep.
@@ -31,7 +36,6 @@ Somewhere to sleep.
     ],
 
 "bridge": [
-    3,
     ["elves","dwarves","gnomes"],
     """
 Spans a deep chasm.

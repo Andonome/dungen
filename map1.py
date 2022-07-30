@@ -23,9 +23,9 @@ def joinMap(map):
     current = []
     for index in range(0,len(map)-1):
         connector=random.randint(index,len(map)-1)
-        if connector > index and connector % 2 == 0:
-            current.insert(-1,[index,connector])
-        elif index < len(map) -1:
+        if connector > index and map[index] != map[connector]:
+                current.insert(-1,[index,connector])
+        elif index < len(map)-1 and map[index] != map[connector]:
             current.insert(-1,[index,index+1])
     return(current)
 
