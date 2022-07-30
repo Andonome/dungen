@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 from map1 import *
+from map2 import *
+from printer import *
 
 cause_list = [
     "depths",
@@ -9,12 +11,16 @@ cause_list = [
 ]
 
 location = random.choice(cause_list)
+race = random.choice(races_list)
 
 #print("Location: " + location)
 
 map1 = []
+roomList = []
 
 # now we list which areas  are in our current map
 
-makeMap(map1)
+roomList = makeMap(map1)
 
+
+showDungeon(roomList,map1)

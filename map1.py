@@ -17,21 +17,21 @@ def chooseAreas(map):
                     if random.randint(1,2) == 1 and len(map) < 18:
                         map.append(loc)
     random.shuffle(map)
+    map.insert(0,'entrance')
 
 def joinMap(map):
-    map.insert(0,'entrance')
-    noRepeat(map)
-    for index, entry in enumerate(map):
-        current = '[ ' + str(index) + ': ' + str(entry) + ' ]'
+    current = []
+    for index in range(0,len(map)-1):
         connector=random.randint(index,len(map)-1)
         if connector > index and connector % 2 == 0:
-            current += ' --> [ ' + str(connector) + ': ' + map[connector] +' ]'
+            current.insert(-1,[index,connector])
         elif index < len(map) -1:
-            current += ' --> [ ' + str(index +1) + ': ' + str(map[index + 1]) +' ]'
-        print(current)
+            current.insert(-1,[index,index+1])
+    return(current)
 
 def makeMap(map):
     chooseAreas(map)
     noRepeat(map)
-    joinMap(map)
+    roomList = joinMap(map)
+    return roomList
 
