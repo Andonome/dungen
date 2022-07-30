@@ -11,7 +11,7 @@ cause_list = [
 
 location = random.choice(cause_list)
 
-print("Location: " + location)
+#print("Location: " + location)
 
 # now we list which areas  are in our current map
 
@@ -27,6 +27,14 @@ random.shuffle(map1)
 
 map1[0] = 'entrance'
 
-for entry in range(len(map1)):
-    print(str(entry) + ': ' + map1[entry])
+def genmap(map):
+    for entry in range(len(map)-1):
+        current = '[ ' + str(entry) + ': ' + str(map[entry]) + ' ]'
+        connector=random.randint(entry,len(map)-1)
+        if connector > entry and connector % 2 == 0:
+            current += ' --> [ ' + str(connector) + ': ' + map[connector] +' ]'
+        else:
+            current += ' --> [ ' + str(entry +1) + ': ' + map[entry + 1] +' ]'
+        print(current)
 
+genmap(map1)
