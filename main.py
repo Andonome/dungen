@@ -25,9 +25,17 @@ for loc in areas:
 
 random.shuffle(map1)
 
+def norepeat(map):
+    for entry in range(len(map)-2):
+        if map[entry] == map[entry + 1]:
+            map.remove(map[entry])
+
+
 map1[0] = 'entrance'
 
+
 def genmap(map):
+    norepeat(map1)
     for entry in range(len(map)-1):
         current = '[ ' + str(entry) + ': ' + str(map[entry]) + ' ]'
         connector=random.randint(entry,len(map)-1)
