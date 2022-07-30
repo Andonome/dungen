@@ -18,8 +18,8 @@ map1 = []
 # now we list which areas  are in our current map
 
 def noRepeat(map):
-    for entry in range(0,len(map)-3):
-        if map[entry] == map[entry + 1]:
+    for entry in range(1,len(map)-2):
+        if map[entry] == map[entry - 1]:
             map.remove(map[entry])
 
 
