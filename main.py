@@ -1,46 +1,32 @@
 #!/usr/bin/python
 
 import random
+from areas import *
 
 cause_list = [
     "depths",
-    "mine"
+    "mine",
+    "forest"
 ]
 
 location = random.choice(cause_list)
 
 print("Location: " + location)
 
-tunnel_area_list = []
+# now we list which areas  are in our current map
 
-if location == "depths":
-    tunnel_area_list.append(["magma",1])
-    tunnel_area_list.append(["tunnel",1])
-    tunnel_area_list.append(["fungal garden",1])
-    tunnel_area_list.append(["dome",1])
-    tunnel_area_list.append(["small tunnel",1])
-else:
-    tunnel_area_list.append(["shallow river",1])
-    tunnel_area_list.append(["deep river",1])
-    tunnel_area_list.append(["supply room",1])
-    tunnel_area_list.append(["deep shaft",1])
-    tunnel_area_list.append(["mana lake",1])
+map1 = []
 
+for loc in areas:
+    for no in range(areas[loc][0]):
+        #if location in areas[loc][1]:
+            if random.randint(1,2) == 1:
+                map1.append(loc)
 
-map_locations = []
+random.shuffle(map1)
 
-size = 6
+map1[0] = 'entrance'
 
-while random.randint(0,len(map_locations)) < size:
-    choice = random.choice(tunnel_area_list)
-    if len(map_locations) == 0:
-        map_locations.append(choice[0])
-    else:
-        if choice != map_locations[-1]:
-            map_locations.append(choice[0])
+for entry in range(len(map1)):
+    print(str(entry) + ': ' + map1[entry])
 
-
-print(map_locations)
-
-
-print("\n")
