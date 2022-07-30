@@ -5,6 +5,54 @@ It could start as the empty passages left by the flow of magma, or could begin a
 
 After that, a civilization establishes itself, traps can be made, and finally, a nasty bad-guy faction invades, populating the place with nasty things.
 
+## Example
+
+The program decides to make a mine, and draws some random elements:
+
+`[ "chasm", "chasm", "alcove", "lake", "river", ]`
+
+We replace the first element with an entrance, and we have a plausible mine layout.
+
+`[ "entrance", "chasm", "alcove", "lake", "river", ]`
+
+Now we decide which rooms connect to which (unsure how).
+
+Next, a random civilization comes along, and make the place liveable, then adds rooms.
+
+
+```
+[
+	"entrance (with trap)",
+	"chasm (with bridge)",
+	"alcove (now rooms)",
+	"lake (with fishing boats)",
+	"river (another bridge)",
+	"living quarters",
+	"chiseling hall",
+	"runemaster library"
+]
+```
+
+Finally, tragedy arrives as a horde of monsters take over.
+Suppose a necromancer comes along:
+
+```
+[
+	"entrance (with trap)",
+	"chasm (with bridge)",
+	"rooms (with undead dwarves)",
+	"lake (full of undead dwarves)",
+	"river (another bridge)",
+	"living quarters (minor treasures and more undead)",
+	"chiseling hall (where the treasure is, along with a weird undead creature)",
+	"runemaster library (where the necromancer lives)"
+]
+```
+
+The computer then makes a description of each room, along with a very simple plot hook.
+
+> You hear of an evil necromancer, inhabiting an old dwarven stronghold.
+
 # Timeline
 
 ## Location
