@@ -34,13 +34,13 @@ def chooseAreas(map):
 def joinMap(map):
     map[0] = 'entrance'
     noRepeat(map)
-    for entry in range(len(map)-1):
-        current = '[ ' + str(entry) + ': ' + str(map[entry]) + ' ]'
-        connector=random.randint(entry,len(map)-1)
-        if connector > entry and connector % 2 == 0:
+    for index, entry in enumerate(map):
+        current = '[ ' + str(index) + ': ' + str(entry) + ' ]'
+        connector=random.randint(index,len(map)-1)
+        if connector > index and connector % 2 == 0:
             current += ' --> [ ' + str(connector) + ': ' + map[connector] +' ]'
-        else:
-            current += ' --> [ ' + str(entry +1) + ': ' + map[entry + 1] +' ]'
+        elif index < len(map) -2:
+            current += ' --> [ ' + str(index +1) + ': ' + str(map[index + 1]) +' ]'
         print(current)
 
 def makeMap(map):
