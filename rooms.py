@@ -4,45 +4,39 @@
 # Should be nested dictionary.
 
 rooms = {
-
-"pitTrap": [
-    ["elves","dwarves","gnomes"],
-    """
+    "pitTrap": [
+        ["elves", "dwarves", "gnomes"],
+        """
 Lots of nothing, disguised as floor.
 
-"""
+""",
     ],
-
-"bedroom": [
-    ["elves","dwarves","gnomes"],
-    """
+    "bedroom": [
+        ["elves", "dwarves", "gnomes"],
+        """
 Somewhere to sleep.
 
-"""
+""",
     ],
-
-"fungalGarden": [
-    ["dwarves","gnomes"],
-    """
+    "fungalGarden": [
+        ["dwarves", "gnomes"],
+        """
 Somewhere to sleep.
 
-"""
+""",
     ],
-
-"bedroom": [
-    ["elves","dwarves","gnomes"],
-    """
+    "bedroom": [
+        ["elves", "dwarves", "gnomes"],
+        """
 Somewhere to sleep.
 
-"""
+""",
     ],
-
-"bridge": [
-    ["elves","dwarves","gnomes"],
-    """
+    "bridge": [
+        ["elves", "dwarves", "gnomes"],
+        """
 Spans a deep chasm.
 
-"""
-    ]
-
+""",
+    ],
 }

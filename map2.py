@@ -10,8 +10,9 @@ replacement = [
     ["chasm", "bridge"],
     ["lavapit", "bridge"],
     ["cavern", "hall"],
-    ["river", "bridge"]
+    ["river", "bridge"],
 ]
+
 
 def civilization(map):
     for area in range(len(map)):
@@ -19,5 +20,3 @@ def civilization(map):
             if map[area] == replacement[swap][0]:
                 map[area] += ": " + replacement[swap][1]
     return map
-    
-
