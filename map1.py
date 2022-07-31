@@ -1,6 +1,15 @@
 import random
 from areas import *
 
+# Change for better syntax, with 'enumerate'
+# >>> for i, elem in enumerate(l):
+# ...     print(f"{i}: {elem}")
+# ...
+# 0: A
+# 1: sadsa
+# 2: dasda
+# 3: adasd
+
 # Remove sequential repeats, e.g. 'entrance, entrance'
 def noRepeat(map):
     for entry in range(0,len(map)-2):
