@@ -54,8 +54,9 @@ def makeDunList(setting):
 def joinDun(dungeon):
     for x in range(2, len(dungeon) + 1):
         if random.randint(1, 3) == 2 and x >= 3:
-            dungeon[x]["connections"] = [random.randint(2, x - 1)]
+            dungeon[x]["connections"] = random.randint(2, x - 1)
         else:
-            dungeon[x]["connections"] = [x - 1]
-
+            dungeon[x]["connections"] = x - 1
     return dungeon
+
+
