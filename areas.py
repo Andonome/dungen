@@ -88,5 +88,5 @@ It's a big cavern.
 With stuff.
 
     """,
-    }
+    },
 }

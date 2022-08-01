@@ -30,17 +30,18 @@ def show(x):
     pprint.pprint(x)
 
 
-def makedun():
+def makeDunList(setting):
     dungeon = {}
     dungeon[1] = areas["entrance"]
     oldChoice = "entrance"
+    # With 'entrance' as area 1, 'count' starts at 2.
+    # The count only increases when we have a non-repeating room, to avoid getting rooms 1,2,4,6.
     count = 2
-    while count < 7:
+    while count < 19:
         areaChoice = random.choice(list(areas.keys()))
-        if areaChoice != oldChoice:
-            dungeon[count] = areas[areaChoice]
-            count += 1
+        if setting in areas[areaChoice]['ecosystems']:
+            if areaChoice != oldChoice:
+                dungeon[count] = areas[areaChoice]
+                count += 1
         oldChoice = areaChoice
     return dungeon
-
-
