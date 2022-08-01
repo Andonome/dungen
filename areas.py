@@ -12,6 +12,16 @@ This is where people come in.
 Hopefully there will be at least one entrance.
 """,
     },
+    "tunnel": {
+        "name": "tunnel",
+        "number": 3,
+        "ecosystems": ["deep", "mine"],
+        "description": """
+Long tube.
+
+Hopefully doesn't go nowhere.
+""",
+    },
     "alcove": {
         "name": "alcove",
         "number": 3,
