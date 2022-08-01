@@ -3,12 +3,16 @@
 # phase1 deals with stage 1: making the space
 from phase1 import *
 
-setting = random.choice(['mine','deep'])
+setting = random.choice(["mine", "deep"])
 
 dungeon = makeDunList(setting)
 
-print('Setting: ' + setting)
+dungeon = joinDun(dungeon)
 
-for x in range(1, len(dungeon) + 1):
-    print(str(x) + ": " + dungeon[x]["name"])
+print("Setting: " + setting)
 
+for x in list(dungeon.keys()):
+    output = str(x) + ": " + dungeon[x]["name"]
+    if "connections" in dungeon[x]:
+        output += " --> " + str(dungeon[x]["connections"])
+    print(output)

@@ -39,9 +39,23 @@ def makeDunList(setting):
     count = 2
     while count < 19:
         areaChoice = random.choice(list(areas.keys()))
-        if setting in areas[areaChoice]['ecosystems']:
-            if areaChoice != oldChoice:
-                dungeon[count] = areas[areaChoice]
-                count += 1
+        if setting in areas[areaChoice]["ecosystems"] and areaChoice != oldChoice:
+            # The original piece of code was this:
+            # dungeon[count] = areas[areaChoice]
+            # Which lost me an two hours, as this make a reference point,
+            # and all refence points change together, so all 'tunnel'
+            # rooms would be the same forever.
+            dungeon[count] = areas[areaChoice].copy()
+            count += 1
         oldChoice = areaChoice
+    return dungeon
+
+
+def joinDun(dungeon):
+    for x in range(2, len(dungeon) + 1):
+        if random.randint(1, 3) == 2 and x >= 3:
+            dungeon[x]["connections"] = [random.randint(2, x - 1)]
+        else:
+            dungeon[x]["connections"] = [x - 1]
+
     return dungeon
