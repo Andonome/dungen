@@ -12,6 +12,7 @@ dungeon = makeDunList(setting)
 
 dungeon = joinDun(dungeon)
 
+dungeon = civilize(dungeon)
 
 dungeon = graph(dungeon)
 
