@@ -8,15 +8,16 @@ def show(x):
 
 
 def makeDunList(setting):
+    maxDungeonSize = 13
     dungeon = {}
     dungeon[1] = areas["entrance"]
     oldChoice = "entrance"
     # With 'entrance' as area 1, 'count' starts at 2.
     # The count only increases when we have a non-repeating room, to avoid getting rooms 1,2,4,6.
     count = 2
-    while count < 15:
+    while count < maxDungeonSize:
         areaChoice = random.choice(list(areas.keys()))
-        if setting in areas[areaChoice]["ecosystems"] and areaChoice != oldChoice:
+        if setting in areas[areaChoice]["ecosystems"] and areaChoice != oldChoice and areas[areaChoice]["name"] != "entrance":
             # The original piece of code was this:
             # dungeon[count] = areas[areaChoice]
             # Which lost me an two hours, as this make a reference point,
@@ -46,4 +47,10 @@ def joinDun(dungeon):
             else:
                 dungeon[x]["connections"].append(x - 1)
                 joins +=1
+    # Finally, maybe add another entrance, but only connect it in one
+    # place.
+    if random.randint(1,1) == 1:
+        dungeon[len(dungeon)-1] = areas["entrance"].copy()
+        dungeon[len(dungeon)-1]["connections"] = []
+        dungeon[len(dungeon)-1]["connections"].append(random.randint(len(dungeon)/2,len(dungeon)-2))
     return dungeon
