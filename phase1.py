@@ -30,11 +30,20 @@ def makeDunList(setting):
 
 def joinDun(dungeon):
     joins = 2
+    nexus = 4
     for x in range(2, len(dungeon) + 1):
         dungeon[x]["connections"] = []
-        while random.randint(1, joins) == 1 and x >= 3:
-            dungeon[x]["connections"].append(random.randint(2, x - 1))
-            joins += 1
+        while random.randint(1, joins) > 5 and x >= 3:
+            newConnection = random.randint(2, x - 1)
+            if dungeon[newConnection]["name"] != 'entrance':
+                dungeon[x]["connections"].append(newConnection)
+                nexus = newConnection
+            joins -= 2
         else:
-            dungeon[x]["connections"].append(x - 1)
+            if dungeon[x-1]["name"] == "entrance":
+                dungeon[x]["connections"].append(x-1)
+                joins +=1
+            else:
+                dungeon[x]["connections"].append(x - 1)
+                joins +=1
     return dungeon
