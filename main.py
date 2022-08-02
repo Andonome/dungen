@@ -10,12 +10,8 @@ dungeon = makeDunList(setting)
 
 dungeon = joinDun(dungeon)
 
-#print("Setting: " + setting)
 
-#for x in list(dungeon.keys()):
-#    output = str(x) + ": " + dungeon[x]["name"]
-#    if "connections" in dungeon[x]:
-#        output += " --> " + str(dungeon[x]["connections"])
-#    print(output)
+dungeon = graph(dungeon)
 
-graph(dungeon)
+for x in range(len(dungeon)):
+    print(dungeon[x])
