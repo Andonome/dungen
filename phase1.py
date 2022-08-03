@@ -11,7 +11,7 @@ def show(x):
 def makeDunList(setting):
     maxDungeonSize = 13
     dungeon = {}
-    dungeon[1] = areas["entrance"]
+    dungeon[1] = copy.deepcopy(areas["entrance"])
     oldChoice = "entrance"
     # With 'entrance' as area 1, 'count' starts at 2.
     # The count only increases when we have a non-repeating room, to avoid getting rooms 1,2,4,6.

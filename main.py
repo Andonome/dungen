@@ -12,6 +12,8 @@ dungeon = makeDunList(setting)
 
 dungeon = joinDun(dungeon)
 
+addRooms(dungeon)
+
 fixRooms(dungeon)
 
 makeRooms(dungeon)
