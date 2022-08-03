@@ -1,4 +1,5 @@
 import random
+import copy
 import pprint
 from areas import *
 
@@ -20,14 +21,13 @@ def makeDunList(setting):
         if setting in areas[areaChoice]["ecosystems"] and areaChoice != oldChoice and areas[areaChoice]["name"] != "entrance":
             # The original piece of code was this:
             # dungeon[count] = areas[areaChoice]
-            # Which lost me an two hours, as this make a reference point,
+            # Which lost me an three hours, as this make a reference point,
             # and all refence points change together, so all 'tunnel'
             # rooms would be the same forever.
-            dungeon[count] = areas[areaChoice].copy()
+            dungeon[count] = copy.deepcopy(areas[areaChoice])
             count += 1
         oldChoice = areaChoice
     return dungeon
-
 
 def joinDun(dungeon):
     joins = 2

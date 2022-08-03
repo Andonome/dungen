@@ -5,9 +5,9 @@ from constructions import *
 
 global roomTransformations
 roomTransformations = [
-    ["chasm", "bridge"],
-    ["lava", "bridge"],
     ["entrance", "trap"],
+    ["lavapit", "bridge"],
+    ["fungus", "garden"],
 ]
 
 # This ordered wishlist makes the elves make one alcove into a kitchen,
@@ -21,18 +21,13 @@ elfWishList = [
     ["alcove", "bedroom", 20],
 ]
 
-
 def fixRooms(dungeon):
     for x in range(len(dungeon) - 1, 1, -1):
         for pair in range(len(roomTransformations)):
             if dungeon[x]["name"] == roomTransformations[pair][0]:
-                dungeon[x]["constructions"] = roomTransformations[pair][1]
+                dungeon[x]["constructions"].append(roomTransformations[pair][1])
 
 
 # The elves want to build a home, so they start by converting some alcove
 
 
-def makeHome(dungeon):
-    for x in range(len(dungeon), 2, -1):
-        if dungeon[x]["name"] == "cavern":
-            dungeon[x]["constructions"] = roomTransformations[pair][1]
