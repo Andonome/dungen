@@ -12,9 +12,9 @@ dungeon = makeDunList(setting)
 
 dungeon = joinDun(dungeon)
 
-dungeon = civilize(dungeon)
+fixRooms(dungeon)
 
-dungeon = graph(dungeon)
+graph = graph(dungeon)
 
-for x in range(len(dungeon)):
-    print(dungeon[x])
+for x in range(len(graph)):
+    print(graph[x])

@@ -4,10 +4,10 @@ def graph(dungeon):
         for second in dungeon[x]["connections"]:
             leftName = str(x) + ": " + dungeon[x]["name"]
             if "constructions" in dungeon[x]:
-                leftName += ("(" + dungeon[x]["constructions"] + ")")
+                leftName += " (" + ''.join(dungeon[x]["constructions"]) + ")"
             rightName = str(second) + ": " + dungeon[second]["name"]
             if "constructions" in dungeon[second]:
-                rightName += ("(" + dungeon[second]["constructions"] + ")")
+                rightName += " (" + ', '.join(dungeon[second]["constructions"]) + ")"
             relations.append(
                 "[ "
                 + rightName
