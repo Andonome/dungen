@@ -7,6 +7,10 @@ from areas import *
 def show(x):
     pprint.pprint(x)
 
+def dun(dungeon):
+    for x in range(len(dungeon)):
+        if x in dungeon:
+            print(str(x) + ': ' + dungeon[x]['name'])
 
 def makeDunList(setting):
     maxDungeonSize = 13
@@ -53,4 +57,3 @@ def joinDun(dungeon):
         dungeon[len(dungeon)-1] = areas["entrance"].copy()
         dungeon[len(dungeon)-1]["connections"] = []
         dungeon[len(dungeon)-1]["connections"].append(random.randint(len(dungeon)/2,len(dungeon)-2))
-    return dungeon

@@ -31,20 +31,6 @@ wishList = [
     ["lake", "boats", 0],
 ]
 
-def fixRooms(dungeon):
-    for x in range(len(dungeon) - 1, 0, -1):
-        for pair in range(len(roomTransformations)):
-            if dungeon[x]["name"] == roomTransformations[pair][0]:
-                dungeon[x]["constructions"].append(roomTransformations[pair][1])
-
-def makeRooms(dungeon):
-    for x in range(len(dungeon) - 1, 1, -1):
-        for pair in range(len(wishList)):
-            if wishList[pair][2] >= 0 and dungeon[x]["name"] == wishList[pair][0]:
-                dungeon[x]["constructions"].append(wishList[pair][1])
-                wishList[pair][2] -= 1
-                break
-
 # If the civilizing race doesn't have enough rooms to live, they'll have to make more.
 def addRooms(dungeon):
     # first make a connection somewhere (not the entrances)
@@ -62,5 +48,19 @@ def addRooms(dungeon):
             dungeon[lastRoom]["connections"].append(splitChoice)
             lastRoom  += 1
             #print("Needed: " + wishList[newRoom][1])
+
+def fixRooms(dungeon):
+    for x in range(len(dungeon) - 1, 0, -1):
+        for pair in range(len(roomTransformations)):
+            if dungeon[x]["name"] == roomTransformations[pair][0]:
+                dungeon[x]["constructions"].append(roomTransformations[pair][1])
+
+def makeRooms(dungeon):
+    for x in range(len(dungeon) - 1, 1, -1):
+        for pair in range(len(wishList)):
+            while wishList[pair][2] >= 0 and dungeon[x]["name"] == wishList[pair][0] and dungeon[x]["constructions"] == []:
+                dungeon[x]["constructions"].append(wishList[pair][1])
+                wishList[pair][2] -= 1
+                break
 
         

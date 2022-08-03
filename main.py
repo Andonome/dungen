@@ -10,7 +10,7 @@ setting = random.choice(["mine", "deep"])
 
 dungeon = makeDunList(setting)
 
-dungeon = joinDun(dungeon)
+joinDun(dungeon)
 
 addRooms(dungeon)
 
@@ -22,3 +22,5 @@ graph = graph(dungeon)
 
 for x in range(len(graph)):
     print(graph[x])
+
+
