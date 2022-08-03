@@ -30,7 +30,7 @@ def makeDunList(setting):
     return dungeon
 
 def joinDun(dungeon):
-    joins = 2
+    joins = 5
     nexus = 4
     for x in range(2, len(dungeon) + 1):
         dungeon[x]["connections"] = []

@@ -15,7 +15,7 @@ Hopefully there will be at least one entrance.
     },
     "tunnel": {
         "name": "tunnel",
-        "number": 3,
+        "number": 6,
         "constructions": [],
         "ecosystems": ["deep", "mine"],
         "description": """

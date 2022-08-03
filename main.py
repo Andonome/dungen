@@ -14,6 +14,8 @@ dungeon = joinDun(dungeon)
 
 fixRooms(dungeon)
 
+makeRooms(dungeon)
+
 graph = graph(dungeon)
 
 for x in range(len(graph)):
