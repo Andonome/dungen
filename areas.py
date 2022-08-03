@@ -110,3 +110,9 @@ With stuff.
     """,
     },
 }
+
+# These areas need other variables for later, like 'connections' and 
+
+for x in  areas:
+    areas[x]["connections"] = []
+    areas[x]["constructions"] = []
