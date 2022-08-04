@@ -6,14 +6,14 @@ def graph(dungeon):
             if "constructions" in dungeon[x]:
                 leftName += " (" + ", ".join(dungeon[x]["constructions"]) + ")"
             leftName += " ]"
+            if dungeon[x]["height"] == 2:
+                leftName += " { border: bold; } "
+            elif dungeon[x]["height"] == 0:
+                leftName += " { border: dotted; } "
             rightName = "[ " + str(second) + ": " + dungeon[second]["name"]
             if "constructions" in dungeon[second]:
                 rightName += " (" + ", ".join(dungeon[second]["constructions"]) + ")"
             rightName += " ]"
-            if dungeon[x]["height"] == 2:
-                rightName += " { border: bold; } "
-            elif dungeon[x]["height"] == 0:
-                rightName += " { border: dotted; } "
             relations.append(rightName + " <--> " + leftName)
     relations = list(set(relations))
     return relations
