@@ -6,11 +6,10 @@ from phase2 import *
 from graph import *
 
 maxDungeonSize = 15
-setting = random.choice(["mine", "deep"])
+# setting = random.choice(["mine", "deep", "caves"])
+setting = "caves"
 
-dungeon = makeDunList(setting)
-
-joinDun(dungeon)
+dungeon = makeDungeon(setting)
 
 addRooms(dungeon)
 
@@ -22,5 +21,3 @@ graph = graph(dungeon)
 
 for x in range(len(graph)):
     print(graph[x])
-
-

@@ -6,7 +6,8 @@ areas = {
         "name": "entrance",
         "number": 2,
         "constructions": [],
-        "ecosystems": ["deep", "mine"],
+        "ecosystems": ["deep", "mine", "caves"],
+        "height": 1,
         "description": """
 This is where people come in.
 
@@ -17,22 +18,11 @@ Hopefully there will be at least one entrance.
         "name": "tunnel",
         "number": 6,
         "constructions": [],
-        "ecosystems": ["deep", "mine"],
+        "ecosystems": ["deep", "mine", "caves"],
         "description": """
 Long tube.
 
 Hopefully doesn't go nowhere.
-""",
-    },
-    "alcove": {
-        "name": "alcove",
-        "number": 3,
-        "constructions": [],
-        "ecosystems": ["deep", "mine"],
-        "description": """
-This is where people come in.
-
-Hopefully there will be at least one entrance.
 """,
     },
     "lavapit": {
@@ -44,64 +34,22 @@ Hopefully there will be at least one entrance.
 Get it while it's hot.
 """,
     },
-    "river": {
-        "name": "river",
-        "number": 3,
-        "constructions": [],
-        "ecosystems": ["deep", "mine", "keep"],
-        "description": """
-This underground river could take you anywhere!
-
-But probably it's certain death.
-""",
-    },
-    "chasm": {
-        "name": "chasm",
-        "number": 3,
-        "constructions": [],
-        "ecosystems": ["deep", "mine", "keep"],
-        "description": """
-This is where the ground fell into the dark.
-""",
-    },
     "manaLake": {
         "name": "mana lake",
         "number": 1,
         "constructions": [],
-        "ecosystems": ["deep", "mine", "keep"],
+        "ecosystems": ["deep", "keep"],
         "description": """
 This magical area spills out mana constantly.
 
 It probably contains a magical trap, fuelled by the mana.
 """,
     },
-    "fungus": {
-        "name": "fungus",
-        "number": 1,
-        "constructions": [],
-        "ecosystems": ["deep", "mine"],
-        "description": """
-BADGER BADGER BADGER
-
-Probably by stream or lake.
-""",
-    },
-    "lake": {
-        "name": "lake",
-        "number": 1,
-        "constructions": [],
-        "ecosystems": ["deep", "mine"],
-        "description": """
-Big lake.
-
-Probably links to stream.
-""",
-    },
     "cavern": {
         "name": "cavern",
         "number": 6,
         "constructions": [],
-        "ecosystems": ["deep", "mine"],
+        "ecosystems": ["deep", "caves", "mine"],
         "description": """
 It's a big cavern.
 
@@ -111,8 +59,8 @@ With stuff.
     },
 }
 
-# These areas need other variables for later, like 'connections' and 
+# These areas need other variables for later, like 'connections' and
 
-for x in  areas:
+for x in areas:
     areas[x]["connections"] = []
     areas[x]["constructions"] = []
