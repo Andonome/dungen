@@ -76,17 +76,17 @@ def riverFlow(river, dungeon):
     for newRiver in dungeon[river]["connections"]:
         if dungeon[river]["height"] >= dungeon[newRiver]["height"]:
             if (
-                "river" not in dungeon[river]["constructions"]
+                "river" not in dungeon[river]["features"]
                 and random.randint(1, 4) != 4
             ):
-                dungeon[river]["constructions"].append("river")
+                dungeon[river]["features"].append("river")
             riverFlow(newRiver, dungeon)
         else:
             if (
-                "lake" not in dungeon[river]["constructions"]
-                and "river" not in dungeon[river]["constructions"]
+                "lake" not in dungeon[river]["features"]
+                and "river" not in dungeon[river]["features"]
             ):
-                dungeon[river]["constructions"].append("lake")
+                dungeon[river]["features"].append("lake")
 
 
 def makeRiver(dungeon):
@@ -97,11 +97,11 @@ def makeRiver(dungeon):
 
 def makeFungi(dungeon):
     for x in range(1, len(dungeon)):
-        if "lake" in dungeon[x]["constructions"]:
+        if "lake" in dungeon[x]["features"]:
             target = x
             for y in range(1, len(dungeon)):
                 if target in dungeon[y]["connections"]:
-                    dungeon[y]["constructions"].append("fungus")
+                    dungeon[y]["features"].append("fungus")
 
 
 def makeDungeon(setting):

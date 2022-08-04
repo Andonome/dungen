@@ -5,7 +5,7 @@ areas = {
     "entrance": {
         "name": "entrance",
         "number": 2,
-        "constructions": [],
+        "features": [],
         "ecosystems": ["deep", "mine", "caves"],
         "height": 1,
         "description": """
@@ -17,7 +17,7 @@ Hopefully there will be at least one entrance.
     "tunnel": {
         "name": "tunnel",
         "number": 6,
-        "constructions": [],
+        "features": [],
         "ecosystems": ["deep", "mine", "caves"],
         "description": """
 Long tube.
@@ -28,7 +28,7 @@ Hopefully doesn't go nowhere.
     "lavapit": {
         "name": "lavapit",
         "number": 2,
-        "constructions": [],
+        "features": [],
         "ecosystems": ["deep"],
         "description": """
 Get it while it's hot.
@@ -37,7 +37,7 @@ Get it while it's hot.
     "manaLake": {
         "name": "mana lake",
         "number": 1,
-        "constructions": [],
+        "features": [],
         "ecosystems": ["deep", "keep"],
         "description": """
 This magical area spills out mana constantly.
@@ -48,7 +48,7 @@ It probably contains a magical trap, fuelled by the mana.
     "cavern": {
         "name": "cavern",
         "number": 6,
-        "constructions": [],
+        "features": [],
         "ecosystems": ["deep", "caves", "mine"],
         "description": """
 It's a big cavern.
@@ -63,4 +63,4 @@ With stuff.
 
 for x in areas:
     areas[x]["connections"] = []
-    areas[x]["constructions"] = []
+    areas[x]["features"] = []

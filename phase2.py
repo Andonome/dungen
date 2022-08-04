@@ -1,5 +1,5 @@
 import copy
-from constructions import *
+from features import *
 from areas import *
 
 # This list shows what places gain which features.
@@ -50,8 +50,8 @@ def addRooms(dungeon):
 def fixRooms(dungeon):
     for x in range(len(dungeon) - 1, 0, -1):
         for pair in range(len(roomTransformations)):
-            if roomTransformations[pair][0] in dungeon[x]["constructions"]:
-                dungeon[x]["constructions"].append(roomTransformations[pair][1])
+            if roomTransformations[pair][0] in dungeon[x]["features"]:
+                dungeon[x]["features"].append(roomTransformations[pair][1])
 
 
 def makeRooms(dungeon):
@@ -60,9 +60,9 @@ def makeRooms(dungeon):
             while (
                 wishList[pair][2] >= 0
                 and dungeon[x]["name"] == wishList[pair][0]
-                and dungeon[x]["constructions"] == []
+                and dungeon[x]["features"] == []
             ):
-                dungeon[x]["constructions"].append(wishList[pair][1])
+                dungeon[x]["features"].append(wishList[pair][1])
                 wishList[pair][2] -= 1
                 break
 
@@ -74,7 +74,7 @@ def makeRooms(dungeon):
 # with one river segment.
 
 def testWater(dungeon,room):
-    if "river" not in dungeon[room]["constructions"] and "lake" not in dungeon[room]["constructions"]:
+    if "river" not in dungeon[room]["features"] and "lake" not in dungeon[room]["features"]:
         return True
 
 def bridgeBuilder(dungeon):
@@ -84,5 +84,5 @@ def bridgeBuilder(dungeon):
                     if not testWater(dungeon,y):
                         for z in dungeon[y]["connections"]:
                             if testWater(dungeon,z):
-                                if "bridge" not in dungeon[y]["constructions"]:
-                                    dungeon[y]["constructions"].append("bridge")
+                                if "bridge" not in dungeon[y]["features"]:
+                                    dungeon[y]["features"].append("bridge")
