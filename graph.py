@@ -1,19 +1,18 @@
+def makeDisplay(dungeon, x):
+    square = "[ " + str(x) + ": " + ", ".join(dungeon[x]["features"]) + " ]"
+    if dungeon[x]["height"] == 2:
+        square += " { border-style: bold ;}"
+    elif dungeon[x]["height"] == 0:
+        square += " { border-style: dotted ;}"
+    return square
+
+
 def graph(dungeon):
     relations = []
     for x in range(2, len(dungeon)):
         for second in dungeon[x]["connections"]:
-            leftName = "[ " + str(x) + ": " + dungeon[x]["name"]
-            if "features" in dungeon[x]:
-                leftName += " (" + ", ".join(dungeon[x]["features"]) + ")"
-            leftName += " ]"
-            if dungeon[x]["height"] == 2:
-                leftName += " { border: bold; } "
-            elif dungeon[x]["height"] == 0:
-                leftName += " { border: dotted; } "
-            rightName = "[ " + str(second) + ": " + dungeon[second]["name"]
-            if "features" in dungeon[second]:
-                rightName += " (" + ", ".join(dungeon[second]["features"]) + ")"
-            rightName += " ]"
+            leftName = makeDisplay(dungeon, x)
+            rightName = makeDisplay(dungeon, second)
             relations.append(rightName + " <--> " + leftName)
     relations = list(set(relations))
     return relations
