@@ -16,7 +16,11 @@ addRooms(dungeon)
 
 fixRooms(dungeon)
 
+bridgeBuilder(dungeon)
+
 makeRooms(dungeon)
+
+rampage(dungeon)
 
 graph = graph(dungeon)
 

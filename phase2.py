@@ -47,7 +47,6 @@ def addRooms(dungeon):
             lastRoom += 1
             # print("Needed: " + wishList[newRoom][1])
 
-
 def fixRooms(dungeon):
     for x in range(len(dungeon) - 1, 0, -1):
         for pair in range(len(roomTransformations)):
