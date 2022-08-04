@@ -64,3 +64,4 @@ With stuff.
 for x in areas:
     areas[x]["connections"] = []
     areas[x]["features"] = []
+    areas[x]["creatures"] = []

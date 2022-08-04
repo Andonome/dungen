@@ -1,5 +1,8 @@
 def makeDisplay(dungeon, x):
-    square = "[ " + str(x) + ": " + ", ".join(dungeon[x]["features"]) + " ]"
+    square = "[ " + str(x) + ": " + ", ".join(dungeon[x]["features"])
+    if "creatures" in dungeon[x]:
+        square += r"\n" + ", ".join(dungeon[x]["creatures"])
+    square += " ]"
     if dungeon[x]["height"] == 2:
         square += " { border-style: bold ;}"
     elif dungeon[x]["height"] == 0:

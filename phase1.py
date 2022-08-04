@@ -75,10 +75,7 @@ def joinDun(dungeon):
 def riverFlow(river, dungeon):
     for newRiver in dungeon[river]["connections"]:
         if dungeon[river]["height"] >= dungeon[newRiver]["height"]:
-            if (
-                "river" not in dungeon[river]["features"]
-                and random.randint(1, 4) != 4
-            ):
+            if "river" not in dungeon[river]["features"] and random.randint(1, 4) != 4:
                 dungeon[river]["features"].append("river")
             riverFlow(newRiver, dungeon)
         else:

@@ -47,6 +47,7 @@ def addRooms(dungeon):
             lastRoom += 1
             # print("Needed: " + wishList[newRoom][1])
 
+
 def fixRooms(dungeon):
     for x in range(len(dungeon) - 1, 0, -1):
         for pair in range(len(roomTransformations)):
@@ -73,16 +74,21 @@ def makeRooms(dungeon):
 # shouldn't receive a bridge - this only works with one room,
 # with one river segment.
 
-def testWater(dungeon,room):
-    if "river" not in dungeon[room]["features"] and "lake" not in dungeon[room]["features"]:
+
+def testWater(dungeon, room):
+    if (
+        "river" not in dungeon[room]["features"]
+        and "lake" not in dungeon[room]["features"]
+    ):
         return True
+
 
 def bridgeBuilder(dungeon):
     for x in range(len(dungeon) - 1, 1, -1):
-            if testWater(dungeon,x):
-                for y in dungeon[x]["connections"]:
-                    if not testWater(dungeon,y):
-                        for z in dungeon[y]["connections"]:
-                            if testWater(dungeon,z):
-                                if "bridge" not in dungeon[y]["features"]:
-                                    dungeon[y]["features"].append("bridge")
+        if testWater(dungeon, x):
+            for y in dungeon[x]["connections"]:
+                if not testWater(dungeon, y):
+                    for z in dungeon[y]["connections"]:
+                        if testWater(dungeon, z):
+                            if "bridge" not in dungeon[y]["features"]:
+                                dungeon[y]["features"].append("bridge")
