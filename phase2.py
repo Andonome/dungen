@@ -8,10 +8,7 @@ from areas import *
 global roomTransformations
 roomTransformations = [
     ["entrance", "trap"],
-    ["lavapit", "bridge"],
-    ["chasm", "bridge"],
     ["mana lake", "magic room"],
-    ["river", "bridge"],
     ["lake", "boats"],
 ]
 
@@ -25,11 +22,11 @@ wishList = [
     ["cavern", "kitchen", 1],
     ["cavern", "library", 1],
     ["cavern", "forge", 0],
-    # ["fungus", "garden", 1],
     ["cavern", "musicHall", 0],
     ["cavern", "bedroom", 4],
     ["lake", "boats", 0],
 ]
+
 
 # If the civilizing race doesn't have enough rooms to live, they'll have to make more.
 def addRooms(dungeon):
@@ -54,7 +51,7 @@ def addRooms(dungeon):
 def fixRooms(dungeon):
     for x in range(len(dungeon) - 1, 0, -1):
         for pair in range(len(roomTransformations)):
-            if dungeon[x]["name"] == roomTransformations[pair][0]:
+            if roomTransformations[pair][0] in dungeon[x]["constructions"]:
                 dungeon[x]["constructions"].append(roomTransformations[pair][1])
 
 
@@ -69,3 +66,24 @@ def makeRooms(dungeon):
                 dungeon[x]["constructions"].append(wishList[pair][1])
                 wishList[pair][2] -= 1
                 break
+
+
+# Elves need to bridge those rivers.
+# We need to check for a sequence like [ cavern, river,
+# cavern ], because a sequence like [ river, river, cavern ],
+# shouldn't receive a bridge - this only works with one room,
+# with one river segment.
+
+def testWater(dungeon,room):
+    if "river" not in dungeon[room]["constructions"] and "lake" not in dungeon[room]["constructions"]:
+        return True
+
+def bridgeBuilder(dungeon):
+    for x in range(len(dungeon) - 1, 1, -1):
+            if testWater(dungeon,x):
+                for y in dungeon[x]["connections"]:
+                    if not testWater(dungeon,y):
+                        for z in dungeon[y]["connections"]:
+                            if testWater(dungeon,z):
+                                if "bridge" not in dungeon[y]["constructions"]:
+                                    dungeon[y]["constructions"].append("bridge")
