@@ -9,7 +9,6 @@ global roomTransformations
 roomTransformations = [
     ["entrance", "trap"],
     ["mana lake", "magic room"],
-    ["lake", "boats"],
 ]
 
 # This ordered wish list makes the elves make one cavern into a kitchen,
@@ -26,7 +25,6 @@ wishList = [
     ["cavern", "bedroom", 4],
     ["lake", "boats", 0],
 ]
-
 
 # If the civilizing race doesn't have enough rooms to live, they'll have to make more.
 def addRooms(dungeon):
@@ -92,3 +90,10 @@ def bridgeBuilder(dungeon):
                         if testWater(dungeon, z):
                             if "bridge" not in dungeon[y]["features"]:
                                 dungeon[y]["features"].append("bridge")
+
+def civilize(dungeon):
+    addRooms(dungeon)    
+    fixRooms(dungeon)
+    bridgeBuilder(dungeon)
+    makeRooms(dungeon)
+

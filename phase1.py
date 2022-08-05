@@ -44,9 +44,11 @@ def joinDun(dungeon):
     joins = 5
     nexus = 4
     for x in range(2, len(dungeon) + 1):
-        dungeon[x]["connections"] = []
         while random.randint(1, joins) > 5 and x >= 3:
-            newConnection = random.randint(2, x - 1)
+            if x < 6:
+                newConnection = random.randint(2, x - 1)
+            else:
+                newConnection = random.randint(x-4, x - 1)
             if dungeon[newConnection]["name"] != "entrance":
                 dungeon[x]["connections"].append(newConnection)
                 nexus = newConnection

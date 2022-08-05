@@ -12,13 +12,7 @@ setting = "caves"
 
 dungeon = makeDungeon(setting)
 
-addRooms(dungeon)
-
-fixRooms(dungeon)
-
-bridgeBuilder(dungeon)
-
-makeRooms(dungeon)
+civilize(dungeon)
 
 rampage(dungeon)
 
