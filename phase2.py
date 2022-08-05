@@ -1,4 +1,5 @@
 import copy
+import random
 from features import *
 from areas import *
 
@@ -25,6 +26,19 @@ wishList = [
     ["cavern", "bedroom", 4],
     ["lake", "boats", 0],
 ]
+
+# I'm adding a random race, but idk what to do with this
+# information yet.  Dwarves, elves, and gnomes all need a
+# library, force, et c. Maybe it'll just affect different
+# magical items later?
+
+raceList = [
+    "elves",
+    "dwarves",
+    "gnomes",
+]
+
+race = random.choice(raceList)
 
 # If the civilizing race doesn't have enough rooms to live, they'll have to make more.
 def addRooms(dungeon):
@@ -91,9 +105,9 @@ def bridgeBuilder(dungeon):
                             if "bridge" not in dungeon[y]["features"]:
                                 dungeon[y]["features"].append("bridge")
 
+
 def civilize(dungeon):
-    addRooms(dungeon)    
+    addRooms(dungeon)
     fixRooms(dungeon)
     bridgeBuilder(dungeon)
     makeRooms(dungeon)
-

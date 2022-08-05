@@ -48,7 +48,7 @@ def joinDun(dungeon):
             if x < 6:
                 newConnection = random.randint(2, x - 1)
             else:
-                newConnection = random.randint(x-4, x - 1)
+                newConnection = random.randint(x - 4, x - 1)
             if dungeon[newConnection]["name"] != "entrance":
                 dungeon[x]["connections"].append(newConnection)
                 nexus = newConnection
