@@ -2,10 +2,11 @@ import random
 import copy
 import pprint
 from areas import *
+from features import *
 
 def tn(tn):
-    x = random.randint(1,6) + random.randint(1,6)
-    if x >= tn:
+    roll = random.randint(1,6) + random.randint(1,6)
+    if roll >= tn:
         return True
     else:
         return False
@@ -23,7 +24,7 @@ def dunJoin(dungeon,x):
     elif x < 7:
         dungeon[x]["connections"].append(random.randint(x-3,x-1))
     else:
-        joinPlace = random.randint(x-6,x-1)
+        joinPlace = random.randint(x-5,x-1)
         if joinPlace not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(joinPlace)
         if tn(9):
@@ -42,7 +43,18 @@ def newDungeon(setting,dunSize):
         dungeon[x]["height"] = 1
         dunJoin(dungeon,x)
         x += 1
+    dungeon[1]["features"].append("entrance")
     return dungeon
+
+def giveFeatures(dungeon):
+    localFeatures = []
+    noFeatures = int(len(dungeon) / 4)
+    for f in range(noFeatures):
+        localFeatures.append(random.choice(featureList))
+    for x in range(1,len(dungeon)+1):
+        if tn(len(dungeon) +4 - len(localFeatures) - x) and len(localFeatures) > 0:
+            dungeon[x]["features"].append(localFeatures[0])
+            del localFeatures[0]
 
 
 def riverFlow(river, dungeon):
@@ -76,6 +88,7 @@ def makeFungi(dungeon):
 
 def makeDungeon(setting,dunSize):
     dungeon = newDungeon(setting,dunSize)
-    makeRiver(dungeon)
-    makeFungi(dungeon)
+    giveFeatures(dungeon)
+    #makeRiver(dungeon)
+    #makeFungi(dungeon)
     return dungeon
