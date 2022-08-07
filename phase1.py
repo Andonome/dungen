@@ -5,7 +5,7 @@ from areas import *
 
 def tn(tn):
     x = random.randint(1,6) + random.randint(1,6)
-    if tn >= x:
+    if x >= tn:
         return True
     else:
         return False
@@ -14,31 +14,32 @@ def tn(tn):
 def show(x):
     pprint.pprint(x)
 
-
-def dun(dungeon):
-    for x in range(len(dungeon)):
-        if x in dungeon:
-            print(str(x) + ": " + dungeon[x]["name"])
-
+def dunJoin(dungeon,x):
+    if x == 1:
+        pass
+    elif x < 5 or tn(7):
+        dungeon[x]["connections"].append(x-1)
+    elif x < 7:
+        dungeon[x]["connections"].append(random.randint(x-3,x-1))
+    else:
+        joinPlace = random.randint(x-6,x-1)
+        if joinPlace not in dungeon[x]["connections"]:
+            dungeon[x]["connections"].append(joinPlace)
+        if tn(9):
+            dunJoin(dungeon,x)
 
 def newDungeon(setting,dunSize):
     dungeon = {}
     # 'x' always refers to the dungeon area number, so x=3 means 'area 3'.
     x = 1
+    join = False
     while x < dunSize:
         dungeon[x] = {}
         dungeon[x]["connections"] = []
         dungeon[x]["features"] = []
         dungeon[x]["creatures"] = []
         dungeon[x]["height"] = 1
-        if x == 1:
-            pass
-        elif x < 5 or tn(6):
-            dungeon[x]["connections"].append(x-1)
-        elif x < 7:
-            dungeon[x]["connections"].append(random.randint(x-3,x-1))
-        else:
-            dungeon[x]["connections"].append(random.randint(x-6,x-1))
+        dunJoin(dungeon,x)
         x += 1
     return dungeon
 

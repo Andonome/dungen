@@ -8,7 +8,7 @@ from graph import *
 
 import random
 
-dunSize = 15
+dunSize = 20
 # setting = random.choice(["mine", "deep", "caves"])
 setting = "caves"
 
