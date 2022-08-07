@@ -18,7 +18,8 @@ def dunJoin(dungeon,x):
     if x == 1:
         pass
     elif x < 5 or tn(7):
-        dungeon[x]["connections"].append(x-1)
+        if x-1 not in dungeon[x]["connections"]:
+            dungeon[x]["connections"].append(x-1)
     elif x < 7:
         dungeon[x]["connections"].append(random.randint(x-3,x-1))
     else:
