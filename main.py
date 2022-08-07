@@ -18,5 +18,3 @@ rampage(dungeon)
 
 graph = graph(dungeon)
 
-for x in range(len(graph)):
-    print(graph[x])
