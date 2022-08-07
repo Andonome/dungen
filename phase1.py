@@ -42,7 +42,6 @@ def makeDunList(setting):
 
 def joinDun(dungeon):
     joins = 5
-    nexus = 4
     for x in range(2, len(dungeon) + 1):
         while random.randint(1, joins) > 5 and x >= 3:
             if x < 6:
