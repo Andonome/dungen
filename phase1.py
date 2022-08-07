@@ -3,6 +3,13 @@ import copy
 import pprint
 from areas import *
 
+def tn(tn):
+    x = random.randint(1,6) + random.randint(1,6)
+    if tn >= x:
+        return True
+    else:
+        return False
+
 
 def show(x):
     pprint.pprint(x)
@@ -14,63 +21,26 @@ def dun(dungeon):
             print(str(x) + ": " + dungeon[x]["name"])
 
 
-def makeDunList(setting):
-    maxDungeonSize = 13
+def newDungeon(setting,dunSize):
     dungeon = {}
-    dungeon[1] = copy.deepcopy(areas["entrance"])
-    oldChoice = "entrance"
-    # With 'entrance' as area 1, 'count' starts at 2.
-    # The count only increases when we have a non-repeating room, to avoid getting rooms 1,2,4,6.
-    count = 2
-    while count < maxDungeonSize:
-        areaChoice = random.choice(list(areas.keys()))
-        if (
-            setting in areas[areaChoice]["ecosystems"]
-            and areaChoice != oldChoice
-            and areas[areaChoice]["name"] != "entrance"
-        ):
-            # The original piece of code was this:
-            # dungeon[count] = areas[areaChoice]
-            # Which lost me an three hours, as this make a reference point,
-            # and all refence points change together, so all 'tunnel'
-            # rooms would be the same forever.
-            dungeon[count] = copy.deepcopy(areas[areaChoice])
-            count += 1
-        oldChoice = areaChoice
+    # 'x' always refers to the dungeon area number, so x=3 means 'area 3'.
+    x = 1
+    while x < dunSize:
+        dungeon[x] = {}
+        dungeon[x]["connections"] = []
+        dungeon[x]["features"] = []
+        dungeon[x]["creatures"] = []
+        dungeon[x]["height"] = 1
+        if x == 1:
+            pass
+        elif x < 5 or tn(6):
+            dungeon[x]["connections"].append(x-1)
+        elif x < 7:
+            dungeon[x]["connections"].append(random.randint(x-3,x-1))
+        else:
+            dungeon[x]["connections"].append(random.randint(x-6,x-1))
+        x += 1
     return dungeon
-
-
-def joinDun(dungeon):
-    joins = 5
-    for x in range(2, len(dungeon) + 1):
-        while random.randint(1, joins) > 5 and x >= 3:
-            if x < 6:
-                newConnection = random.randint(2, x - 1)
-            else:
-                newConnection = random.randint(x - 4, x - 1)
-            if dungeon[newConnection]["name"] != "entrance":
-                dungeon[x]["connections"].append(newConnection)
-                nexus = newConnection
-            joins -= 2
-        else:
-            if dungeon[x - 1]["name"] == "entrance":
-                dungeon[x]["connections"].append(x - 1)
-                joins += 1
-            else:
-                dungeon[x]["connections"].append(x - 1)
-                joins += 1
-        if random.randint(0, 5) == 1:
-            dungeon[x]["height"] = random.randint(0, 2)
-        else:
-            dungeon[x]["height"] = dungeon[x - 1]["height"]
-    # Finally, maybe add another entrance, but only connect it in one
-    # place.
-    if random.randint(1, 2) == 1:
-        dungeon[len(dungeon) - 1] = areas["entrance"].copy()
-        dungeon[len(dungeon) - 1]["connections"] = []
-        dungeon[len(dungeon) - 1]["connections"].append(
-            random.randint(len(dungeon) / 2, len(dungeon) - 2)
-        )
 
 
 def riverFlow(river, dungeon):
@@ -102,9 +72,8 @@ def makeFungi(dungeon):
                     dungeon[y]["features"].append("fungus")
 
 
-def makeDungeon(setting):
-    dungeon = makeDunList(setting)
-    joinDun(dungeon)
+def makeDungeon(setting,dunSize):
+    dungeon = newDungeon(setting,dunSize)
     makeRiver(dungeon)
     makeFungi(dungeon)
     return dungeon

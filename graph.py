@@ -10,5 +10,4 @@ def graph(dungeon):
         dunMap.node(str(x), contents)
         for connection in dungeon[x]["connections"]:
             dunMap.edge(str(x), str(connection))
-    print(dunMap.source)
     dunMap.render("Test Map.gv")

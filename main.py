@@ -6,15 +6,17 @@ from phase2 import *
 from phase3 import *
 from graph import *
 
-maxDungeonSize = 15
+import random
+
+dunSize = 15
 # setting = random.choice(["mine", "deep", "caves"])
 setting = "caves"
 
-dungeon = makeDungeon(setting)
+dungeon = makeDungeon(setting,dunSize)
 
 civilize(dungeon)
 
 rampage(dungeon)
 
-graph = graph(dungeon)
+graph(dungeon)
 
