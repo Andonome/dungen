@@ -56,12 +56,30 @@ def giveFeatures(dungeon):
             del localFeatures[0]
 
 
-def showDeadEnds(dungeon):
+# Room types show relations between rooms, such as 'the
+# entrance', or a simple tunnel - a room which goes to
+# another room.
+
+def labelType(dungeon):
     for x in range(len(dungeon)):
-        dungeon[x]["type"].append("dead end")
+        if len(dungeon[x]["connections"]) == 1:
+            dungeon[x]["type"].append("dead end")
+        elif len(dungeon[x]["connections"]) > 2:
+            dungeon[x]["type"].append("split")
+        else:
+            dungeon[x]["type"].append("tunnel")
+        # We start by labelling every part as a dead end, then if
+        # something connects to it, that part is no longer a dead
+        # end.
         for c in dungeon[x]["connections"]:
             if "dead end" in dungeon[c]["type"]:
                 dungeon[c]["type"].remove("dead end")
+            if "tunnel" in dungeon[c]["type"]:
+                dungeon[c]["type"].remove("tunnel")
+                if "split" not in dungeon[c]["type"]:
+                    dungeon[c]["type"].append("split")
+            elif "split" not in dungeon[c]["type"]:
+                dungeon[c]["type"].append("tunnel")
 
 def makeRiver(dungeon):
     river = random.randint(3, len(dungeon) - 2)
@@ -80,7 +98,7 @@ def makeFungi(dungeon):
 def makeDungeon(setting,dunSize):
     dungeon = newDungeon(setting,dunSize)
     giveFeatures(dungeon)
-    showDeadEnds(dungeon)
+    labelType(dungeon)
     #makeRiver(dungeon)
     #makeFungi(dungeon)
     return dungeon

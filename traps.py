@@ -10,17 +10,17 @@ traps = {
     "falseFloor": {
         "name": "falling rocks",
         "races": [
-            "dwarvse",
+            "dwarves",
             "goblins",
         ],
         "description": "The rickety wooden floor here give way to a ten foot deep hole, full of nasty, pointy things",
     },
-    "gasLeak": {
-        "name": "gas leak",
+    "mushroomSpores": {
+        "name": "mushroom spores",
         "races": [
             "dwarves",
             "goblins",
         ],
-        "description": "The natural gas in this area will grant 5 Fatigue Points to anyone hanging around, every round",
+        "description": "Deadly mushroom spores - inflict Fatigue Damage",
     },
 }
