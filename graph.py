@@ -3,10 +3,12 @@ import graphviz
 
 def graph(dungeon):
     dunMap = graphviz.Digraph(comment="Test Map")
-    for x in range(1, len(dungeon)):
+    for x in range(len(dungeon)):
         contents = str(x) + ": \n" + "\n ".join(dungeon[x]["features"])
         if len(dungeon[x]["creatures"]) > 0:
             contents += "\n" + "\n".join(dungeon[x]["creatures"])
+        if len(dungeon[x]["type"]) > 0:
+            contents += "(" + ", ".join(dungeon[x]["type"]) + ")"
         dunMap.node(str(x), contents)
         for connection in dungeon[x]["connections"]:
             dunMap.edge(str(x), str(connection))

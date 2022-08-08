@@ -11,13 +11,12 @@ def tn(tn):
     else:
         return False
 
-
 def show(x):
     pprint.pprint(x)
 
 def dunJoin(dungeon,x):
-    if x == 1:
-        pass
+    if x == 0:
+        dungeon[x]["type"].append("entrance")
     elif x < 5 or tn(7):
         if x-1 not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(x-1)
@@ -31,19 +30,18 @@ def dunJoin(dungeon,x):
             dunJoin(dungeon,x)
 
 def newDungeon(setting,dunSize):
-    dungeon = {}
+    dungeon = []
     # 'x' always refers to the dungeon area number, so x=3 means 'area 3'.
     x = 1
     join = False
-    while x < dunSize:
-        dungeon[x] = {}
+    for x in range(dunSize):
+        dungeon.append({})
         dungeon[x]["connections"] = []
         dungeon[x]["features"] = []
         dungeon[x]["creatures"] = []
         dungeon[x]["height"] = 1
+        dungeon[x]["type"] = []
         dunJoin(dungeon,x)
-        x += 1
-    dungeon[1]["features"].append("entrance")
     return dungeon
 
 def giveFeatures(dungeon):
@@ -51,25 +49,18 @@ def giveFeatures(dungeon):
     noFeatures = int(len(dungeon) / 4)
     for f in range(noFeatures):
         localFeatures.append(random.choice(featureList))
-    for x in range(1,len(dungeon)+1):
+    for x in range(len(dungeon)):
         if tn(len(dungeon) +4 - len(localFeatures) - x) and len(localFeatures) > 0:
             dungeon[x]["features"].append(localFeatures[0])
             del localFeatures[0]
 
 
-def riverFlow(river, dungeon):
-    for newRiver in dungeon[river]["connections"]:
-        if dungeon[river]["height"] >= dungeon[newRiver]["height"]:
-            if "river" not in dungeon[river]["features"] and random.randint(1, 4) != 4:
-                dungeon[river]["features"].append("river")
-            riverFlow(newRiver, dungeon)
-        else:
-            if (
-                "lake" not in dungeon[river]["features"]
-                and "river" not in dungeon[river]["features"]
-            ):
-                dungeon[river]["features"].append("lake")
-
+def showDeadEnds(dungeon):
+    for x in range(len(dungeon)):
+        dungeon[x]["type"].append("dead end")
+        for c in dungeon[x]["connections"]:
+            if "dead end" in dungeon[c]["type"]:
+                dungeon[c]["type"].remove("dead end")
 
 def makeRiver(dungeon):
     river = random.randint(3, len(dungeon) - 2)
@@ -85,10 +76,10 @@ def makeFungi(dungeon):
                 if target in dungeon[y]["connections"]:
                     dungeon[y]["features"].append("fungus")
 
-
 def makeDungeon(setting,dunSize):
     dungeon = newDungeon(setting,dunSize)
     giveFeatures(dungeon)
+    showDeadEnds(dungeon)
     #makeRiver(dungeon)
     #makeFungi(dungeon)
     return dungeon

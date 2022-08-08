@@ -16,7 +16,7 @@ dungeon = makeDungeon(setting,dunSize)
 
 civilize(dungeon)
 
-rampage(dungeon)
+#rampage(dungeon)
 
 graph(dungeon)
 
