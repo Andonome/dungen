@@ -7,12 +7,17 @@ from phase3 import *
 from graph import *
 
 import random
+import time
 
 dunSize = 18
 # setting = random.choice(["mine", "deep", "caves"])
 setting = "caves"
 
 dungeon = makeDungeon(setting,dunSize)
+
+graph(dungeon)
+
+time.sleep(2)
 
 civilize(dungeon)
 
