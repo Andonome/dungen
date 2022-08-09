@@ -1,8 +1,13 @@
 from phase2 import *
 
+# Some traps can be passed by the inhabitant (e.g. a scary
+# illusion), while others cannot.  Some operate inside a
+# room, others only in a doorway.
+
 traps = {
     "rocksFall": {
         "name": "balanced rocks",
+        "atDoor": False,
         "races": [
             "dwarves",
             "goblins",
@@ -12,6 +17,7 @@ traps = {
     },
     "ricketyFloor": {
         "name": "rickety-floor trap",
+        "atDoor": False,
         "races": [
             "dwarves",
             "goblins",
@@ -26,6 +32,7 @@ Anyone calling into the pit receives 2D6 Damage.
     },
     "mushroomSpores": {
         "name": "mushroom spores",
+        "atDoor": False,
         "races": [
             "dwarves",
             "goblins",
@@ -39,6 +46,7 @@ Anyone wishing to sneak past the mushrooms without disturbing them can make a De
     },
     "prisonDoor": {
         "name": "prisoner's door",
+        "atDoor": True,
         "races": [
             "dwarves",
             "gnomes",
@@ -52,6 +60,7 @@ In this way, the """ + race + " once traped intruders.",
     },
     "ghoulRaiser": {
         "name": "the singing skull",
+        "atDoor": False,
         "races": [
             "dwarves",
         ],
@@ -60,6 +69,7 @@ In this way, the """ + race + " once traped intruders.",
     },
     "slide": {
         "name": "slime slide",
+        "atDoor": True,
         "races": [
             "goblins",
             "gnomes",
