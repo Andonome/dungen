@@ -1,10 +1,11 @@
-# Goblins rooms  should include:
-#
-# - hatchery in
-# - traps
-# - hobgoblins
-# - food storage
-# - traps
+# Most of this should be deleted.  We'll need conversion of
+# rooms, maybe disable some traps, then place goblins.  One
+# difficulty is that if goblins all bunch up in the same
+# rooms, adventurers can't fight them - they'll all run out
+# together.  Perhaps valuable areas, such as the kitchen,
+# or treasure rooms, should receive the big guards, while
+# other rooms get nothing, and we add a 'wandering goblin'
+# encounter table at the end.
 
 import random
 
@@ -13,6 +14,9 @@ goblinRampage = [
     ["kitchen", "foodStore"],
 ]
 
+
+# This needs redone - ooze should add a creature, but here
+# it's listed as a feature.
 
 def breakRooms(dungeon):
     for x in range(len(dungeon) - 1, 0, -1):

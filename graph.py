@@ -1,12 +1,14 @@
+# This function uses graphviz to output the map to a pdf file.
 import graphviz
 
 
-def graph(dungeon):
+def graph(setting,dungeon):
     dunMap = graphviz.Digraph(
         engine="dot",
         comment="Test Map",
     )
     dunMap.attr("node", shape='egg',overlap='false')
+    dunMap.node('areaType',setting,shape='tripleoctagon',fontsize='60')
     for x in range(len(dungeon)):
         roomShape = 'ellipse'
         contents = str(x) + ": \n" + "\n ".join(dungeon[x]["features"])

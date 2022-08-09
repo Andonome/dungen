@@ -4,6 +4,7 @@ import pprint
 from areas import *
 from features import *
 
+# The TN function just rolls 2D6 to make choices.
 def tn(tn):
     roll = random.randint(1,6) + random.randint(1,6)
     if roll >= tn:
@@ -11,12 +12,17 @@ def tn(tn):
     else:
         return False
 
+# Just for debugging.
 def show(x):
     pprint.pprint(x)
 
+# junJoin joins dungeon pieces, usually straight down (4 -- > 3), but
+# sometimes skips down (7 --> 3).
 def dunJoin(dungeon,x):
     if x == 0:
         dungeon[x]["type"].append("entrance")
+    # Initial rooms (0 to 4) connect to the room before.  After
+    # that, there's a chance they connect straight down.
     elif x < 5 or tn(7):
         if x-1 not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(x-1)
@@ -31,7 +37,8 @@ def dunJoin(dungeon,x):
 
 def newDungeon(setting,dunSize):
     dungeon = []
-    # 'x' always refers to the dungeon area number, so x=3 means 'area 3'.
+    # 'x' always refers to the dungeon area number, so x=3
+    # means 'area 3'.
     x = 1
     join = False
     for x in range(dunSize):
@@ -44,6 +51,8 @@ def newDungeon(setting,dunSize):
         dunJoin(dungeon,x)
     return dungeon
 
+# Now the dungeon gets features, like 'chasm', or 'mana
+# lakes'.
 def giveFeatures(dungeon):
     random.shuffle(featureList)
     localFeatures = []
@@ -54,7 +63,6 @@ def giveFeatures(dungeon):
         if tn(len(dungeon) +4 - len(localFeatures) - x) and len(localFeatures) > 0:
             dungeon[x]["features"].append(localFeatures[0])
             del localFeatures[0]
-
 
 # Room types show relations between rooms, such as 'the
 # entrance', or a simple tunnel - a room which goes to
@@ -81,19 +89,6 @@ def labelType(dungeon):
             elif "split" not in dungeon[c]["type"]:
                 dungeon[c]["type"].append("tunnel")
 
-def makeRiver(dungeon):
-    river = random.randint(3, len(dungeon) - 2)
-    if river % 2 == 0:
-        riverFlow(river, dungeon)
-
-
-def makeFungi(dungeon):
-    for x in range(1, len(dungeon)):
-        if "lake" in dungeon[x]["features"]:
-            target = x
-            for y in range(1, len(dungeon)):
-                if target in dungeon[y]["connections"]:
-                    dungeon[y]["features"].append("fungus")
 
 def makeDungeon(setting,dunSize):
     dungeon = newDungeon(setting,dunSize)

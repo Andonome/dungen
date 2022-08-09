@@ -9,11 +9,3 @@ featureList = [
     "gas leak",
 ]
 
-features = {
-    "bridge": {
-        "name": "bridge",
-        "description": """
-Bridge.
-""",
-    },
-}

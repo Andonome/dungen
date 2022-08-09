@@ -1,3 +1,8 @@
+# Unsure how to do this part.  Some areas get built the
+# same way - everyone needs a fungus garden and bridges
+# over rivers.  But then some races will need different
+# functions for where to build things.
+
 import copy
 import random
 from features import *
@@ -71,6 +76,7 @@ def makeRooms(dungeon):
 # with one river segment.
 
 
+# This entire bridge-builder function needs redone.
 def testWater(dungeon, room):
     if (
         "river" not in dungeon[room]["features"]

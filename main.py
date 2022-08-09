@@ -10,18 +10,17 @@ import random
 import time
 
 dunSize = 18
-# setting = random.choice(["mine", "deep", "caves"])
-setting = "caves"
+setting = random.choice(["mine", "caves"])
 
 dungeon = makeDungeon(setting,dunSize)
 
-graph(dungeon)
+graph(setting,dungeon)
 
-time.sleep(2)
+#time.sleep(2)
 
 civilize(dungeon)
 
 #rampage(dungeon)
 
-graph(dungeon)
+graph(setting,dungeon)
 
