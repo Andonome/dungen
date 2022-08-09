@@ -7,5 +7,7 @@ featureList = [
     "river",
     "mana lake",
     "gas leak",
+    "drop",
+    "steep",
 ]
 
