@@ -58,4 +58,13 @@ In this way, the """ + race + " once traped intruders.",
         "passable": True,
         "description": "This skull once belonged to a priest of the " + race + ", and now stands to guard their halls.  It will animate from the dead, any dead creature, within the area, or any nearby areas. When the " + race + " still lived here, it also stood as a reminder that no two " + race + " should ever fight each other, or the Skull would punish them",
     },
+    "slide": {
+        "name": "slime slide",
+        "races": [
+            "goblins",
+            "gnomes",
+        ],
+        "passable": False,
+        "description": """This long passage slopes gently down, then less gently, and once the slimy floor gets under-foot, it whisks the walker down-hill, and into a nasty barricade of metal a spikes.""",
+    },
 }
