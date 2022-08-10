@@ -7,36 +7,40 @@ def graph(setting,dungeon):
         engine="dot",
         comment="Test Map",
     )
-    dunMap.attr("node",
-    shape='egg',
+    dunMap.attr(
+    "node",
+    overlap="scale",
+    rotate="90",
+    splines="polyline",
+    penwidth="10",
+    )
+        
+    dunMap.attr(
+    "edge",
     penwidth="10",
     overlap='false',
-    ranksep="1 equally",)
-        
-    dunMap.node('areaType',setting,shape='tripleoctagon',fontsize='60')
+    arrowhead="none",
+    )
+    dunMap.node(setting,shape='tripleoctagon',fontsize="80")
     for x in range(len(dungeon)):
-        fontsize = 10
         roomShape = 'ellipse'
-        contents = str(x) + ": \n" + "\n ".join(dungeon[x]["features"])
+        contents = str(x) + r": \n" + r"\n ".join(dungeon[x]["features"])
         if len(dungeon[x]["creatures"]) > 0:
-            contents += "\n" + "\n".join(dungeon[x]["creatures"])
+            contents += r"\n" + r"\n".join(dungeon[x]["creatures"])
         if len(dungeon[x]["type"]) > 0:
             contents += "(" + ", ".join(dungeon[x]["type"]) + ")"
         if "mana lake" in dungeon[x]["features"]:
             roomShape = "Mdiamond"
         elif "entrance" in dungeon[x]["type"]:
             roomShape = "doublecircle"
-            fontsize = 15
         elif "split" in dungeon[x]["type"]:
             roomShape = "hexagon"
-            fontsize = 15
         elif "dead end" in dungeon[x]["type"]:
             roomShape = "invhouse"
         dunMap.node(
         str(x),
-        contents,shape=roomShape,
-        fontsize=str(fontsize),
+        contents
         )
         for connection in dungeon[x]["connections"]:
-            dunMap.edge(str(x), str(connection),weight="1.1",arrowhead="none",penwidth="10.5",maxlen="0.1")
+            dunMap.edge(str(x), str(connection),)
     dunMap.render("Test Map.gv")
