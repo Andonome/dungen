@@ -18,22 +18,28 @@ def show(x):
 
 # junJoin joins dungeon pieces, usually straight down (4 -- > 3), but
 # sometimes skips down (7 --> 3).
-def dunJoin(dungeon,x):
+
+def dunJoin(dungeon,x,joinChance):
     if x == 0:
         dungeon[x]["type"].append("entrance")
     # Initial rooms (0 to 4) connect to the room before.  After
     # that, there's a chance they connect straight down.
-    elif x < 5 or tn(7):
+    elif x < 3:
+        dungeon[x]["connections"].append(x-1)
+    elif tn(joinChance):
+        joinChance += 1
         if x-1 not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(x-1)
-    elif x < 7:
-        dungeon[x]["connections"].append(random.randint(x-3,x-1))
     else:
-        joinPlace = random.randint(x-5,x-1)
-        if joinPlace not in dungeon[x]["connections"]:
-            dungeon[x]["connections"].append(joinPlace)
-        if tn(9):
-            dunJoin(dungeon,x)
+        joinChance -= 2
+        lowPoint=max(1,x-6)
+        join=random.randint(max(x-5,lowPoint),x-2)
+        if join not in dungeon[x]["connections"]:
+            dungeon[x]["connections"].append(join)
+        if tn(joinChance):
+            dunJoin(dungeon,x,joinChance)
+    return joinChance
+        
 
 def newDungeon(setting,dunSize):
     dungeon = []
@@ -41,6 +47,10 @@ def newDungeon(setting,dunSize):
     # means 'area 3'.
     x = 1
     join = False
+    if setting == "mine":
+        joinChance = 5
+    elif setting == "caves":
+        joinChance = 9
     for x in range(dunSize):
         dungeon.append({})
         dungeon[x]["connections"] = []
@@ -48,7 +58,8 @@ def newDungeon(setting,dunSize):
         dungeon[x]["creatures"] = []
         dungeon[x]["height"] = 1
         dungeon[x]["type"] = []
-        dunJoin(dungeon,x)
+        joinChance = dunJoin(dungeon,x,joinChance)
+        print(str(x) + ": " + str(joinChance))
     return dungeon
 
 # Now the dungeon gets features, like 'chasm', or 'mana
