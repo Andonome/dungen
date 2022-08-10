@@ -9,7 +9,7 @@ from graph import *
 import random
 import time
 
-dunSize = 18
+dunSize = random.randint(10,30)
 setting = random.choice(["mine", "caves"])
 
 dungeon = makeDungeon(setting,dunSize)
