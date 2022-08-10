@@ -89,11 +89,45 @@ def labelType(dungeon):
             elif "split" not in dungeon[c]["type"]:
                 dungeon[c]["type"].append("tunnel")
 
+def findExit(dungeon,x):
+    c = x
+    route = [c]
+    while c > 1:
+        c = dungeon[c]["connections"][0]
+        route.append(c)
+    return route
+        
+
+def labelRoutes(dungeon):
+    paths = []
+    for x in range(len(dungeon)-1,1,-1):
+        if len(dungeon[x]["connections"]) > 1:
+            for _ in dungeon[x]["connections"]:
+                paths.append(findExit(dungeon,x))
+    return(paths)
+
+# Races can only place an impassable trap (like a swinging
+# sphere of anihilation) in tunnels which form alternative
+# routes - not the only  route to a place.
+
+c = 1
+
+def labelAlternatives(dungeon):
+    for x in range(len(dungeon)):
+        if "dead end" not in dungeon[x]["type"]:
+            dungeon[x]["type"].append("alternative")
+        if len(dungeon[x]["connections"]) == 1:
+            c = dungeon[x]["connections"][0]
+            if "alternative" in dungeon[c]["type"]:
+                dungeon[c]["type"].remove("alternative")
+
 
 def makeDungeon(setting,dunSize):
     dungeon = newDungeon(setting,dunSize)
     giveFeatures(dungeon)
     labelType(dungeon)
+    labelAlternatives(dungeon)
+    #labelRoutes(dungeon)
     #makeRiver(dungeon)
     #makeFungi(dungeon)
     return dungeon
