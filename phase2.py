@@ -102,8 +102,14 @@ def trapEntrance(dungeon):
         del trapBlockList[0]
         del entranceList[-1]
 
+
+def growGarden(dungeon):
+    for x in range(len(dungeon)):
+        if "lake" in dungeon[x]["features"] or "river" in dungeon[x]["features"] and "entrance" not in dungeon[x]["type"]:
+            dungeon[x]["features"].append("fungal garden")
+            break
+
+
 def civilize(dungeon):
-    fixRooms(dungeon)
-    bridgeBuilder(dungeon)
-    makeRooms(dungeon)
     trapEntrance(dungeon)
+    growGarden(dungeon)

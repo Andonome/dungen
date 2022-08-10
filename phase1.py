@@ -145,6 +145,7 @@ def deadToEntrance(dungeon):
         dungeon[choice]["type"].remove("dead end")
         dungeon[choice]["type"].append("entrance")
         del endPoints[-2]
+    print("Dead ends: " + str(len(endPoints)))
 
 
 def makeDungeon(setting,dunSize):

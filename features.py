@@ -11,3 +11,61 @@ featureList = [
     "steep",
 ]
 
+civilFeatures = {
+    "barracks": {
+        "description": "",
+        "races": [
+            "dwarves",
+            "elves",
+        ],
+        "places": [
+            "split",
+            "tunnel",
+        ],
+    },
+    "kitchen": {
+        "description": "",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "places": [
+            "split",
+            "tunnel",
+        ],
+    },
+    "library": {
+        "description": "library",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "places": [
+            "split",
+            "tunnel",
+            "dead end",
+        ],
+    },
+    "music hall": {
+        "description": "hall for music ",
+        "races": [
+            "elves",
+        ],
+        "places": [
+            "split",
+            "tunnel",
+            "dead end",
+        ],
+    },
+    "fungal garden": {
+        "description": "placed by water",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "places": [],
+    },
+}

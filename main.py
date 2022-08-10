@@ -19,7 +19,7 @@ graph(setting,dungeon)
 
 civilize(dungeon)
 
-rampage(dungeon)
+#rampage(dungeon)
 
 graph(setting,dungeon)
 
