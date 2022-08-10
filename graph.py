@@ -7,7 +7,12 @@ def graph(setting,dungeon):
         engine="dot",
         comment="Test Map",
     )
-    dunMap.attr("node", shape='egg',overlap='false')
+    dunMap.attr("node",
+    shape='egg',
+    penwidth="10",
+    overlap='false',
+    ranksep="1 equally",)
+        
     dunMap.node('areaType',setting,shape='tripleoctagon',fontsize='60')
     for x in range(len(dungeon)):
         fontsize = 10
@@ -18,7 +23,7 @@ def graph(setting,dungeon):
         if len(dungeon[x]["type"]) > 0:
             contents += "(" + ", ".join(dungeon[x]["type"]) + ")"
         if "mana lake" in dungeon[x]["features"]:
-            roomShape = "star"
+            roomShape = "Mdiamond"
         elif "entrance" in dungeon[x]["type"]:
             roomShape = "doublecircle"
             fontsize = 15
@@ -33,5 +38,5 @@ def graph(setting,dungeon):
         fontsize=str(fontsize),
         )
         for connection in dungeon[x]["connections"]:
-            dunMap.edge(str(x), str(connection))
+            dunMap.edge(str(x), str(connection),weight="1.1",arrowhead="none",penwidth="10.5",maxlen="0.1")
     dunMap.render("Test Map.gv")
