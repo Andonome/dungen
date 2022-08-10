@@ -59,7 +59,6 @@ def newDungeon(setting,dunSize):
         dungeon[x]["height"] = 1
         dungeon[x]["type"] = []
         joinChance = dunJoin(dungeon,x,joinChance)
-        print(str(x) + ": " + str(joinChance))
     return dungeon
 
 # Now the dungeon gets features, like 'chasm', or 'mana

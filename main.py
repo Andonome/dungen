@@ -5,12 +5,11 @@ from phase1 import *
 from phase2 import *
 from phase3 import *
 from graph import *
+from vars import *
 
 import random
 import time
 
-dunSize = random.randint(10,30)
-setting = random.choice(["mine", "caves"])
 
 dungeon = makeDungeon(setting,dunSize)
 
@@ -20,7 +19,7 @@ graph(setting,dungeon)
 
 civilize(dungeon)
 
-#rampage(dungeon)
+rampage(dungeon)
 
 graph(setting,dungeon)
 

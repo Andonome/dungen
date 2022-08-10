@@ -6,7 +6,9 @@
 import copy
 import random
 from features import *
+from traps import *
 from areas import *
+from vars import *
 
 # This list shows what places gain which features.
 # A chasm would require a bridge over it to be liveable.
@@ -32,21 +34,7 @@ wishList = [
     ["lake", "boats", 0],
 ]
 
-# I'm adding a random race, but idk what to do with this
-# information yet.  Dwarves, elves, and gnomes all need a
-# library, force, et c. Maybe it'll just affect different
-# magical items later?
-
-raceList = [
-    "elves",
-    "dwarves",
-    "gnomes",
-]
-
-race = random.choice(raceList)
-
 # If the civilizing race doesn't have enough rooms to live, they'll have to make more.
-
 
 
 def fixRooms(dungeon):
@@ -67,7 +55,6 @@ def makeRooms(dungeon):
                 dungeon[x]["features"].append(wishList[pair][1])
                 wishList[pair][2] -= 1
                 break
-
 
 # Elves need to bridge those rivers.
 # We need to check for a sequence like [ cavern, river,
@@ -96,7 +83,27 @@ def bridgeBuilder(dungeon):
                                 dungeon[y]["features"].append("bridge")
 
 
+def makeBlockTraps(race):
+    list = []
+    for x in blockingTraps:
+        if race in blockingTraps[x]["races"]:
+            list.append(x)
+    return list
+
+def trapEntrance(dungeon):
+    trapBlockList = makeBlockTraps(civilization)
+    entranceList = []
+    alternativeList = []
+    for x in range(len(dungeon)):
+        if "entrance" in dungeon[x]["type"]:
+            entranceList.append(x)
+    while len(trapBlockList) > 0 and len(entranceList) > 1:
+        dungeon[entranceList[-1]]["features"].append(trapBlockList[0])
+        del trapBlockList[0]
+        del entranceList[-1]
+
 def civilize(dungeon):
     fixRooms(dungeon)
     bridgeBuilder(dungeon)
     makeRooms(dungeon)
+    trapEntrance(dungeon)

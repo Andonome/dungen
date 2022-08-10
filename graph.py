@@ -9,6 +9,7 @@ def graph(setting,dungeon):
     )
     dunMap.attr(
     "node",
+    shape="ellipse",
     overlap="scale",
     rotate="90",
     splines="polyline",
