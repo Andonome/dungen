@@ -131,6 +131,20 @@ def labelAlternatives(dungeon):
             c = dungeon[x]["connections"][0]
             if "alternative" in dungeon[c]["type"]:
                 dungeon[c]["type"].remove("alternative")
+        for x in findExit(dungeon,len(dungeon)-1):
+            if "alternative" in dungeon[x]["type"]:
+                dungeon[x]["type"].remove("alternative")
+
+def deadToEntrance(dungeon):
+    endPoints = []
+    for x in range(len(dungeon)):
+        if "dead end" in dungeon[x]["type"]:
+            endPoints.append(x)
+    print(len(endPoints))
+    if len(endPoints) > 3:
+        choice = endPoints[-2]
+        dungeon[choice]["type"].remove("dead end")
+        dungeon[choice]["type"].append("entrance")
 
 
 def makeDungeon(setting,dunSize):
@@ -138,6 +152,7 @@ def makeDungeon(setting,dunSize):
     giveFeatures(dungeon)
     labelType(dungeon)
     labelAlternatives(dungeon)
+    deadToEntrance(dungeon)
     #labelRoutes(dungeon)
     #makeRiver(dungeon)
     #makeFungi(dungeon)
