@@ -203,6 +203,7 @@ civilFeatures = {
         "description": "dead people, with writing",
         "races": [
             "dwarves",
+            "gnomes",
         ],
         "clashes": [],
         "places": [
@@ -296,6 +297,29 @@ civilFeatures = {
         ],
         "places": [
             "dead end",
+        ],
+    },
+    "shrine to Cale": {
+        "description": "a large carving of a book, with a riddle written on it",
+        "races": [
+            "gnomes",
+        ],
+        "clashes": [],
+        "places": [
+            "tunnel",
+            "dead end",
+        ],
+    },
+    "shrine to Qualme": {
+        "description": "a tall stone, with a family tree carved from the bottom, upwards",
+        "races": [
+            "dwarves",
+        ],
+        "clashes": [],
+        "places": [
+            "tunnel",
+            "entrance",
+            "split",
         ],
     },
 }
