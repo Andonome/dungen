@@ -10,16 +10,84 @@ featureList = [
 ]
 
 civilFeatures = {
-    "queen's room": {
-        "description": "Where a king sleeps",
+    "bridge": {
+        "description": "over troubled water",
         "races": [
             "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [
+            "alternative",
+            "dead end",
+        ],
+        "places": [
+            "chasm",
+            "river",
+        ],
+    },
+    "gas patches": {
+        "description": "clay patches to stop gass vent",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [
+            "entrance",
+        ],
+        "places": [
+            "gas leak",
+        ],
+    },
+    "boats": {
+        "description": "over troubled water",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [
+            "alternative",
+            "dead end",
+        ],
+        "places": [
+            "lake",
+        ],
+    },
+    "guard post": {
+        "description": "OC, don't steal",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [
+            "alternative",
+            "gas leak",
+            "dead end",
+        ],
+        "places": [
+            "split",
+            "entrance",
+        ],
+    },
+    "living quarters": {
+        "description": "many halls, many beds.",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
         ],
         "clashes": [
             "chasm",
+            "lake",
+            "mana lake",
+            "river",
         ],
         "places": [
             "dead end",
+            "alternative",
         ],
     },
     "servants' quarters": {
@@ -49,27 +117,8 @@ civilFeatures = {
             "chasm",
         ],
         "places": [
-            "split",
+            "dead end",
             "alternative",
-            "river",
-        ],
-    },
-    "feasting hall": {
-        "description": "Where everyone eats",
-        "races": [
-            "dwarves",
-            "gnomes",
-            "elves",
-        ],
-        "clashes": [
-            "mana lake",
-            "chasm",
-            "river",
-            "lake",
-        ],
-        "places": [
-            "alternative",
-            "split",
         ],
     },
     "fungal garden": {
@@ -85,17 +134,22 @@ civilFeatures = {
             "river",
         ],
     },
-    "library": {
-        "description": "library",
+    "armoury": {
+        "description": "Mostly left arms",
         "races": [
             "dwarves",
             "elves",
             "gnomes",
         ],
-        "clashes": [],
+        "clashes": [
+            "chasm",
+            "river",
+            "lake",
+            "mana lake",
+        ],
         "places": [
-            "alternative",
             "dead end",
+            "alternative",
         ],
     },
     "music hall": {
@@ -122,10 +176,12 @@ civilFeatures = {
             "dead end",
         ],
     },
-    "tomb": {
-        "description": "dead people, with writing",
+    "library": {
+        "description": "library",
         "races": [
             "dwarves",
+            "elves",
+            "gnomes",
         ],
         "clashes": [],
         "places": [
@@ -143,55 +199,15 @@ civilFeatures = {
             "dead end",
         ],
     },
-    "armoury": {
-        "description": "Mostly left arms",
+    "tomb": {
+        "description": "dead people, with writing",
         "races": [
             "dwarves",
-            "elves",
-            "gnomes",
         ],
-        "clashes": [
-            "chasm",
-            "river",
-            "lake",
-            "mana lake",
-        ],
+        "clashes": [],
         "places": [
-            "tunnel",
-            "dead end",
-        ],
-    },
-    "bridge": {
-        "description": "over troubled water",
-        "races": [
-            "dwarves",
-            "elves",
-            "gnomes",
-        ],
-        "clashes": [
             "alternative",
             "dead end",
-        ],
-        "places": [
-            "chasm",
-            "river",
-        ],
-    },
-    "living quarters": {
-        "description": "many halls, many beds.",
-        "races": [
-            "dwarves",
-            "gnomes",
-        ],
-        "clashes": [
-            "chasm",
-            "lake",
-            "mana lake",
-            "river",
-        ],
-        "places": [
-            "dead end",
-            "alternative",
         ],
     },
     "workshop": {
@@ -222,19 +238,64 @@ civilFeatures = {
             "dead end",
         ],
     },
-    "guard post": {
-        "description": "OC, don't steal",
+    "alchemy laboratory": {
+        "description": "wizards gonna wizz",
         "races": [
-            "dwarves",
-            "elves",
             "gnomes",
         ],
         "clashes": [
-            "alternative",
+            "chasm",
+            "river",
+            "lake",
         ],
         "places": [
-            "split",
+            "dead end",
+            "alternative",
+        ],
+    },
+    "feasting hall": {
+        "description": "Where everyone eats",
+        "races": [
+            "dwarves",
+            "gnomes",
+            "elves",
+        ],
+        "clashes": [
+            "mana lake",
             "entrance",
+            "chasm",
+            "river",
+            "lake",
+        ],
+        "places": [
+            "alternative",
+            "split",
+        ],
+    },
+    "queen's room": {
+        "description": "Where a king sleeps",
+        "races": [
+            "dwarves",
+        ],
+        "clashes": [
+            "chasm",
+        ],
+        "places": [
+            "dead end",
+        ],
+    },
+    "vault": {
+        "description": "Lots of shiny",
+        "races": [
+            "dwarves",
+            "gnomes",
+        ],
+        "clashes": [
+            "chasm",
+            "lake",
+        ],
+        "places": [
+            "dead end",
         ],
     },
 }
