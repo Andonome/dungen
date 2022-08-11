@@ -2,7 +2,7 @@
 import graphviz
 
 
-def graph(setting,dungeon):
+def graph(dungeon,setting,civilization):
     dunMap = graphviz.Digraph(
         engine="dot",
         comment="Test Map",
@@ -22,18 +22,20 @@ def graph(setting,dungeon):
     overlap='false',
     arrowhead="none",
     )
-    dunMap.node(setting,shape='tripleoctagon',fontsize="80")
+    title = setting + r"\n of the something\n something " + civilization
+    dunMap.node(title,shape='tripleoctagon',fontsize="30")
     for x in range(len(dungeon)):
         roomShape = 'ellipse'
         contents = str(x) + r": \n" + r"\n ".join(dungeon[x]["features"])
         if len(dungeon[x]["creatures"]) > 0:
             contents += r"\n" + r"\n".join(dungeon[x]["creatures"])
-        if len(dungeon[x]["type"]) > 0:
-            contents += "(" + ", ".join(dungeon[x]["type"]) + ")"
+#        if len(dungeon[x]["type"]) > 0:
+#            contents += "(" + ", ".join(dungeon[x]["type"]) + ")"
         if "mana lake" in dungeon[x]["features"]:
             roomShape = "Mdiamond"
         elif "entrance" in dungeon[x]["type"]:
             roomShape = "doublecircle"
+            contents += r"\n(entrance)"
         elif "split" in dungeon[x]["type"]:
             roomShape = "hexagon"
         elif "dead end" in dungeon[x]["type"]:

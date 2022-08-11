@@ -13,13 +13,11 @@ import time
 
 dungeon = makeDungeon(setting,dunSize)
 
-graph(setting,dungeon)
-
 #time.sleep(2)
 
 civilize(dungeon)
 
 #rampage(dungeon)
 
-graph(setting,dungeon)
+graph(dungeon,setting,civilization)
 
