@@ -68,7 +68,8 @@ def giveFeatures(dungeon):
     localFeatures = []
     noFeatures = int(len(dungeon) / 4)
     for f in range(noFeatures):
-        localFeatures.append(featureList[f])
+        if f < len(featureList):
+            localFeatures.append(featureList[f])
     for x in range(len(dungeon)):
         if tn(len(dungeon) +4 - len(localFeatures) - x) and len(localFeatures) > 0:
             dungeon[x]["features"].append(localFeatures[0])
