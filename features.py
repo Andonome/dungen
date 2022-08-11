@@ -1,13 +1,55 @@
 # This mega-dictionary containts all the features,
 # with a list of how common they are, a sub-list of where they might occur, and a description.
 
-featureList = [
-    "chasm",
-    "lake",
-    "river",
-    "mana lake",
-    "gas leak",
-]
+
+primitiveFeatures = {
+    "chasm": {
+        "description": "big hole",
+        "settings": [
+            "caves",
+        ],
+    },
+    "lake": {
+        "description": "big hole with water",
+        "settings": [
+            "caves",
+            "mine",
+        ],
+    },
+    "river": {
+        "description": "big hole with water",
+        "settings": [
+            "caves",
+            "mine",
+        ],
+    },
+    "mana lake": {
+        "description": "sparkly magic cave",
+        "settings": [
+            "caves",
+        ],
+    },
+    "gas leak": {
+        "description": "fissures of farts",
+        "settings": [
+            "caves",
+            "mine",
+        ],
+    },
+    "gold seam": {
+        "description": "long squiggly gold lines",
+        "settings": [
+            "mine",
+        ],
+    },
+    "tin seam": {
+        "description": "long squiggly tin lines",
+        "settings": [
+            "mine",
+        ],
+    },
+}
+
 
 civilFeatures = {
     "bridge": {

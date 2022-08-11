@@ -63,17 +63,17 @@ def newDungeon(setting,dunSize):
 
 # Now the dungeon gets features, like 'chasm', or 'mana
 # lakes'.
-def giveFeatures(dungeon):
-    random.shuffle(featureList)
+def giveFeatures(dungeon, setting):
     localFeatures = []
-    noFeatures = int(len(dungeon) / 4)
-    for f in range(noFeatures):
-        if f < len(featureList):
-            localFeatures.append(featureList[f])
-    for x in range(len(dungeon)):
-        if tn(len(dungeon) +4 - len(localFeatures) - x) and len(localFeatures) > 0:
-            dungeon[x]["features"].append(localFeatures[0])
-            del localFeatures[0]
+    for f in primitiveFeatures:
+        if setting in primitiveFeatures[f]["settings"]:
+            localFeatures.append(f)
+    random.shuffle(localFeatures)
+    x = -1
+    for f in localFeatures:
+        x += random.randint(1,6)
+        if x < len(dungeon)-1:
+            dungeon[x]["features"].append(f)
 
 # Room types show relations between rooms, such as 'the
 # entrance', or a simple tunnel - a room which goes to
@@ -154,7 +154,7 @@ def makeDungeon(setting,dunSize):
     labelType(dungeon)
     labelAlternatives(dungeon)
     deadToEntrance(dungeon)
-    giveFeatures(dungeon)
+    giveFeatures(dungeon, setting)
     #labelRoutes(dungeon)
     #makeRiver(dungeon)
     #makeFungi(dungeon)
