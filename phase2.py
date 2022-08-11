@@ -25,63 +25,22 @@ roomTransformations = [
 # A rating of 0 means the rooms will exist if we have a spare place for it.
 # A rating of > 0 means that many rooms must exist.
 
-wishList = [
-    ["cavern", "kitchen", 1],
-    ["cavern", "library", 1],
-    ["cavern", "forge", 0],
-    ["cavern", "musicHall", 0],
-    ["cavern", "bedroom", 4],
-    ["lake", "boats", 0],
-]
-
-# If the civilizing race doesn't have enough rooms to live, they'll have to make more.
 
 
-def fixRooms(dungeon):
-    for x in range(len(dungeon) - 1, 0, -1):
-        for pair in range(len(roomTransformations)):
-            if roomTransformations[pair][0] in dungeon[x]["features"]:
-                dungeon[x]["features"].append(roomTransformations[pair][1])
-
-
-def makeRooms(dungeon):
-    for x in range(len(dungeon) - 1, 1, -1):
-        for pair in range(len(wishList)):
-            while (
-                wishList[pair][2] >= 0
-                and wishList[pair][0] in dungeon[x]["features"]
-                and dungeon[x]["features"] == []
+def makeRooms(dungeon,civilization):
+    wishList = []
+    for f in civilFeatures:
+        if civilization in civilFeatures[f]["races"]:
+            wishList.append(f)
+    for x in range(len(dungeon)-1,3,-1):
+        for f in wishList:
+            if (
+            not set.isdisjoint(set.union(set((dungeon[x]["type"])),set(dungeon[x]["features"])),set(civilFeatures[f]["places"]))
+            and len(dungeon[x]["features"]) < 2
             ):
-                dungeon[x]["features"].append(wishList[pair][1])
-                wishList[pair][2] -= 1
+                dungeon[x]["features"].append(f)
+                wishList.remove(f)
                 break
-
-# Elves need to bridge those rivers.
-# We need to check for a sequence like [ cavern, river,
-# cavern ], because a sequence like [ river, river, cavern ],
-# shouldn't receive a bridge - this only works with one room,
-# with one river segment.
-
-
-# This entire bridge-builder function needs redone.
-def testWater(dungeon, room):
-    if (
-        "river" not in dungeon[room]["features"]
-        and "lake" not in dungeon[room]["features"]
-    ):
-        return True
-
-
-def bridgeBuilder(dungeon):
-    for x in range(len(dungeon) - 1, 1, -1):
-        if testWater(dungeon, x):
-            for y in dungeon[x]["connections"]:
-                if not testWater(dungeon, y):
-                    for z in dungeon[y]["connections"]:
-                        if testWater(dungeon, z):
-                            if "bridge" not in dungeon[y]["features"]:
-                                dungeon[y]["features"].append("bridge")
-
 
 def makeBlockTraps(race):
     list = []
@@ -103,13 +62,6 @@ def trapEntrance(dungeon):
         del entranceList[-1]
 
 
-def growGarden(dungeon):
-    for x in range(len(dungeon)):
-        if "lake" in dungeon[x]["features"] or "river" in dungeon[x]["features"] and "entrance" not in dungeon[x]["type"]:
-            dungeon[x]["features"].append("fungal garden")
-            break
-
-
 def civilize(dungeon):
     trapEntrance(dungeon)
-    growGarden(dungeon)
+    makeRooms(dungeon,civilization)

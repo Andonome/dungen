@@ -12,6 +12,18 @@ featureList = [
 ]
 
 civilFeatures = {
+    "fungal garden": {
+        "description": "placed by water",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "places": [
+            "lake",
+            "river",
+        ],
+    },
     "barracks": {
         "description": "",
         "races": [
@@ -21,6 +33,44 @@ civilFeatures = {
         "places": [
             "split",
             "tunnel",
+        ],
+    },
+    "jail": {
+        "description": "some prisoners did a naghty, and now they're here",
+        "races": [
+            "dwarves",
+        ],
+        "places": [
+            "dead end",
+        ],
+    },
+    "queen's room": {
+        "description": "Where a king sleeps",
+        "races": [
+            "dwarves",
+        ],
+        "places": [
+            "dead end",
+        ],
+    },
+    "feast hall": {
+        "description": "Where everyone eats",
+        "races": [
+            "dwarves",
+            "gnomes",
+            "elves",
+        ],
+        "places": [
+            "alternative",
+        ],
+    },
+    "servants' quarters": {
+        "description": "",
+        "races": [
+            "dwarves",
+        ],
+        "places": [
+            "dead end",
         ],
     },
     "kitchen": {
@@ -59,13 +109,58 @@ civilFeatures = {
             "dead end",
         ],
     },
-    "fungal garden": {
-        "description": "placed by water",
+    "art hall": {
+        "description": "statues, mostly",
+        "races": [
+            "elves",
+        ],
+        "places": [
+            "split",
+            "tunnel",
+            "dead end",
+        ],
+    },
+    "tomb": {
+        "description": "dead people, with writing",
+        "races": [
+            "dwarves",
+        ],
+        "places": [
+            "tunnel",
+            "dead end",
+        ],
+    },
+    "runemaster's quarters": {
+        "description": "Where a runemaster sleeps",
+        "races": [
+            "dwarves",
+        ],
+        "places": [
+            "dead end",
+        ],
+    },
+    "armoury": {
+        "description": "Mostly left arms",
         "races": [
             "dwarves",
             "elves",
             "gnomes",
         ],
-        "places": [],
+        "places": [
+            "tunnel",
+            "dead end",
+        ],
+    },
+    "guard post": {
+        "description": "OC, don't steal",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "places": [
+            "tunnel",
+            "entrance",
+        ],
     },
 }

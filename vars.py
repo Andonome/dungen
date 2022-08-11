@@ -1,6 +1,6 @@
 import random
 
-dunSize = random.randint(20,30)
+dunSize = random.randint(8,30)
 setting = random.choice(["mine", "caves"])
 
 civilizations = [
