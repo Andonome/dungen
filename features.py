@@ -7,8 +7,6 @@ featureList = [
     "river",
     "mana lake",
     "gas leak",
-    "drop",
-    "steep",
 ]
 
 civilFeatures = {
@@ -19,6 +17,7 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
+        "clashes": [],
         "places": [
             "lake",
             "river",
@@ -30,6 +29,7 @@ civilFeatures = {
             "dwarves",
             "elves",
         ],
+        "clashes": ["tunnel"],
         "places": [
             "split",
             "tunnel",
@@ -40,6 +40,7 @@ civilFeatures = {
         "races": [
             "dwarves",
         ],
+        "clashes": [],
         "places": [
             "dead end",
         ],
@@ -49,6 +50,7 @@ civilFeatures = {
         "races": [
             "dwarves",
         ],
+        "clashes": [],
         "places": [
             "dead end",
         ],
@@ -60,6 +62,7 @@ civilFeatures = {
             "gnomes",
             "elves",
         ],
+        "clashes": [],
         "places": [
             "alternative",
         ],
@@ -69,6 +72,7 @@ civilFeatures = {
         "races": [
             "dwarves",
         ],
+        "clashes": [],
         "places": [
             "dead end",
         ],
@@ -80,9 +84,13 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
+        "clashes": [
+            "mana lake",
+        ],
         "places": [
             "split",
             "tunnel",
+            "river",
         ],
     },
     "library": {
@@ -92,6 +100,7 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
+        "clashes": [],
         "places": [
             "split",
             "tunnel",
@@ -103,6 +112,7 @@ civilFeatures = {
         "races": [
             "elves",
         ],
+        "clashes": [],
         "places": [
             "split",
             "tunnel",
@@ -114,6 +124,7 @@ civilFeatures = {
         "races": [
             "elves",
         ],
+        "clashes": [],
         "places": [
             "split",
             "tunnel",
@@ -125,6 +136,7 @@ civilFeatures = {
         "races": [
             "dwarves",
         ],
+        "clashes": [],
         "places": [
             "tunnel",
             "dead end",
@@ -135,6 +147,7 @@ civilFeatures = {
         "races": [
             "dwarves",
         ],
+        "clashes": [],
         "places": [
             "dead end",
         ],
@@ -146,6 +159,7 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
+        "clashes": [],
         "places": [
             "tunnel",
             "dead end",
@@ -158,6 +172,7 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
+        "clashes": [],
         "places": [
             "tunnel",
             "entrance",

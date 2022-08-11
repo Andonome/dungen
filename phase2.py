@@ -37,6 +37,7 @@ def makeRooms(dungeon,civilization):
             if (
             not set.isdisjoint(set.union(set((dungeon[x]["type"])),set(dungeon[x]["features"])),set(civilFeatures[f]["places"]))
             and len(dungeon[x]["features"]) < 2
+            and set.isdisjoint(set(civilFeatures[f]["clashes"]), set(dungeon[x]["features"]))
             ):
                 dungeon[x]["features"].append(f)
                 wishList.remove(f)
