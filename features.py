@@ -10,61 +10,16 @@ featureList = [
 ]
 
 civilFeatures = {
-    "fungal garden": {
-        "description": "placed by water",
-        "races": [
-            "dwarves",
-            "elves",
-            "gnomes",
-        ],
-        "clashes": [],
-        "places": [
-            "lake",
-            "river",
-        ],
-    },
-    "barracks": {
-        "description": "",
-        "races": [
-            "dwarves",
-            "elves",
-        ],
-        "clashes": ["tunnel"],
-        "places": [
-            "split",
-            "tunnel",
-        ],
-    },
-    "jail": {
-        "description": "some prisoners did a naghty, and now they're here",
-        "races": [
-            "dwarves",
-        ],
-        "clashes": [],
-        "places": [
-            "dead end",
-        ],
-    },
     "queen's room": {
         "description": "Where a king sleeps",
         "races": [
             "dwarves",
         ],
-        "clashes": [],
+        "clashes": [
+            "chasm",
+        ],
         "places": [
             "dead end",
-        ],
-    },
-    "feast hall": {
-        "description": "Where everyone eats",
-        "races": [
-            "dwarves",
-            "gnomes",
-            "elves",
-        ],
-        "clashes": [],
-        "places": [
-            "alternative",
         ],
     },
     "servants' quarters": {
@@ -72,7 +27,11 @@ civilFeatures = {
         "races": [
             "dwarves",
         ],
-        "clashes": [],
+        "clashes": [
+            "chasm",
+            "mana lake",
+            "fungal garden",
+        ],
         "places": [
             "dead end",
         ],
@@ -86,10 +45,43 @@ civilFeatures = {
         ],
         "clashes": [
             "mana lake",
+            "lake",
+            "chasm",
         ],
         "places": [
             "split",
-            "tunnel",
+            "alternative",
+            "river",
+        ],
+    },
+    "feasting hall": {
+        "description": "Where everyone eats",
+        "races": [
+            "dwarves",
+            "gnomes",
+            "elves",
+        ],
+        "clashes": [
+            "mana lake",
+            "chasm",
+            "river",
+            "lake",
+        ],
+        "places": [
+            "alternative",
+            "split",
+        ],
+    },
+    "fungal garden": {
+        "description": "placed by water",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [],
+        "places": [
+            "lake",
             "river",
         ],
     },
@@ -102,8 +94,7 @@ civilFeatures = {
         ],
         "clashes": [],
         "places": [
-            "split",
-            "tunnel",
+            "alternative",
             "dead end",
         ],
     },
@@ -115,7 +106,7 @@ civilFeatures = {
         "clashes": [],
         "places": [
             "split",
-            "tunnel",
+            "alternative",
             "dead end",
         ],
     },
@@ -138,7 +129,7 @@ civilFeatures = {
         ],
         "clashes": [],
         "places": [
-            "tunnel",
+            "alternative",
             "dead end",
         ],
     },
@@ -159,9 +150,75 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
-        "clashes": [],
+        "clashes": [
+            "chasm",
+            "river",
+            "lake",
+            "mana lake",
+        ],
         "places": [
             "tunnel",
+            "dead end",
+        ],
+    },
+    "bridge": {
+        "description": "over troubled water",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [
+            "alternative",
+            "dead end",
+        ],
+        "places": [
+            "chasm",
+            "river",
+        ],
+    },
+    "living quarters": {
+        "description": "many halls, many beds.",
+        "races": [
+            "dwarves",
+            "gnomes",
+        ],
+        "clashes": [
+            "chasm",
+            "lake",
+            "mana lake",
+            "river",
+        ],
+        "places": [
+            "dead end",
+            "alternative",
+        ],
+    },
+    "workshop": {
+        "description": "many halls, many beds.",
+        "races": [
+            "dwarves",
+            "gnomes",
+        ],
+        "clashes": [
+            "chasm",
+            "lake",
+            "river",
+        ],
+        "places": [
+            "dead end",
+            "alternative",
+        ],
+    },
+    "jail": {
+        "description": "some prisoners did a naghty, and now they're here",
+        "races": [
+            "dwarves",
+        ],
+        "clashes": [
+            "mana lake",
+        ],
+        "places": [
             "dead end",
         ],
     },
@@ -172,9 +229,11 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
-        "clashes": [],
+        "clashes": [
+            "alternative",
+        ],
         "places": [
-            "tunnel",
+            "split",
             "entrance",
         ],
     },
