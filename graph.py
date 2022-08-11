@@ -9,7 +9,7 @@ def graph(dungeon,setting,civilization):
     )
     dunMap.attr(
     "node",
-    shape="ellipse",
+    #shape="record",
     overlap="scale",
     rotate="90",
     splines="polyline",
@@ -32,7 +32,7 @@ def graph(dungeon,setting,civilization):
 #        if len(dungeon[x]["type"]) > 0:
 #            contents += "(" + ", ".join(dungeon[x]["type"]) + ")"
         if "mana lake" in dungeon[x]["features"]:
-            roomShape = "Mdiamond"
+            shape = "Mdiamond"
         elif "entrance" in dungeon[x]["type"]:
             roomShape = "doublecircle"
             contents += r"\n(entrance)"
@@ -40,9 +40,16 @@ def graph(dungeon,setting,civilization):
             roomShape = "hexagon"
         elif "dead end" in dungeon[x]["type"]:
             roomShape = "invhouse"
+        if "living quarters" in dungeon[x]["features"]:
+            roomShape = "record"
+            contents = " { Room | Room | Room | Room } |" + str(x) + ": " + "living'&#92;nquarters" + "| { Room | Room | Room | Room }"
+        elif "servants' quarters" in dungeon[x]["features"]:
+            roomShape = "record"
+            contents = " { Room | Room | Room | Room } |" + str(x) + ": " + "servants'&#92;nquarters" + "| { Room | Room | Room | Room }"
         dunMap.node(
         str(x),
-        contents
+        contents,
+        shape = roomShape
         )
         for connection in dungeon[x]["connections"]:
             dunMap.edge(str(x), str(connection),)
