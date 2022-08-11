@@ -29,17 +29,21 @@ roomTransformations = [
 
 def makeRooms(dungeon,civilization):
     wishList = []
+    finishedRooms = []
     for f in civilFeatures:
         if civilization in civilFeatures[f]["races"]:
             wishList.append(f)
-    for x in range(len(dungeon)-1,3,-1):
-        for f in wishList:
+    for f in wishList:
+        for x in range(len(dungeon)-1,-1,-1):
             if (
-            not set.isdisjoint(set.union(set((dungeon[x]["type"])),set(dungeon[x]["features"])),set(civilFeatures[f]["places"]))
-            and len(dungeon[x]["features"]) < 2
+            x not in finishedRooms
+            and not set.isdisjoint(set.union(set((dungeon[x]["type"])),set(dungeon[x]["features"])),set(civilFeatures[f]["places"]))
+            #and len(dungeon[x]["features"]) < 2
             and set.isdisjoint(set(civilFeatures[f]["clashes"]), set(dungeon[x]["features"]))
+            and set.isdisjoint(set(civilFeatures[f]["clashes"]), set(dungeon[x]["type"]))
             ):
                 dungeon[x]["features"].append(f)
+                finishedRooms.append(x)
                 wishList.remove(f)
                 break
 
