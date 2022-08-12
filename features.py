@@ -52,7 +52,22 @@ primitiveFeatures = {
 
 
 civilFeatures = {
-    "bridge": {
+    "stone bridge": {
+        "description": "over troubled water",
+        "races": [
+            "dwarves",
+            "gnomes",
+        ],
+        "clashes": [
+            "alternative",
+            "dead end",
+        ],
+        "places": [
+            "chasm",
+            "river",
+        ],
+    },
+    "wooden bridge": {
         "description": "over troubled water",
         "races": [
             "dwarves",
@@ -114,6 +129,34 @@ civilFeatures = {
             "entrance",
         ],
     },
+    "murder holes": {
+        "description": "a block over a particular wall, peppered with holes to shoot arrows through",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+        ],
+        "clashes": [
+            "alternative",
+        ],
+        "places": [
+            "guard post",
+        ],
+    },
+    "servants' quarters": {
+        "description": "",
+        "races": [
+            "dwarves",
+        ],
+        "clashes": [
+            "chasm",
+            "mana lake",
+            "fungal garden",
+        ],
+        "places": [
+            "dead end",
+        ],
+    },
     "living quarters": {
         "description": "many halls, many beds.",
         "races": [
@@ -130,20 +173,6 @@ civilFeatures = {
         "places": [
             "dead end",
             "alternative",
-        ],
-    },
-    "servants' quarters": {
-        "description": "",
-        "races": [
-            "dwarves",
-        ],
-        "clashes": [
-            "chasm",
-            "mana lake",
-            "fungal garden",
-        ],
-        "places": [
-            "dead end",
         ],
     },
     "kitchen": {
