@@ -76,3 +76,24 @@ Anyone wishing to sneak past the mushrooms without disturbing them can make a De
         "description": "Rocks fall. Everyone dies",
     },
 }
+
+# Pit-traps have these things at the bottom.
+pitBottoms = {
+    "chitincrawlers": {
+        "description": "Big spiders",
+        "races": [
+            "goblins",
+            "gnomes"
+        ]
+    },
+    "stallagmites": {
+        "description": "stallagmites. Does 1D6 Damage.",
+        "races": [
+            "goblins",
+            "gnomes",
+            "dwarves",
+        ]
+    },
+
+}
+
