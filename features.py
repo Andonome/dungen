@@ -23,6 +23,12 @@ primitiveFeatures = {
             "mine",
         ],
     },
+    "stallagmites": {
+        "description": "difficult to walk over",
+        "settings": [
+            "caves",
+        ],
+    },
     "mana lake": {
         "description": "sparkly magic cave",
         "settings": [
@@ -168,6 +174,7 @@ civilFeatures = {
             "chasm",
             "lake",
             "mana lake",
+            "stallagmites",
             "river",
         ],
         "places": [
@@ -185,6 +192,7 @@ civilFeatures = {
         "clashes": [
             "mana lake",
             "lake",
+            "stallagmites",
             "chasm",
         ],
         "places": [
@@ -198,6 +206,7 @@ civilFeatures = {
             "dwarves",
             "elves",
             "gnomes",
+            "stallagmites",
         ],
         "clashes": [],
         "places": [
@@ -215,6 +224,7 @@ civilFeatures = {
         "clashes": [
             "chasm",
             "river",
+            "stallagmites",
             "lake",
             "mana lake",
         ],
@@ -254,7 +264,9 @@ civilFeatures = {
             "elves",
             "gnomes",
         ],
-        "clashes": [],
+        "clashes": [
+            "stallagmites",
+        ],
         "places": [
             "alternative",
             "dead end",
@@ -276,7 +288,9 @@ civilFeatures = {
             "dwarves",
             "gnomes",
         ],
-        "clashes": [],
+        "clashes": [
+            "stallagmites",
+        ],
         "places": [
             "alternative",
             "dead end",
@@ -292,6 +306,7 @@ civilFeatures = {
             "chasm",
             "lake",
             "river",
+            "stallagmites",
         ],
         "places": [
             "dead end",
@@ -319,6 +334,7 @@ civilFeatures = {
             "chasm",
             "river",
             "lake",
+            "stallagmites",
         ],
         "places": [
             "dead end",
@@ -338,6 +354,7 @@ civilFeatures = {
             "chasm",
             "river",
             "lake",
+            "stallagmites",
         ],
         "places": [
             "alternative",
@@ -351,6 +368,8 @@ civilFeatures = {
         ],
         "clashes": [
             "chasm",
+            "stallagmites",
+            "river",
         ],
         "places": [
             "dead end",
