@@ -2,19 +2,8 @@ import random
 import copy
 import pprint
 from areas import *
+from vars import *
 from features import *
-
-# The TN function just rolls 2D6 to make choices.
-def tn(tn):
-    roll = random.randint(1,6) + random.randint(1,6)
-    if roll >= tn:
-        return True
-    else:
-        return False
-
-# Just for debugging.
-def show(x):
-    pprint.pprint(x)
 
 # junJoin joins dungeon pieces, usually straight down (4 -- > 3), but
 # sometimes skips down (7 --> 3).
@@ -67,7 +56,8 @@ def giveFeatures(dungeon, setting):
     localFeatures = []
     for f in primitiveFeatures:
         if setting in primitiveFeatures[f]["settings"]:
-            localFeatures.append(f)
+            for n in range(primitiveFeatures[f]["number"]-1):
+                localFeatures.append(f)
     random.shuffle(localFeatures)
     x = -1
     for f in localFeatures:
