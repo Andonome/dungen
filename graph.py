@@ -52,5 +52,5 @@ def graph(dungeon,setting,civilization):
         shape = roomShape
         )
         for connection in dungeon[x]["connections"]:
-            dunMap.edge(str(x), str(connection),)
+            dunMap.edge(str(x), str(x + connection),)
     dunMap.render("Test Map.gv")

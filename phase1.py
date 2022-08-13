@@ -14,15 +14,15 @@ def dunJoin(dungeon,x,joinChance):
     # Initial rooms (0 to 4) connect to the room before.  After
     # that, there's a chance they connect straight down.
     elif x < 3:
-        dungeon[x]["connections"].append(x-1)
+        dungeon[x]["connections"].append(-1)
     elif tn(joinChance):
         joinChance += 1
-        if x-1 not in dungeon[x]["connections"]:
-            dungeon[x]["connections"].append(x-1)
+        if -1 not in dungeon[x]["connections"]:
+            dungeon[x]["connections"].append(-1)
     else:
         joinChance -= 1
-        lowPoint=max(1,x-6)
-        join=random.randint(max(x-4,lowPoint),x-2)
+        lowPoint = (x - 1) * -1
+        join=random.randint(max(lowPoint,-5),-2)
         if join not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(join)
         if tn(joinChance+1):
@@ -80,7 +80,8 @@ def labelType(dungeon):
         # We start by labelling every part as a dead end, then if
         # something connects to it, that part is no longer a dead
         # end.
-        for c in dungeon[x]["connections"]:
+        for connection in dungeon[x]["connections"]:
+            c = x + connection
             if "dead end" in dungeon[c]["type"]:
                 dungeon[c]["type"].remove("dead end")
             if "tunnel" in dungeon[c]["type"]:
@@ -90,11 +91,13 @@ def labelType(dungeon):
             elif "split" not in dungeon[c]["type"]:
                 dungeon[c]["type"].append("tunnel")
 
-def findExit(dungeon,x):
-    c = x
+def findExit(dungeon):
+    # start at the highest room
+    c = len(dungeon)-1
+    # start mapping the root,  from e.g. room 25
     route = [c]
-    while c > 1:
-        c = dungeon[c]["connections"][0]
+    while c > 5:
+        c = c + dungeon[c]["connections"][0]
         route.append(c)
     return route
         
@@ -118,10 +121,10 @@ def labelAlternatives(dungeon):
         if "dead end" not in dungeon[x]["type"]:
             dungeon[x]["type"].append("alternative")
         if len(dungeon[x]["connections"]) == 1:
-            c = dungeon[x]["connections"][0]
+            c = x + dungeon[x]["connections"][0]
             if "alternative" in dungeon[c]["type"]:
                 dungeon[c]["type"].remove("alternative")
-        for x in findExit(dungeon,len(dungeon)-1):
+        for x in findExit(dungeon):
             if "alternative" in dungeon[x]["type"]:
                 dungeon[x]["type"].remove("alternative")
 
@@ -130,12 +133,12 @@ def deadToEntrance(dungeon):
     for x in range(len(dungeon)):
         if "dead end" in dungeon[x]["type"]:
             endPoints.append(x)
-    y = len(endPoints)
     while len(endPoints) > 3 and tn(6):
         choice = endPoints[-2]
         dungeon[choice]["type"].remove("dead end")
         dungeon[choice]["type"].append("entrance")
         del endPoints[-2]
+        random.shuffle(endPoints)
     print("Dead ends: " + str(len(endPoints)))
 
 
