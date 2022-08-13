@@ -325,21 +325,6 @@ civilFeatures = {
             "dead end",
         ],
     },
-    "tomb": {
-        "number": 1,
-        "description": "dead people, with writing",
-        "races": [
-            "dwarves",
-            "gnomes",
-        ],
-        "clashes": [
-            "stallagmites",
-        ],
-        "places": [
-            "alternative",
-            "dead end",
-        ],
-    },
     "workshop": {
         "number": 1,
         "description": "many halls, many beds.",
@@ -441,6 +426,40 @@ civilFeatures = {
             "tunnel",
             "entrance",
             "split",
+        ],
+    },
+    "undergarden": {
+        "number": 1,
+        "description": "a root vegetable garden's underbelly",
+        "races": [
+            "gnomes",
+        ],
+        "clashes": [
+            "river",
+            "lake",
+            "mana lake",
+            "stallagmites",
+        ],
+        "places": [
+            "tunnel",
+            "split",
+            "dead end",
+            "alternative",
+        ],
+    },
+    "tomb": {
+        "number": 1,
+        "description": "dead people, with writing",
+        "races": [
+            "dwarves",
+            "gnomes",
+        ],
+        "clashes": [
+            "stallagmites",
+        ],
+        "places": [
+            "alternative",
+            "dead end",
         ],
     },
 }
