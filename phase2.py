@@ -44,22 +44,23 @@ def makeRooms(dungeon,civilization):
                 finishedRooms.append(x)
                 break
 
-def makeBlockTraps(race):
-    list = []
-    for x in blockingTraps:
+def makeBlockTraps(race,trapList):
+    localTrapList = []
+    for x in trapList:
         if race in blockingTraps[x]["races"]:
-            list.append(x)
-    return list
+            localTrapList.append(x)
+    return localTrapList
 
 def trapEntrance(dungeon):
-    trapBlockList = makeBlockTraps(civilization)
+    trapBlockList = makeBlockTraps(civilization,blockingTraps)
     entranceList = []
     alternativeList = []
     for x in range(len(dungeon)):
         if "entrance" in dungeon[x]["type"]:
             entranceList.append(x)
-    while len(trapBlockList) > 0 and len(entranceList) > 1:
-        dungeon[entranceList[-1]]["features"].append(trapBlockList[0])
+    while len(entranceList) * len(trapBlockList) > 0:
+        if tn(7):
+            dungeon[entranceList[-1]]["features"].append(trapBlockList[0])
         del trapBlockList[0]
         del entranceList[-1]
 

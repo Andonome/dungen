@@ -4,12 +4,14 @@
 
 primitiveFeatures = {
     "chasm": {
+        "number": 2,
         "description": "big hole",
         "settings": [
             "caves",
         ],
     },
     "lake": {
+        "number": 2,
         "description": "big hole with water",
         "settings": [
             "caves",
@@ -17,6 +19,7 @@ primitiveFeatures = {
         ],
     },
     "river": {
+        "number": 2,
         "description": "big hole with water",
         "settings": [
             "caves",
@@ -24,18 +27,21 @@ primitiveFeatures = {
         ],
     },
     "stallagmites": {
+        "number": 2,
         "description": "difficult to walk over",
         "settings": [
             "caves",
         ],
     },
     "mana lake": {
+        "number": 1,
         "description": "sparkly magic cave",
         "settings": [
             "caves",
         ],
     },
     "gas leak": {
+        "number": 1,
         "description": "fissures of farts",
         "settings": [
             "caves",
@@ -43,12 +49,14 @@ primitiveFeatures = {
         ],
     },
     "gold seam": {
+        "number": 1,
         "description": "long squiggly gold lines",
         "settings": [
             "mine",
         ],
     },
     "tin seam": {
+        "number": 1,
         "description": "long squiggly tin lines",
         "settings": [
             "mine",
@@ -59,6 +67,7 @@ primitiveFeatures = {
 
 civilFeatures = {
     "stone bridge": {
+        "number": 1,
         "description": "over troubled water",
         "races": [
             "dwarves",
@@ -74,6 +83,7 @@ civilFeatures = {
         ],
     },
     "wooden bridge": {
+        "number": 1,
         "description": "over troubled water",
         "races": [
             "dwarves",
@@ -90,6 +100,7 @@ civilFeatures = {
         ],
     },
     "gas patches": {
+        "number": 1,
         "description": "clay patches to stop gass vent",
         "races": [
             "dwarves",
@@ -104,6 +115,7 @@ civilFeatures = {
         ],
     },
     "boats": {
+        "number": 1,
         "description": "over troubled water",
         "races": [
             "dwarves",
@@ -119,6 +131,7 @@ civilFeatures = {
         ],
     },
     "guard post": {
+        "number": 2,
         "description": "OC, don't steal",
         "races": [
             "dwarves",
@@ -136,6 +149,7 @@ civilFeatures = {
         ],
     },
     "murder holes": {
+        "number": 1,
         "description": "a block over a particular wall, peppered with holes to shoot arrows through",
         "races": [
             "dwarves",
@@ -150,6 +164,7 @@ civilFeatures = {
         ],
     },
     "servants' quarters": {
+        "number": 1,
         "description": "",
         "races": [
             "dwarves",
@@ -164,6 +179,7 @@ civilFeatures = {
         ],
     },
     "living quarters": {
+        "number": 2,
         "description": "many halls, many beds.",
         "races": [
             "dwarves",
@@ -182,7 +198,23 @@ civilFeatures = {
             "alternative",
         ],
     },
+    "fungal garden": {
+        "number": 1,
+        "description": "placed by water",
+        "races": [
+            "dwarves",
+            "elves",
+            "gnomes",
+            "stallagmites",
+        ],
+        "clashes": [],
+        "places": [
+            "lake",
+            "river",
+        ],
+    },
     "kitchen": {
+        "number": 1,
         "description": "",
         "races": [
             "dwarves",
@@ -200,21 +232,28 @@ civilFeatures = {
             "alternative",
         ],
     },
-    "fungal garden": {
-        "description": "placed by water",
+    "feasting hall": {
+        "number": 1,
+        "description": "Where everyone eats",
         "races": [
             "dwarves",
-            "elves",
             "gnomes",
+            "elves",
+        ],
+        "clashes": [
+            "mana lake",
+            "entrance",
+            "chasm",
+            "river",
+            "lake",
             "stallagmites",
         ],
-        "clashes": [],
         "places": [
-            "lake",
-            "river",
+            "alternative",
         ],
     },
     "armoury": {
+        "number": 1,
         "description": "Mostly left arms",
         "races": [
             "dwarves",
@@ -234,6 +273,7 @@ civilFeatures = {
         ],
     },
     "music hall": {
+        "number": 1,
         "description": "hall for music ",
         "races": [
             "elves",
@@ -246,6 +286,7 @@ civilFeatures = {
         ],
     },
     "art hall": {
+        "number": 1,
         "description": "statues, mostly",
         "races": [
             "elves",
@@ -258,6 +299,7 @@ civilFeatures = {
         ],
     },
     "library": {
+        "number": 1,
         "description": "library",
         "races": [
             "dwarves",
@@ -273,6 +315,7 @@ civilFeatures = {
         ],
     },
     "runemaster's quarters": {
+        "number": 1,
         "description": "Where a runemaster sleeps",
         "races": [
             "dwarves",
@@ -283,6 +326,7 @@ civilFeatures = {
         ],
     },
     "tomb": {
+        "number": 1,
         "description": "dead people, with writing",
         "races": [
             "dwarves",
@@ -297,6 +341,7 @@ civilFeatures = {
         ],
     },
     "workshop": {
+        "number": 1,
         "description": "many halls, many beds.",
         "races": [
             "dwarves",
@@ -314,6 +359,7 @@ civilFeatures = {
         ],
     },
     "jail": {
+        "number": 1,
         "description": "some prisoners did a naghty, and now they're here",
         "races": [
             "dwarves",
@@ -326,6 +372,7 @@ civilFeatures = {
         ],
     },
     "alchemy laboratory": {
+        "number": 1,
         "description": "wizards gonna wizz",
         "races": [
             "gnomes",
@@ -341,27 +388,8 @@ civilFeatures = {
             "alternative",
         ],
     },
-    "feasting hall": {
-        "description": "Where everyone eats",
-        "races": [
-            "dwarves",
-            "gnomes",
-            "elves",
-        ],
-        "clashes": [
-            "mana lake",
-            "entrance",
-            "chasm",
-            "river",
-            "lake",
-            "stallagmites",
-        ],
-        "places": [
-            "alternative",
-            "split",
-        ],
-    },
     "queen's room": {
+        "number": 1,
         "description": "Where a king sleeps",
         "races": [
             "dwarves",
@@ -376,6 +404,7 @@ civilFeatures = {
         ],
     },
     "vault": {
+        "number": 1,
         "description": "Lots of shiny",
         "races": [
             "dwarves",
@@ -390,6 +419,7 @@ civilFeatures = {
         ],
     },
     "shrine to Cale": {
+        "number": 1,
         "description": "a large carving of a book, with a riddle written on it",
         "races": [
             "gnomes",
@@ -401,6 +431,7 @@ civilFeatures = {
         ],
     },
     "shrine to Qualme": {
+        "number": 1,
         "description": "a tall stone, with a family tree carved from the bottom, upwards",
         "races": [
             "dwarves",
