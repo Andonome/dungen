@@ -30,3 +30,29 @@ civilization = random.choice(civilizations)
 race = civilization
 
 print("Race: " + civilization)
+
+# Sometimes you just want a big list  of what's in a room,
+# e.g. ["river", "stone bridge", "tunnel"].
+def getContents(dungeon, x):
+    contents = []
+    for thing in dungeon[x]:
+        if type(dungeon[x][thing]) == list:
+            contents += dungeon[x][thing]
+    return set(contents)
+
+
+def placeContents(dungeon, featureList, race=civilization):
+    print(30 * "=")
+    totalRooms = list(range(len(dungeon)))
+    for f in featureList:
+        for x in totalRooms:
+            contents = getContents(dungeon, x)
+            if (
+                civilization in featureList[f]["races"]
+                and featureList[f]["places"].intersection(contents)
+                and featureList[f]["clashes"].isdisjoint(contents)
+            ):
+                dungeon[x]["features"].append(f)
+                print(f)
+                totalRooms.remove(x)
+                break

@@ -2,11 +2,16 @@
 # illusion), while others cannot.  Some operate inside a
 # room, others only in a doorway.
 
-from vars import *
-
-passableTraps = {
-    "ricketyFloor": {
-        "name": "rickety-floor trap",
+traps = {
+    "rickety floor": {
+        "number": 1,
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "tunnel",
+        },
         "atDoor": False,
         "races": [
             "dwarves",
@@ -20,7 +25,15 @@ Anyone calling into the pit receives 2D6 Damage.
         """,
     },
     "prisonDoor": {
-        "name": "prisoner's door",
+        "number": 1,
+        "clashes": {
+            "alternative",
+            "split",
+        },
+        "places": {
+            "tunnel",
+            "guard post",
+        },
         "atDoor": True,
         "races": [
             "dwarves",
@@ -33,18 +46,30 @@ The moment someone steps off the loose stone, the spiked doorward stops spreadin
 In this way, the {} once traped intruders.""",
     },
     "ghoulRaiser": {
-        "name": "the singing skull",
+        "number": 1,
+        "clashes": {
+            "alternative",
+        },
+        "places": {
+            "tunnel",
+            "split",
+        },
         "atDoor": False,
         "races": [
             "dwarves",
         ],
         "description": "This skull once belonged to a priest of the {}, and now stands to guard their halls.  It will animate from the dead, any dead creature, within the area, or any nearby areas. When the {} still lived here, it also stood as a reminder that no two {} should ever fight each other, or the Skull would punish them",
     },
-}
-
-blockingTraps = {
     "slide": {
-        "name": "slime slide",
+        "number": 1,
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "entrance",
+            "tunnel",
+        },
         "atDoor": True,
         "races": [
             "goblins",
@@ -53,7 +78,12 @@ blockingTraps = {
         "description": """This long passage slopes gently down, then less gently, and once the slimy floor gets under-foot, it whisks the walker down-hill, and into a nasty barricade of metal a spikes.""",
     },
     "mushroomSpores": {
-        "name": "mushroom spores",
+        "number": 1,
+        "clashes": set(),
+        "places": {
+            "alternative",
+            "entrance",
+        },
         "atDoor": False,
         "races": [
             "dwarves",
@@ -66,7 +96,15 @@ Anyone wishing to sneak past the mushrooms without disturbing them can make a De
 """,
     },
     "rocksFall": {
-        "name": "balanced rocks",
+        "number": 1,
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "chasm",
+            "river",
+        },
         "atDoor": False,
         "races": [
             "dwarves",
