@@ -11,13 +11,12 @@ import random
 import time
 
 
-dungeon = makeDungeon(setting,dunSize)
+dungeon = makeDungeon(setting, dunSize)
 
-#time.sleep(2)
+# time.sleep(2)
 
 civilize(dungeon)
 
-#rampage(dungeon)
+# rampage(dungeon)
 
-graph(dungeon,setting,civilization)
-
+graph(dungeon, setting, civilization)

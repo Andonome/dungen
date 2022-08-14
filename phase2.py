@@ -20,12 +20,13 @@ roomTransformations = [
 
 # Sometimes you just want a big list  of what's in a room,
 # e.g. ["river", "stone bridge", "tunnel"].
-def getContents(dungeon,x):
+def getContents(dungeon, x):
     contents = []
     for thing in dungeon[x]:
         if type(dungeon[x][thing]) == list:
             contents += dungeon[x][thing]
     return set(contents)
+
 
 # This ordered wish list makes the elves make one cavern into a kitchen,
 # then one cavern into a library.
@@ -34,34 +35,36 @@ def getContents(dungeon,x):
 # A rating of > 0 means that many rooms must exist.
 
 
-def makeRooms(dungeon,civilization):
+def makeRooms(dungeon, civilization):
     finishedRooms = []
     for f in civilFeatures:
         for x in range(len(dungeon)):
             # we get all contents as a set, then use these sets to test
             # something is in the right place, and doesn't have anything
             # from the feature's clash set.
-            contents = getContents(dungeon,x)
+            contents = getContents(dungeon, x)
             if (
-            civilization in civilFeatures[f]["races"]
-            and civilFeatures[f]["places"].intersection(contents)
-            and civilFeatures[f]["clashes"].isdisjoint(contents)
-            and x not in finishedRooms
+                civilization in civilFeatures[f]["races"]
+                and civilFeatures[f]["places"].intersection(contents)
+                and civilFeatures[f]["clashes"].isdisjoint(contents)
+                and x not in finishedRooms
             ):
                 dungeon[x]["features"].append(f)
                 print(f)
                 finishedRooms.append(x)
                 break
 
-def makeBlockTraps(race,trapList):
+
+def makeBlockTraps(race, trapList):
     localTrapList = []
     for x in trapList:
         if race in blockingTraps[x]["races"]:
             localTrapList.append(x)
     return localTrapList
 
+
 def trapEntrances(dungeon):
-    trapBlockList = makeBlockTraps(civilization,blockingTraps)
+    trapBlockList = makeBlockTraps(civilization, blockingTraps)
     entranceList = []
     alternativeList = []
     for x in range(len(dungeon)):
@@ -75,5 +78,5 @@ def trapEntrances(dungeon):
 
 
 def civilize(dungeon):
-    makeRooms(dungeon,civilization)
+    makeRooms(dungeon, civilization)
     trapEntrances(dungeon)

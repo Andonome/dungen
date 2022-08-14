@@ -8,7 +8,8 @@ from features import *
 # junJoin joins dungeon pieces, usually straight down (4 -- > 3), but
 # sometimes skips down (7 --> 3).
 
-def dunJoin(dungeon,x,joinChance):
+
+def dunJoin(dungeon, x, joinChance):
     if x == 0:
         dungeon[x]["type"].append("entrance")
     # Initial rooms (0 to 4) connect to the room before.  After
@@ -22,15 +23,15 @@ def dunJoin(dungeon,x,joinChance):
     else:
         joinChance -= 1
         lowPoint = (x - 1) * -1
-        join=random.randint(max(lowPoint,-5),-2)
+        join = random.randint(max(lowPoint, -5), -2)
         if join not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(join)
-        if tn(joinChance+1):
-            dunJoin(dungeon,x,joinChance)
+        if tn(joinChance + 1):
+            dunJoin(dungeon, x, joinChance)
     return joinChance
-        
 
-def newDungeon(setting,dunSize):
+
+def newDungeon(setting, dunSize):
     dungeon = []
     # 'x' always refers to the dungeon area number, so x=3
     # means 'area 3'.
@@ -47,8 +48,9 @@ def newDungeon(setting,dunSize):
         dungeon[x]["creatures"] = []
         dungeon[x]["height"] = 1
         dungeon[x]["type"] = []
-        joinChance = dunJoin(dungeon,x,joinChance)
+        joinChance = dunJoin(dungeon, x, joinChance)
     return dungeon
+
 
 # Now the dungeon gets features, like 'chasm', or 'mana
 # lakes'.
@@ -56,18 +58,20 @@ def giveFeatures(dungeon, setting):
     localFeatures = []
     for f in primitiveFeatures:
         if setting in primitiveFeatures[f]["settings"]:
-            for n in range(primitiveFeatures[f]["number"]-1):
+            for n in range(primitiveFeatures[f]["number"] - 1):
                 localFeatures.append(f)
     random.shuffle(localFeatures)
     x = -1
     for f in localFeatures:
-        x += random.randint(1,6)
-        if x < len(dungeon)-1:
+        x += random.randint(1, 6)
+        if x < len(dungeon) - 1:
             dungeon[x]["features"].append(f)
+
 
 # Room types show relations between rooms, such as 'the
 # entrance', or a simple tunnel - a room which goes to
 # another room.
+
 
 def labelType(dungeon):
     for x in range(len(dungeon)):
@@ -91,30 +95,31 @@ def labelType(dungeon):
             elif "split" not in dungeon[c]["type"]:
                 dungeon[c]["type"].append("tunnel")
 
+
 def findExit(dungeon):
     # start at the highest room
-    c = len(dungeon)-1
+    c = len(dungeon) - 1
     # start mapping the root,  from e.g. room 25
     route = [c]
     while c > 5:
         c = c + dungeon[c]["connections"][0]
         route.append(c)
     return route
-        
+
 
 def labelRoutes(dungeon):
     paths = []
-    for x in range(len(dungeon)-1,1,-1):
+    for x in range(len(dungeon) - 1, 1, -1):
         if len(dungeon[x]["connections"]) > 1:
             for _ in dungeon[x]["connections"]:
-                paths.append(findExit(dungeon,x))
-    return(paths)
+                paths.append(findExit(dungeon, x))
+    return paths
+
 
 # Races can only place an impassable trap (like a swinging
 # sphere of anihilation) in tunnels which form alternative
 # routes - not the only  route to a place.
 
-c = 1
 
 def labelAlternatives(dungeon):
     for x in range(len(dungeon)):
@@ -127,6 +132,7 @@ def labelAlternatives(dungeon):
         for x in findExit(dungeon):
             if "alternative" in dungeon[x]["type"]:
                 dungeon[x]["type"].remove("alternative")
+
 
 def deadToEntrance(dungeon):
     endPoints = []
@@ -142,13 +148,13 @@ def deadToEntrance(dungeon):
     print("Dead ends: " + str(len(endPoints)))
 
 
-def makeDungeon(setting,dunSize):
-    dungeon = newDungeon(setting,dunSize)
+def makeDungeon(setting, dunSize):
+    dungeon = newDungeon(setting, dunSize)
     labelType(dungeon)
     labelAlternatives(dungeon)
     deadToEntrance(dungeon)
     giveFeatures(dungeon, setting)
-    #labelRoutes(dungeon)
-    #makeRiver(dungeon)
-    #makeFungi(dungeon)
+    # labelRoutes(dungeon)
+    # makeRiver(dungeon)
+    # makeFungi(dungeon)
     return dungeon

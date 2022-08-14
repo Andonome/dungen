@@ -18,6 +18,7 @@ goblinRampage = [
 # This needs redone - ooze should add a creature, but here
 # it's listed as a feature.
 
+
 def breakRooms(dungeon):
     for x in range(len(dungeon) - 1, 0, -1):
         for pair in range(len(goblinRampage)):

@@ -26,7 +26,7 @@ Anyone calling into the pit receives 2D6 Damage.
             "dwarves",
             "gnomes",
         ],
-        "description": """This open passageway has little downward-facing spikes at the side, with a heavy door, hanging above, ready to slide downn.  Once someone steps on a loose stone on the other side, it spreads the door's sides a modicum, letting the door slide down with a crash.
+        "description": """This open passageway has little downward-facing spikes at the side, with a heavy door, hanging above, ready to slide down.  Once someone steps on a loose stone on the other side, it spreads the door's sides a modicum, letting the door slide down with a crash.
 
 The moment someone steps off the loose stone, the spiked doorward stops spreading out, and clamps the heavy door shut.
 
@@ -43,7 +43,6 @@ In this way, the {} once traped intruders.""",
 }
 
 blockingTraps = {
-
     "slide": {
         "name": "slime slide",
         "atDoor": True,
@@ -79,21 +78,13 @@ Anyone wishing to sneak past the mushrooms without disturbing them can make a De
 
 # Pit-traps have these things at the bottom.
 pitBottoms = {
-    "chitincrawlers": {
-        "description": "Big spiders",
-        "races": [
-            "goblins",
-            "gnomes"
-        ]
-    },
+    "chitincrawlers": {"description": "Big spiders", "races": ["goblins", "gnomes"]},
     "stallagmites": {
         "description": "stallagmites. Does 1D6 Damage.",
         "races": [
             "goblins",
             "gnomes",
             "dwarves",
-        ]
+        ],
     },
-
 }
-
