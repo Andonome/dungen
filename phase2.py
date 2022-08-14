@@ -56,28 +56,46 @@ def makeRooms(dungeon, civilization):
                 break
 
 
-def makeBlockTraps(race, trapList):
+def makeTrapList(race, trapList):
     localTrapList = []
     for x in trapList:
-        if race in blockingTraps[x]["races"]:
+        if race in trapList[x]["races"]:
             localTrapList.append(x)
     return localTrapList
 
 
-def trapEntrances(dungeon):
-    trapBlockList = makeBlockTraps(civilization, blockingTraps)
-    entranceList = []
-    alternativeList = []
+def placeBlockTraps(dungeon,civilization):
+    print(30 * "=" + "\nTraps: ")
+    trapList = makeTrapList(civilization, blockingTraps)
+    roomList = []
     for x in range(len(dungeon)):
-        if "entrance" in dungeon[x]["type"]:
-            entranceList.append(x)
-    while len(entranceList) * len(trapBlockList) > 0:
-        if tn(7):
-            dungeon[entranceList[-1]]["features"].append(trapBlockList[0])
-        del trapBlockList[0]
-        del entranceList[-1]
+        if (
+        len(dungeon[x]["features"]) == 0
+        and set(dungeon[x]["type"]).intersection({"entrance", "alternative"})
+        ):
+            roomList.append(x)
+    while len(roomList) * len(trapList) > 0:
+        dungeon[roomList[-1]]["features"].append(trapList[0])
+        print(trapList[0])
+        del trapList[0]
+        del roomList[-1]
 
+def placeTunnelTraps(dungeon,civilization):
+    trapList = makeTrapList(civilization, passableTraps)
+    roomList = []
+    for x in range(len(dungeon)):
+        if (
+        len(dungeon[x]["features"]) == 0
+        and set(dungeon[x]["type"]).intersection({"split", "tunnel"})
+        ):
+            roomList.append(x)
+    while len(roomList) * len(trapList) > 0:
+        dungeon[roomList[-1]]["features"].append(trapList[0])
+        print(trapList[0])
+        del trapList[0]
+        del roomList[-1]
 
 def civilize(dungeon):
     makeRooms(dungeon, civilization)
-    trapEntrances(dungeon)
+    placeBlockTraps(dungeon,civilization)
+    placeTunnelTraps(dungeon,civilization)
