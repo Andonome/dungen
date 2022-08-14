@@ -101,16 +101,39 @@ def labelType(dungeon):
                 dungeon[c]["type"].append("tunnel")
 
 
-def findExit(dungeon):
-    # start at the highest room
-    c = len(dungeon) - 1
+def findExit(dungeon, c = ""):
+    if c == "":
+        # start at the highest room
+        c = len(dungeon) - 1
     # start mapping the root,  from e.g. room 25
-    route = [c]
-    while c > 5:
+    choice = c
+    route1 = [c]
+    route2 = [c]
+    while c > 0:
         c = c + dungeon[c]["connections"][0]
-        route.append(c)
-    return route
+        route1.append(c)
+    c = choice
+    while c > 0:
+        c = c + dungeon[c]["connections"][-1]
+        route2.append(c)
+    if len(route1) <= len(route2):
+        return route1
+    else:
+        return route2
 
+def findRoute(dungeon,x,y):
+    x = findExit(dungeon,x)
+    y = findExit(dungeon,y)
+    while x[-1] == y[-1]:
+        join = x[-1]
+        x.remove(x[-1])
+        y.remove(y[-1])
+        if len(x) * len(y) == 0:
+            break
+    x.append(join)
+    y.reverse()
+    x += y
+    return x
 
 def labelRoutes(dungeon):
     paths = []
