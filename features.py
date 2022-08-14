@@ -62,6 +62,20 @@ primitiveFeatures = {
             "mine",
         ],
     },
+    "silver seam": {
+        "number": 1,
+        "description": "long squiggly silver lines",
+        "settings": [
+            "mine",
+        ],
+    },
+    "platinum seam": {
+        "number": 1,
+        "description": "long squiggly platinum lines",
+        "settings": [
+            "mine",
+        ],
+    },
 }
 
 
