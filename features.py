@@ -162,6 +162,7 @@ civilFeatures = {
         "clashes": {
             "alternative",
             "gas leak",
+            "sunroof",
             "dead end",
         },
         "places": {
@@ -222,6 +223,19 @@ civilFeatures = {
             "end",
         },
     },
+    "garden": {
+        "number": 1,
+        "description": "normal sunlit garden",
+        "races": {
+            "elves",
+            "gnomes",
+        },
+        "clashes": set(),
+        "places": {
+            "entrance",
+            "sunroof",
+        },
+    },
     "fungal garden": {
         "number": 1,
         "description": "placed by water",
@@ -251,10 +265,10 @@ civilFeatures = {
             "lake",
             "stallagmites",
             "chasm",
+            "tunnel",
         },
         "places": {
             "dead end",
-            "end",
             "alternative",
         },
     },
@@ -496,19 +510,6 @@ civilFeatures = {
             "tunnel",
             "entrance",
             "split",
-        },
-    },
-    "garden": {
-        "number": 1,
-        "description": "normal sunlit garden",
-        "races": {
-            "elves",
-            "gnomes",
-        },
-        "clashes": set(),
-        "places": {
-            "entrance",
-            "sunroof",
         },
     },
 }
