@@ -8,6 +8,8 @@ traps = {
         "clashes": {
             "alternative",
             "dead end",
+            "river",
+            "lake",
         },
         "places": {
             "tunnel",
@@ -24,7 +26,7 @@ Spotting the trap requires a Wits + Vigilance check.  Larger characters destroy 
 Anyone calling into the pit receives 2D6 Damage.
         """,
     },
-    "prisonDoor": {
+    "falling door": {
         "number": 1,
         "clashes": {
             "alternative",
@@ -48,7 +50,7 @@ In this way, the {} once traped intruders.""",
     "ghoulRaiser": {
         "number": 1,
         "clashes": {
-            "alternative",
+            "lake",
         },
         "places": {
             "tunnel",
@@ -63,12 +65,11 @@ In this way, the {} once traped intruders.""",
     "slide": {
         "number": 1,
         "clashes": {
-            "alternative",
             "dead end",
         },
         "places": {
             "entrance",
-            "tunnel",
+            "alternative",
         },
         "atDoor": True,
         "races": [
@@ -77,7 +78,7 @@ In this way, the {} once traped intruders.""",
         ],
         "description": """This long passage slopes gently down, then less gently, and once the slimy floor gets under-foot, it whisks the walker down-hill, and into a nasty barricade of metal a spikes.""",
     },
-    "mushroomSpores": {
+    "choking spores": {
         "number": 1,
         "clashes": set(),
         "places": {
@@ -95,15 +96,14 @@ In this way, the {} once traped intruders.""",
 Anyone wishing to sneak past the mushrooms without disturbing them can make a Dexterity + Survival check, TN 9. Once one goes off, the rest emit more spores, like a chain of dominoes.
 """,
     },
-    "rocksFall": {
+    "collapsing rocks": {
         "number": 1,
         "clashes": {
-            "alternative",
             "dead end",
         },
         "places": {
-            "chasm",
-            "river",
+            "alternative",
+            "entrance",
         },
         "atDoor": False,
         "races": [
