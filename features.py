@@ -18,6 +18,13 @@ primitiveFeatures = {
             "mine",
         ],
     },
+    "sunroof": {
+        "number": 3,
+        "description": "This area of the cave opens upwards, to the sunlight",
+        "settings": [
+            "caves",
+        ],
+    },
     "river": {
         "number": 2,
         "description": "big hole with water",
@@ -187,6 +194,7 @@ civilFeatures = {
             "chasm",
             "mana lake",
             "fungal garden",
+            "sunroof",
         },
         "places": {
             "dead end",
@@ -206,6 +214,7 @@ civilFeatures = {
             "mana lake",
             "stallagmites",
             "river",
+            "sunroof",
         },
         "places": {
             "alternative",
@@ -264,9 +273,11 @@ civilFeatures = {
             "river",
             "lake",
             "stallagmites",
+            "sunroof",
         },
         "places": {
             "alternative",
+            "dead end",
         },
     },
     "armoury": {
@@ -283,6 +294,7 @@ civilFeatures = {
             "stallagmites",
             "lake",
             "mana lake",
+            "sunroof",
         },
         "places": {
             "dead end",
@@ -308,7 +320,9 @@ civilFeatures = {
         "races": {
             "elves",
         },
-        "clashes": set(),
+        "clashes": {
+            "sunroof",
+        },
         "places": {
             "split",
             "end",
@@ -328,6 +342,7 @@ civilFeatures = {
             "stallagmites",
             "lake",
             "river",
+            "sunroof",
         },
         "places": {
             "alternative",
@@ -341,7 +356,9 @@ civilFeatures = {
         "races": {
             "dwarves",
         },
-        "clashes": set(),
+        "clashes": {
+            "sunroof",
+        },
         "places": {
             "dead end",
             "end",
@@ -356,6 +373,8 @@ civilFeatures = {
         },
         "clashes": {
             "stallagmites",
+            "lake",
+            "river",
         },
         "places": {
             "alternative",
@@ -375,6 +394,7 @@ civilFeatures = {
             "lake",
             "river",
             "stallagmites",
+            "sunroof",
         },
         "places": {
             "dead end",
@@ -392,6 +412,7 @@ civilFeatures = {
             "mana lake",
         },
         "places": {
+            "alternative",
             "dead end",
             "end",
         },
@@ -407,6 +428,7 @@ civilFeatures = {
             "river",
             "lake",
             "stallagmites",
+            "sunroof",
         },
         "places": {
             "dead end",
@@ -424,6 +446,7 @@ civilFeatures = {
             "chasm",
             "stallagmites",
             "river",
+            "sunroof",
         },
         "places": {
             "dead end",
@@ -440,6 +463,7 @@ civilFeatures = {
         "clashes": {
             "chasm",
             "lake",
+            "sunroof",
         },
         "places": {
             "dead end",
@@ -479,11 +503,12 @@ civilFeatures = {
         "description": "normal sunlit garden",
         "races": {
             "elves",
+            "gnomes",
         },
         "clashes": set(),
         "places": {
             "entrance",
-            "river",
+            "sunroof",
         },
     },
 }

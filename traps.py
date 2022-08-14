@@ -47,7 +47,7 @@ The moment someone steps off the loose stone, the spiked doorward stops spreadin
 
 In this way, the {} once traped intruders.""",
     },
-    "ghoulRaiser": {
+    "ghoul raiser": {
         "number": 1,
         "clashes": {
             "lake",
