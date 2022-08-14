@@ -208,8 +208,9 @@ civilFeatures = {
             "river",
         },
         "places": {
-            "dead end",
             "alternative",
+            "dead end",
+            "end",
         },
     },
     "fungal garden": {
@@ -244,6 +245,7 @@ civilFeatures = {
         },
         "places": {
             "dead end",
+            "end",
             "alternative",
         },
     },
@@ -309,6 +311,7 @@ civilFeatures = {
         "clashes": set(),
         "places": {
             "split",
+            "end",
             "tunnel",
             "dead end",
         },
@@ -323,10 +326,13 @@ civilFeatures = {
         },
         "clashes": {
             "stallagmites",
+            "lake",
+            "river",
         },
         "places": {
             "alternative",
             "dead end",
+            "end",
         },
     },
     "runemaster's quarters": {
@@ -338,6 +344,7 @@ civilFeatures = {
         "clashes": set(),
         "places": {
             "dead end",
+            "end",
         },
     },
     "tomb": {
@@ -353,6 +360,7 @@ civilFeatures = {
         "places": {
             "alternative",
             "dead end",
+            "end",
         },
     },
     "workshop": {
@@ -371,6 +379,7 @@ civilFeatures = {
         "places": {
             "dead end",
             "alternative",
+            "end",
         },
     },
     "jail": {
@@ -384,6 +393,7 @@ civilFeatures = {
         },
         "places": {
             "dead end",
+            "end",
         },
     },
     "alchemy laboratory": {
@@ -401,6 +411,7 @@ civilFeatures = {
         "places": {
             "dead end",
             "alternative",
+            "end",
         },
     },
     "queen's room": {
@@ -416,6 +427,7 @@ civilFeatures = {
         },
         "places": {
             "dead end",
+            "end",
         },
     },
     "vault": {
@@ -439,7 +451,9 @@ civilFeatures = {
         "races": {
             "gnomes",
         },
-        "clashes": set(),
+        "clashes": {
+            "stallagmites",
+        },
         "places": {
             "tunnel",
             "dead end",
@@ -451,7 +465,9 @@ civilFeatures = {
         "races": {
             "dwarves",
         },
-        "clashes": set(),
+        "clashes": {
+            "stallagmites",
+        },
         "places": {
             "tunnel",
             "entrance",

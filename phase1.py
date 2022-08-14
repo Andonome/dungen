@@ -76,6 +76,7 @@ def giveFeatures(dungeon, setting):
 
 
 def labelType(dungeon):
+    dungeon[len(dungeon)-1]["type"].append("end")
     for x in range(len(dungeon)):
         if len(dungeon[x]["connections"]) == 1:
             dungeon[x]["type"].append("dead end")
