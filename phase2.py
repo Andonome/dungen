@@ -12,5 +12,15 @@ from vars import *
 
 
 def civilize(dungeon):
-    placeContents(dungeon, civilFeatures, civilization)
-    placeContents(dungeon, traps, civilization)
+    placeContents(
+    dungeon,
+    civilFeatures,
+    contentType = "civilized",
+    race=civilization
+    )
+    placeContents(
+    dungeon,
+    traps,
+    contentType = "traps",
+    race = civilization
+    )

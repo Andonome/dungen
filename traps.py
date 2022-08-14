@@ -126,3 +126,6 @@ pitBottoms = {
         ],
     },
 }
+
+for f in traps:
+    traps[f]["clashes"].add("civilized")

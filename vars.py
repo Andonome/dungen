@@ -41,8 +41,8 @@ def getContents(dungeon, x):
     return set(contents)
 
 
-def placeContents(dungeon, featureList, race=civilization):
-    print(30 * "=")
+def placeContents(dungeon, featureList, contentType, race=civilization):
+    print( 30 * "=" + contentType)
     totalRooms = list(range(len(dungeon)))
     for f in featureList:
         for x in totalRooms:
@@ -53,6 +53,7 @@ def placeContents(dungeon, featureList, race=civilization):
                 and featureList[f]["clashes"].isdisjoint(contents)
             ):
                 dungeon[x]["features"].append(f)
+                dungeon[x]["type"].append(contentType)
                 print(f)
                 totalRooms.remove(x)
                 break
