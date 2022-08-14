@@ -14,6 +14,8 @@ def dunJoin(dungeon, x, joinChance):
         dungeon[x]["type"].append("entrance")
     # Initial rooms (0 to 4) connect to the room before.  After
     # that, there's a chance they connect straight down.
+    elif len(dungeon[x]["connections"]) > 1:
+        pass
     elif x < 3:
         dungeon[x]["connections"].append(-1)
     elif tn(joinChance):
@@ -27,7 +29,7 @@ def dunJoin(dungeon, x, joinChance):
         if join not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(join)
         if tn(joinChance + 1):
-            dunJoin(dungeon, x, joinChance)
+            joinChance = dunJoin(dungeon, x, joinChance)
     return joinChance
 
 
