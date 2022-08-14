@@ -36,6 +36,7 @@ def getContents(dungeon, x):
 
 
 def makeRooms(dungeon, civilization):
+    print(30 * "=" + "\nCivilizing Features: ")
     finishedRooms = []
     for f in civilFeatures:
         for x in range(len(dungeon)):
