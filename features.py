@@ -219,9 +219,10 @@ civilFeatures = {
             "dwarves",
             "elves",
             "gnomes",
+        },
+        "clashes": {
             "stallagmites",
         },
-        "clashes": set(),
         "places": {
             "lake",
             "river",
@@ -455,6 +456,18 @@ civilFeatures = {
             "tunnel",
             "entrance",
             "split",
+        },
+    },
+    "garden": {
+        "number": 1,
+        "description": "normal sunlit garden",
+        "races": {
+            "elves",
+        },
+        "clashes": set(),
+        "places": {
+            "entrance",
+            "river",
         },
     },
 }
