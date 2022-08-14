@@ -69,397 +69,378 @@ civilFeatures = {
     "stone bridge": {
         "number": 1,
         "description": "over troubled water",
-        "races": [
+        "races": {
             "dwarves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "alternative",
             "dead end",
-        ],
-        "places": [
+        },
+        "places": {
             "chasm",
             "river",
-        ],
+        },
     },
     "wooden bridge": {
         "number": 1,
         "description": "over troubled water",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "alternative",
             "dead end",
-        ],
-        "places": [
+        },
+        "places": {
             "chasm",
             "river",
-        ],
+        },
     },
     "gas patches": {
         "number": 1,
         "description": "clay patches to stop gass vent",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "entrance",
-        ],
-        "places": [
+        },
+        "places": {
             "gas leak",
-        ],
+        },
     },
     "boats": {
         "number": 1,
         "description": "over troubled water",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "alternative",
             "dead end",
-        ],
-        "places": [
+        },
+        "places": {
             "lake",
-        ],
+        },
     },
     "guard post": {
         "number": 2,
         "description": "OC, don't steal",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "alternative",
             "gas leak",
             "dead end",
-        ],
-        "places": [
+        },
+        "places": {
             "split",
             "entrance",
-        ],
+        },
     },
     "murder holes": {
         "number": 1,
         "description": "a block over a particular wall, peppered with holes to shoot arrows through",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "alternative",
-        ],
-        "places": [
+        },
+        "places": {
             "guard post",
-        ],
+        },
     },
     "servants' quarters": {
         "number": 1,
         "description": "",
-        "races": [
+        "races": {
             "dwarves",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "chasm",
             "mana lake",
             "fungal garden",
-        ],
-        "places": [
+        },
+        "places": {
             "dead end",
-        ],
+        },
     },
     "living quarters": {
         "number": 2,
         "description": "many halls, many beds.",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "chasm",
             "lake",
             "mana lake",
             "stallagmites",
             "river",
-        ],
-        "places": [
+        },
+        "places": {
             "dead end",
             "alternative",
-        ],
+        },
     },
     "fungal garden": {
         "number": 1,
         "description": "placed by water",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
             "stallagmites",
-        ],
-        "clashes": [],
-        "places": [
+        },
+        "clashes": set(),
+        "places": {
             "lake",
             "river",
-        ],
+        },
     },
     "kitchen": {
         "number": 1,
         "description": "",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "mana lake",
             "lake",
             "stallagmites",
             "chasm",
-        ],
-        "places": [
+        },
+        "places": {
             "dead end",
             "alternative",
-        ],
+        },
     },
     "feasting hall": {
         "number": 1,
         "description": "Where everyone eats",
-        "races": [
+        "races": {
             "dwarves",
             "gnomes",
             "elves",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "mana lake",
             "entrance",
             "chasm",
             "river",
             "lake",
             "stallagmites",
-        ],
-        "places": [
+        },
+        "places": {
             "alternative",
-        ],
+        },
     },
     "armoury": {
         "number": 1,
         "description": "Mostly left arms",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "chasm",
             "river",
             "stallagmites",
             "lake",
             "mana lake",
-        ],
-        "places": [
+        },
+        "places": {
             "dead end",
             "alternative",
-        ],
+        },
     },
     "music hall": {
         "number": 1,
         "description": "hall for music ",
-        "races": [
+        "races": {
             "elves",
-        ],
-        "clashes": [],
-        "places": [
+        },
+        "clashes": set(),
+        "places": {
             "split",
             "alternative",
             "dead end",
-        ],
+        },
     },
     "art hall": {
         "number": 1,
         "description": "statues, mostly",
-        "races": [
+        "races": {
             "elves",
-        ],
-        "clashes": [],
-        "places": [
+        },
+        "clashes": set(),
+        "places": {
             "split",
             "tunnel",
             "dead end",
-        ],
+        },
     },
     "library": {
         "number": 1,
         "description": "library",
-        "races": [
+        "races": {
             "dwarves",
             "elves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "stallagmites",
-        ],
-        "places": [
+        },
+        "places": {
             "alternative",
             "dead end",
-        ],
+        },
     },
     "runemaster's quarters": {
         "number": 1,
         "description": "Where a runemaster sleeps",
-        "races": [
+        "races": {
             "dwarves",
-        ],
-        "clashes": [],
-        "places": [
+        },
+        "clashes": set(),
+        "places": {
             "dead end",
-        ],
-    },
-    "workshop": {
-        "number": 1,
-        "description": "many halls, many beds.",
-        "races": [
-            "dwarves",
-            "gnomes",
-        ],
-        "clashes": [
-            "chasm",
-            "lake",
-            "river",
-            "stallagmites",
-        ],
-        "places": [
-            "dead end",
-            "alternative",
-        ],
-    },
-    "jail": {
-        "number": 1,
-        "description": "some prisoners did a naghty, and now they're here",
-        "races": [
-            "dwarves",
-        ],
-        "clashes": [
-            "mana lake",
-        ],
-        "places": [
-            "dead end",
-        ],
-    },
-    "alchemy laboratory": {
-        "number": 1,
-        "description": "wizards gonna wizz",
-        "races": [
-            "gnomes",
-        ],
-        "clashes": [
-            "chasm",
-            "river",
-            "lake",
-            "stallagmites",
-        ],
-        "places": [
-            "dead end",
-            "alternative",
-        ],
-    },
-    "queen's room": {
-        "number": 1,
-        "description": "Where a king sleeps",
-        "races": [
-            "dwarves",
-        ],
-        "clashes": [
-            "chasm",
-            "stallagmites",
-            "river",
-        ],
-        "places": [
-            "dead end",
-        ],
-    },
-    "vault": {
-        "number": 1,
-        "description": "Lots of shiny",
-        "races": [
-            "dwarves",
-            "gnomes",
-        ],
-        "clashes": [
-            "chasm",
-            "lake",
-        ],
-        "places": [
-            "dead end",
-        ],
-    },
-    "shrine to Cale": {
-        "number": 1,
-        "description": "a large carving of a book, with a riddle written on it",
-        "races": [
-            "gnomes",
-        ],
-        "clashes": [],
-        "places": [
-            "tunnel",
-            "dead end",
-        ],
-    },
-    "shrine to Qualme": {
-        "number": 1,
-        "description": "a tall stone, with a family tree carved from the bottom, upwards",
-        "races": [
-            "dwarves",
-        ],
-        "clashes": [],
-        "places": [
-            "tunnel",
-            "entrance",
-            "split",
-        ],
-    },
-    "undergarden": {
-        "number": 1,
-        "description": "a root vegetable garden's underbelly",
-        "races": [
-            "gnomes",
-        ],
-        "clashes": [
-            "river",
-            "lake",
-            "mana lake",
-            "stallagmites",
-        ],
-        "places": [
-            "tunnel",
-            "split",
-            "dead end",
-            "alternative",
-        ],
+        },
     },
     "tomb": {
         "number": 1,
         "description": "dead people, with writing",
-        "races": [
+        "races": {
             "dwarves",
             "gnomes",
-        ],
-        "clashes": [
+        },
+        "clashes": {
             "stallagmites",
-        ],
-        "places": [
+        },
+        "places": {
             "alternative",
             "dead end",
-        ],
+        },
+    },
+    "workshop": {
+        "number": 1,
+        "description": "many halls, many beds.",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "clashes": {
+            "chasm",
+            "lake",
+            "river",
+            "stallagmites",
+        },
+        "places": {
+            "dead end",
+            "alternative",
+        },
+    },
+    "jail": {
+        "number": 1,
+        "description": "some prisoners did a naghty, and now they're here",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "mana lake",
+        },
+        "places": {
+            "dead end",
+        },
+    },
+    "alchemy laboratory": {
+        "number": 1,
+        "description": "wizards gonna wizz",
+        "races": {
+            "gnomes",
+        },
+        "clashes": {
+            "chasm",
+            "river",
+            "lake",
+            "stallagmites",
+        },
+        "places": {
+            "dead end",
+            "alternative",
+        },
+    },
+    "queen's room": {
+        "number": 1,
+        "description": "Where a king sleeps",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "chasm",
+            "stallagmites",
+            "river",
+        },
+        "places": {
+            "dead end",
+        },
+    },
+    "vault": {
+        "number": 1,
+        "description": "Lots of shiny",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "clashes": {
+            "chasm",
+            "lake",
+        },
+        "places": {
+            "dead end",
+        },
+    },
+    "shrine to Cale": {
+        "number": 1,
+        "description": "a large carving of a book, with a riddle written on it",
+        "races": {
+            "gnomes",
+        },
+        "clashes": set(),
+        "places": {
+            "tunnel",
+            "dead end",
+        },
+    },
+    "shrine to Qualme": {
+        "number": 1,
+        "description": "a tall stone, with a family tree carved from the bottom, upwards",
+        "races": {
+            "dwarves",
+        },
+        "clashes": set(),
+        "places": {
+            "tunnel",
+            "entrance",
+            "split",
+        },
     },
 }

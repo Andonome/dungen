@@ -13,11 +13,19 @@ from vars import *
 # This list shows what places gain which features.
 # A chasm would require a bridge over it to be liveable.
 
-global roomTransformations
 roomTransformations = [
     ["entrance", "trap"],
     ["mana lake", "magic room"],
 ]
+
+# Sometimes you just want a big list  of what's in a room,
+# e.g. ["river", "stone bridge", "tunnel"].
+def getContents(dungeon,x):
+    contents = []
+    for thing in dungeon[x]:
+        if type(dungeon[x][thing]) == list:
+            contents += dungeon[x][thing]
+    return set(contents)
 
 # This ordered wish list makes the elves make one cavern into a kitchen,
 # then one cavern into a library.
@@ -26,18 +34,19 @@ roomTransformations = [
 # A rating of > 0 means that many rooms must exist.
 
 
-
 def makeRooms(dungeon,civilization):
     finishedRooms = []
     for f in civilFeatures:
         for x in range(len(dungeon)):
+            # we get all contents as a set, then use these sets to test
+            # something is in the right place, and doesn't have anything
+            # from the feature's clash set.
+            contents = getContents(dungeon,x)
             if (
-            x not in finishedRooms
-            and civilization in civilFeatures[f]["races"]
-            and not set.isdisjoint(set.union(set((dungeon[x]["type"])),set(dungeon[x]["features"])),set(civilFeatures[f]["places"]))
-            #and len(dungeon[x]["features"]) < 2
-            and set.isdisjoint(set(civilFeatures[f]["clashes"]), set(dungeon[x]["features"]))
-            and set.isdisjoint(set(civilFeatures[f]["clashes"]), set(dungeon[x]["type"]))
+            civilization in civilFeatures[f]["races"]
+            and civilFeatures[f]["places"].intersection(contents)
+            and civilFeatures[f]["clashes"].isdisjoint(contents)
+            and x not in finishedRooms
             ):
                 dungeon[x]["features"].append(f)
                 print(f)
@@ -51,7 +60,7 @@ def makeBlockTraps(race,trapList):
             localTrapList.append(x)
     return localTrapList
 
-def trapEntrance(dungeon):
+def trapEntrances(dungeon):
     trapBlockList = makeBlockTraps(civilization,blockingTraps)
     entranceList = []
     alternativeList = []
@@ -66,5 +75,5 @@ def trapEntrance(dungeon):
 
 
 def civilize(dungeon):
-    trapEntrance(dungeon)
     makeRooms(dungeon,civilization)
+    trapEntrances(dungeon)
