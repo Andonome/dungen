@@ -44,6 +44,31 @@ The computer then makes a description of each room, along with a very simple plo
 The result is an abstract map, made with `graphviz`.
 I might make the map look good one day, but no time soon.
 
+## Structure
+
+The `dungeon` is a list, and each entry is a room.
+`dungeon[0]` is the entrance.
+
+Each entry in the list is a dictionary, detailing properties, features, et c.
+
+Each entry has a list of places *below* that it joins to, forming the overall structure.
+
+If room 8 has `connections = [-1, -4]`, then this means it connects to rooms 7 and 4.
+All rooms only connect below them, to ensure that all rooms eventually lead to the exit.
+
+## Position Types
+
+The basic structure of everything is provided by the `types` entry in the dictionary.
+Types include:
+
+- tunnel (one connection in, one out)
+- split (like above, but maybe multiple)
+- dead ends (one join only)
+- alternative paths (which you don't have to go down to reach the exit)
+
+These types determine where rooms can go.
+You don't want a kitchen in a tunnel, or everyone will wander through while you're trying to cook, and there's no use having a guard room in last area of the dungeon, after some marauder has travelled past the living area and treasure room.
+
 ```
 
                                                                                                                                                   ┌────────────────────────┐
