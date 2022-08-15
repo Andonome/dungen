@@ -13,7 +13,11 @@ def tunnelInvasion(dungeon):
     dungeon[x]["type"] = []
 
 def rampage(dungeon):
-    if enemy == "nura" and tn(6):
+    if (
+    enemy == "nura"
+    and tn(6)
+    and "entrance" not in dungeon[len(dungeon)-1]["type"]
+    ):
         tunnelInvasion(dungeon)
     placeContents(
         dungeon,
