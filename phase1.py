@@ -59,11 +59,17 @@ def newDungeon(setting, dunSize):
 def giveFeatures(dungeon, setting):
     print(30 * "=" + "\nPrimitive Features:")
     localFeatures = []
-    for f in primitiveFeatures:
-        if setting in primitiveFeatures[f]["settings"]:
-            for n in range(primitiveFeatures[f]["number"]):
-                localFeatures.append(f)
-    random.shuffle(localFeatures)
+    # n tracks features which have multiple
+    n = 0
+    while n < 5:
+        for f in primitiveFeatures:
+            if (
+            tn (6)
+            and setting in primitiveFeatures[f]["settings"]
+            and n < primitiveFeatures[f]["number"]
+            ):
+                    localFeatures.append(f)
+        n += 1
     x = -1
     for f in localFeatures:
         x += random.randint(1, 6)

@@ -3,8 +3,21 @@
 
 
 primitiveFeatures = {
-    "chasm": {
+    "stallagmites": {
         "number": 2,
+        "description": "difficult to walk over",
+        "places": {
+            "tunnel",
+            "split",
+            "dead end",
+        },
+        "clashes": set(),
+        "settings": [
+            "caves",
+        ],
+    },
+    "chasm": {
+        "number": 3,
         "description": "big hole",
         "places": {
             "tunnel",
@@ -48,7 +61,7 @@ primitiveFeatures = {
         ],
     },
     "river": {
-        "number": 2,
+        "number": 4,
         "description": "big hole with water",
         "places": {
             "tunnel",
@@ -60,19 +73,6 @@ primitiveFeatures = {
         "settings": [
             "caves",
             "mine",
-        ],
-    },
-    "stallagmites": {
-        "number": 2,
-        "description": "difficult to walk over",
-        "places": {
-            "tunnel",
-            "split",
-            "dead end",
-        },
-        "clashes": set(),
-        "settings": [
-            "caves",
         ],
     },
     "mana lake": {
@@ -102,19 +102,6 @@ primitiveFeatures = {
             "mine",
         ],
     },
-    "gold seam": {
-        "number": 1,
-        "description": "long squiggly gold lines",
-        "places": {
-            "dead end",
-        },
-        "clashes": {
-            "entrance",
-        },
-        "settings": [
-            "mine",
-        ],
-    },
     "tin seam": {
         "number": 1,
         "description": "long squiggly tin lines",
@@ -135,6 +122,19 @@ primitiveFeatures = {
         "description": "long squiggly silver lines",
         "places": {
             "tunnel",
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+        },
+        "settings": [
+            "mine",
+        ],
+    },
+    "gold seam": {
+        "number": 1,
+        "description": "long squiggly gold lines",
+        "places": {
             "dead end",
         },
         "clashes": {
@@ -259,7 +259,7 @@ civilFeatures = {
             "guard post",
         },
     },
-    "servants' quarters": {
+    "worker's quarters": {
         "number": 1,
         "description": "",
         "races": {
