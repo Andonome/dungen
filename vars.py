@@ -50,7 +50,7 @@ def getContents(dungeon, x):
     return set(contents)
 
 
-def placeContents(dungeon, featureList, contentType, race=civilization):
+def placeContents(dungeon, featureList, contentType, race=civilization,TN=3):
     print( 30 * "=" + contentType)
     totalRooms = list(range(len(dungeon)))
     n = 0
@@ -60,6 +60,7 @@ def placeContents(dungeon, featureList, contentType, race=civilization):
                 contents = getContents(dungeon, x)
                 if (
                     n < featureList[f]["number"]
+                    and tn(TN)
                     and race in featureList[f]["races"]
                     and featureList[f]["places"].intersection(contents)
                     and featureList[f]["clashes"].isdisjoint(contents)
