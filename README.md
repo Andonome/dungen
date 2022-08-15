@@ -1,11 +1,11 @@
 # Dun-Gen
 
-This overly ambitious dungeon generator seeks to create a fantasy-style, tabletop RPG, dungeon.
+This script crates a fantasy RPG dungeon as a conceptual map.
 
-## Plan
+## Method
 
 The script will attempt to create a dungeon, step by step, going through the dungeon's history.
-It could start as the empty passages left by the flow of magma, or a tin-mine.
+It could start as the empty passages left by water erosion, or a tin-mine.
 
 After that, a civilization establishes itself, traps can be made, and finally, a nasty bad-guy faction invades, populating the place with nasty things.
 
@@ -18,11 +18,10 @@ We start with randomly shifting rooms, then add features:
 - a chasm
 - river
 - maybe a lake
-- fungus growing around any water
 
 Then some civilizing society (dwarves/ gnomes) comes in, digs out rooms and:
 
-- makes the fungus into a proper fungal garden,
+- makes the lake into a proper fungal garden,
 - creates living quarters,
 - maybe a library,
 - probably works of art.
