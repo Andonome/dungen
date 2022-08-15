@@ -7,7 +7,6 @@ import copy
 import random
 from features import *
 from traps import *
-from areas import *
 from vars import *
 
 

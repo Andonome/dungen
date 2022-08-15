@@ -1,59 +1,16 @@
-# Most of this should be deleted.  We'll need conversion of
-# rooms, maybe disable some traps, then place goblins.  One
-# difficulty is that if goblins all bunch up in the same
-# rooms, adventurers can't fight them - they'll all run out
-# together.  Perhaps valuable areas, such as the kitchen,
-# or treasure rooms, should receive the big guards, while
-# other rooms get nothing, and we add a 'wandering goblin'
-# encounter table at the end.
-
+import copy
 import random
+from features import *
+from enemies import *
+from vars import *
 
-goblinRampage = [
-    ["lake", "ooze"],
-    ["kitchen", "foodStore"],
-]
-
-
-# This needs redone - ooze should add a creature, but here
-# it's listed as a feature.
-
-
-def breakRooms(dungeon):
-    for x in range(len(dungeon) - 1, 0, -1):
-        for pair in range(len(goblinRampage)):
-            if goblinRampage[pair][0] in dungeon[x]["features"]:
-                dungeon[x]["features"].append(goblinRampage[pair][1])
-
-
-def makeGoblins(dungeon):
-    # First let's see how big the dungeon is - larger dungeons
-    # should house most goblins, and having a fungal garden
-    # should also increase their number.
-    goblinNo = int(len(dungeon) / 3)
-    for x in range(1, len(dungeon) - 1):
-        gobEnc = random.randint(1, goblinNo)
-        if "fungus" in dungeon[x]["features"]:
-            goblinNo += 1
-            dungeon[x]["creatures"].append("ooze")
-        elif "lake" in dungeon[x]["features"]:
-            dungeon[x]["creatures"].append("ooze")
-        elif "river" in dungeon[x]["features"]:
-            pass
-        elif gobEnc > 5:
-            dungeon[x]["creatures"].append(str(random.randint(1, 4)) + " ogres")
-        elif goblinNo > 4:
-            dungeon[x]["creatures"].append(
-                str(random.randint(1, goblinNo)) + " hobgoblins"
-            )
-        elif goblinNo > 2:
-            dungeon[x]["creatures"].append(
-                str(random.randint(1, goblinNo * 2)) + " goblins"
-            )
-        else:
-            pass
-
+race = "goblins"
 
 def rampage(dungeon):
-    breakRooms(dungeon)
-    makeGoblins(dungeon)
+    placeContents(
+        dungeon,
+        enemies,
+        contentType = "invaders",
+        race = enemy,
+        )
+        

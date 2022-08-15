@@ -6,6 +6,14 @@ primitiveFeatures = {
     "chasm": {
         "number": 2,
         "description": "big hole",
+        "places": {
+            "tunnel",
+            "split",
+        },
+        "clashes": {
+            "entrance",
+            "dead end",
+        },
         "settings": [
             "caves",
         ],
@@ -13,6 +21,12 @@ primitiveFeatures = {
     "lake": {
         "number": 2,
         "description": "big hole with water",
+        "places": {
+            "tunnel",
+            "split",
+            "dead end",
+        },
+        "clashes": set(),
         "settings": [
             "caves",
             "mine",
@@ -21,6 +35,14 @@ primitiveFeatures = {
     "sunroof": {
         "number": 3,
         "description": "This area of the cave opens upwards, to the sunlight",
+        "places": {
+            "tunnel",
+            "split",
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+        },
         "settings": [
             "caves",
         ],
@@ -28,6 +50,13 @@ primitiveFeatures = {
     "river": {
         "number": 2,
         "description": "big hole with water",
+        "places": {
+            "tunnel",
+            "split",
+        },
+        "clashes": {
+            "dead end",
+        },
         "settings": [
             "caves",
             "mine",
@@ -36,6 +65,12 @@ primitiveFeatures = {
     "stallagmites": {
         "number": 2,
         "description": "difficult to walk over",
+        "places": {
+            "tunnel",
+            "split",
+            "dead end",
+        },
+        "clashes": set(),
         "settings": [
             "caves",
         ],
@@ -43,6 +78,11 @@ primitiveFeatures = {
     "mana lake": {
         "number": 1,
         "description": "sparkly magic cave",
+        "places": {
+            "split",
+            "dead end",
+        },
+        "clashes": set(),
         "settings": [
             "caves",
         ],
@@ -50,6 +90,13 @@ primitiveFeatures = {
     "gas leak": {
         "number": 1,
         "description": "fissures of farts",
+        "places": {
+            "dead end",
+            "end",
+        },
+        "clashes": {
+            "entrance",
+        },
         "settings": [
             "caves",
             "mine",
@@ -58,6 +105,12 @@ primitiveFeatures = {
     "gold seam": {
         "number": 1,
         "description": "long squiggly gold lines",
+        "places": {
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+        },
         "settings": [
             "mine",
         ],
@@ -65,6 +118,14 @@ primitiveFeatures = {
     "tin seam": {
         "number": 1,
         "description": "long squiggly tin lines",
+        "places": {
+            "tunnel",
+            "split",
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+        },
         "settings": [
             "mine",
         ],
@@ -72,6 +133,13 @@ primitiveFeatures = {
     "silver seam": {
         "number": 1,
         "description": "long squiggly silver lines",
+        "places": {
+            "tunnel",
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+        },
         "settings": [
             "mine",
         ],
@@ -79,6 +147,12 @@ primitiveFeatures = {
     "platinum seam": {
         "number": 1,
         "description": "long squiggly platinum lines",
+        "platinum seam": {
+            "tunnel",
+        },
+        "clashes": {
+            "entrance",
+        },
         "settings": [
             "mine",
         ],
@@ -513,3 +587,4 @@ civilFeatures = {
         },
     },
 }
+
