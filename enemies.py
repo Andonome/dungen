@@ -75,6 +75,50 @@ enemies = {
             "river",
         },
     },
+    "woodspy": {
+        "number": 2,
+        "races": {
+            "nura",
+            "necromancer",
+        },
+        "description": "big nasty octopus",
+        "places": {
+            "lake",
+        },
+        "clashes": {
+            "tin seam",
+        },
+    },
+    "umber hulk": {
+        "number": 1,
+        "races": {
+            "nura",
+        },
+        "description": "big nasty bug",
+        "places": {
+            "kitchen",
+            "feasting hall",
+        },
+        "clashes": {
+            "invaders",
+        },
+    },
+    "watcher": {
+        "number": 1,
+        "races": {
+            "nura",
+        },
+        "description": "slow monster, lets out noxious fumes",
+        "places": {
+            "tunnel",
+        },
+        "clashes": {
+            "invaders",
+            "river",
+            "lake",
+            "sunroof",
+        },
+    },
     "x-ghouls": {
         "number": 1,
         "races": {
