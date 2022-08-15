@@ -685,6 +685,22 @@ treasures = {
             "gas patch",
         },
     },
+    "fancy dagger": {
+        "number": 3,
+        "description": "Shiny and practical",
+        "races": {
+            "elves",
+            "gnomes",
+        },
+        "places": {
+            "living quarters",
+            "library",
+            "kitchen",
+        },
+        "clashes": {
+            "gas patch",
+        },
+    },
     "illusion play altar": {
         "number": 1,
         "description": "Magical altar. Give it a book, it recrats the contents with illusions.",
