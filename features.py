@@ -171,6 +171,7 @@ civilFeatures = {
         "clashes": {
             "alternative",
             "dead end",
+            "wooden bridge",
         },
         "places": {
             "chasm",
@@ -188,6 +189,7 @@ civilFeatures = {
         "clashes": {
             "alternative",
             "dead end",
+            "stone bridge",
         },
         "places": {
             "chasm",
