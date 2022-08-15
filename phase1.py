@@ -1,7 +1,6 @@
 import random
 import copy
 import pprint
-from areas import *
 from vars import *
 from features import *
 
