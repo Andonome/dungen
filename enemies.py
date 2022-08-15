@@ -75,6 +75,21 @@ enemies = {
             "river",
         },
     },
+    "ogres": {
+        "number": 2,
+        "races": {
+            "nura",
+        },
+        "description": "big, dwarvish goblins",
+        "places": {
+            "-2",
+            "stone bridge",
+            "end",
+        },
+        "clashes": {
+            "sunroof",
+        },
+    },
     "woodspy": {
         "number": 2,
         "races": {
@@ -119,6 +134,40 @@ enemies = {
             "sunroof",
         },
     },
+    "demilich": {
+        "number": 1,
+        "races": {
+            "necromancer",
+        },
+        "description": "Lich-lite, half the calories.",
+        "places": {
+            "x-ghouls",
+            "library",
+            "mana lake",
+        },
+        "clashes": {
+            "sunroof",
+            "chasm",
+            "lake",
+        },
+    },
+    "necromancer": {
+        "number": 3,
+        "races": {
+            "necromancer",
+        },
+        "description": "Trainee - still mostly-living.",
+        "places": {
+            "x-ghouls",
+            "library",
+            "demilich",
+        },
+        "clashes": {
+            -1,
+            "sunroof",
+            "chasm",
+        },
+    },
     "x-ghouls": {
         "number": 1,
         "races": {
@@ -148,6 +197,7 @@ enemies = {
             "living quarters",
             "servants' quarters",
             "vault",
+            "feasting hall",
         },
         "clashes": {
             "mana lake",
@@ -182,6 +232,7 @@ enemies = {
             "fungal garden",
             "river",
             "lake",
+            "tunnel",
         },
         "clashes": {
             "tunnel",
