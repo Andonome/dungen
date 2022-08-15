@@ -1,11 +1,20 @@
-import copy
-import random
 from features import *
 from traps import *
 from enemies import *
 from vars import *
 
+def tunnelInvasion(dungeon):
+    x = len(dungeon)
+    dungeon.append({})
+    dungeon[x]["connections"] = [-1]
+    dungeon[x]["features"] = ["underdark"]
+    dungeon[x]["creatures"] = []
+    dungeon[x]["height"] = 1
+    dungeon[x]["type"] = []
+
 def rampage(dungeon):
+    if enemy == "nura" and tn(6):
+        tunnelInvasion(dungeon)
     placeContents(
         dungeon,
         enemies,
@@ -19,4 +28,3 @@ def rampage(dungeon):
         contentType = "invader traps",
         race = enemy,
         )
-        
