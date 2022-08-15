@@ -57,7 +57,6 @@ def newDungeon(setting, dunSize):
 # Now the dungeon gets features, like 'chasm', or 'mana
 # lakes'.
 def giveFeatures(dungeon, setting):
-    print(30 * "=" + "\nPrimitive Features:")
     localFeatures = []
     # n tracks features which have multiple
     n = 0
