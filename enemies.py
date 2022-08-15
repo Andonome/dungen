@@ -15,6 +15,21 @@ enemies = {
             "mana lake",
         },
     },
+    "human prisoners": {
+        "number": 1,
+        "races": {
+            "nura",
+        },
+        "description": "kidnapped people, waiting to be devoured",
+        "places": {
+            "jail",
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+            "sunroof",
+        },
+    },
     "hobgoblins": {
         "number": 2,
         "races": {
@@ -74,6 +89,7 @@ enemies = {
         },
         "clashes": {
             "mana lake",
+            "sunroof",
             "chasm",
             "traps",
         },
@@ -93,6 +109,7 @@ enemies = {
             "mana lake",
             "chasm",
             "traps",
+            "sunroof",
         },
     },
     "ghouled bear": {
@@ -106,6 +123,7 @@ enemies = {
         },
         "clashes": {
             "traps",
+            "sunroof",
         },
     },
     "ooze": {

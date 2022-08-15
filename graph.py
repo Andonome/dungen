@@ -44,9 +44,7 @@ def graph(dungeon, setting, civilization):
             roomShape = "record"
             contents = (
                 " { Room | Room | Room | Room } |"
-                + str(x)
-                + ": "
-                + "living'&#92;nquarters"
+                + contents
                 + "| { Room | Room | Room | Room }"
             )
         elif "servants' quarters" in dungeon[x]["features"]:
