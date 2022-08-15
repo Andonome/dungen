@@ -586,5 +586,105 @@ civilFeatures = {
             "split",
         },
     },
+    "blessings of the rocks": {
+        "number": 1,
+        "description": "Magical slab. Blesses the onlooker with the additional Crafts abilities.",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "river",
+        },
+        "places": {
+            "mana lake",
+        },
+    },
 }
 
+treasures = {
+
+    "alchemical book": {
+        "number": 2,
+        "description": "don't ruin the ending",
+        "races": {
+            "gnomes",
+        },
+        "places": {
+            "library",
+        },
+        "clashes": {
+            "hobgoblins",
+        },
+    },
+    "saphire crown": {
+        "number": 1,
+        "description": "big shiny",
+        "races": {
+            "dwarves",
+        },
+        "places": {
+            "queen's room",
+        },
+        "clashes": {
+            -4,
+        },
+    },
+    "dragon statue": {
+        "number": 1,
+        "description": "Great big dragon statue. Gemstones for eyes. Weight Rating 12.",
+        "races": {
+            "dwarves",
+        },
+        "places": {
+            "runemaster's quarters",
+        },
+        "clashes": {
+            -4,
+        },
+    },
+    "poetry book": {
+        "number": 4,
+        "description": "Famous author. Hates himself.",
+        "races": {
+            "dwarves",
+            "elves",
+        },
+        "places": {
+            "living quarters",
+            "library",
+            "music hall",
+        },
+        "clashes": {
+            "gas patch",
+        },
+    },
+    "portrait": {
+        "number": 3,
+        "description": "Famous elf, killing a dragon.",
+        "races": {
+            "elves",
+            "gnomes",
+        },
+        "places": {
+            "living quarters",
+            "library",
+            "tunnel",
+        },
+        "clashes": {
+            "gas patch",
+        },
+    },
+    "illusion play altar": {
+        "number": 1,
+        "description": "Magical altar. Give it a book, it recrats the contents with illusions.",
+        "races": {
+            "gnomes",
+        },
+        "clashes": {
+            "stallagmites",
+        },
+        "places": {
+            "mana lake",
+        },
+    },
+}
