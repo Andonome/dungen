@@ -21,7 +21,8 @@ def civilize(dungeon):
     dungeon,
     civilFeatures,
     contentType = "civilized",
-    race=civilization
+    race=civilization,
+    TN = 7,
     )
     placeContents(
     dungeon,
@@ -34,5 +35,6 @@ def civilize(dungeon):
     dungeon,
     treasures,
     contentType = "treasures",
-    race = civilization
+    race = civilization,
+    TN = 6,
     )

@@ -5,14 +5,13 @@ from traps import *
 from enemies import *
 from vars import *
 
-race = "goblins"
-
 def rampage(dungeon):
     placeContents(
         dungeon,
         enemies,
         contentType = "invaders",
         race = enemy,
+        TN = 6,
         )
     placeContents(
         dungeon,

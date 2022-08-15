@@ -62,7 +62,7 @@ enemies = {
         },
     },
     "nura spider": {
-        "number": 1,
+        "number": 2,
         "races": {
             "nura",
         },
@@ -127,7 +127,7 @@ enemies = {
         },
     },
     "ooze": {
-        "number": 2,
+        "number": 3,
         "races": {
             "nura",
             "necromancer",
@@ -141,6 +141,25 @@ enemies = {
         },
         "clashes": {
             "tunnel",
+        },
+    },
+    "dragon": {
+        "number": 1,
+        "races": {
+            "nura",
+            "necromancer",
+        },
+        "description": "Great, red, dragon, allied with the others. Like sleeping and chin-scratches.",
+        "places": {
+            "queen's room",
+            "garden",
+            "vault",
+        },
+        "clashes": {
+            -1,
+            "worker's quarters",
+            "workshop",
+            "kitchen",
         },
     },
 }
