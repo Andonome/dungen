@@ -534,7 +534,7 @@ civilFeatures = {
     },
     "queen's room": {
         "number": 1,
-        "description": "Where a king sleeps",
+        "description": "Where a queen sleeps",
         "races": {
             "dwarves",
         },
@@ -546,6 +546,20 @@ civilFeatures = {
         },
         "places": {
             "dead end",
+            "end",
+        },
+    },
+    "throne room": {
+        "number": 1,
+        "description": "Where a monarch sits",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "river",
+            "sunroof",
+        },
+        "places": {
             "end",
         },
     },
@@ -580,7 +594,7 @@ civilFeatures = {
         },
     },
     "ancestors' shrine": {
-        "number": 4,
+        "number": 2,
         "description": "a tall stone, with a family tree carved from the bottom, upwards",
         "races": {
             "dwarves",

@@ -49,7 +49,7 @@ def placeContents(dungeon, featureList, contentType, race=civilization, TN=3):
     print(30 * "=" + contentType)
     n = 0
     while n < 5:
-        totalRooms = list(range(n, len(dungeon) - 1))
+        totalRooms = list(range(n, len(dungeon)))
         for f in featureList:
             for x in totalRooms:
                 contents = getContents(dungeon, x)
