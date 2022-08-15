@@ -175,7 +175,7 @@ def deadToEntrance(dungeon):
             endPoints.append(x)
     maxEnds = int(len(dungeon) / 10)
     for _ in range(maxEnds):
-        if tn(9 - len(endPoints)):
+        if tn(9 - len(endPoints)) and len(endPoints) > 0:
             newEntrance = random.choice(endPoints)
             endPoints.remove(newEntrance)
             dungeon[newEntrance]["type"].remove("dead end")
