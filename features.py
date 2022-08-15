@@ -268,6 +268,8 @@ civilFeatures = {
         },
         "clashes": {
             "chasm",
+            "lake",
+            "river",
             "mana lake",
             "fungal garden",
             "sunroof",
@@ -305,7 +307,9 @@ civilFeatures = {
             "elves",
             "gnomes",
         },
-        "clashes": set(),
+        "clashes": {
+            "chasm",
+        },
         "places": {
             "entrance",
             "sunroof",
@@ -397,9 +401,9 @@ civilFeatures = {
         },
         "clashes": set(),
         "places": {
-            "split",
             "alternative",
             "dead end",
+            "end",
         },
     },
     "art hall": {
@@ -446,6 +450,8 @@ civilFeatures = {
         },
         "clashes": {
             "sunroof",
+            "lake",
+            "river",
         },
         "places": {
             "dead end",
