@@ -171,6 +171,8 @@ def deadToEntrance(dungeon):
     while len(endPoints) > 3 and tn(6):
         choice = endPoints[-2]
         dungeon[choice]["type"].remove("dead end")
+        if "end" in dungeon[choice]["type"]:
+            dungeon[choice]["type"].remove("end")
         dungeon[choice]["type"].append("entrance")
         del endPoints[-2]
         random.shuffle(endPoints)
