@@ -19,13 +19,13 @@ def dunJoin(dungeon, x, joinChance):
     elif x < 3:
         dungeon[x]["connections"].append(-1)
     elif tn(joinChance):
-        joinChance += 1
+        joinChance += 2
         if -1 not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(-1)
     else:
-        joinChance -= 1
+        joinChance -= 2
         lowPoint = (x - 1) * -1
-        join = random.randint(max(lowPoint, -5), -2)
+        join = random.randint(max(lowPoint, -4), -2)
         if join not in dungeon[x]["connections"]:
             dungeon[x]["connections"].append(join)
         if tn(joinChance + 1):
@@ -191,7 +191,5 @@ def makeDungeon(setting, dunSize):
     labelAlternatives(dungeon)
     deadToEntrance(dungeon)
     giveFeatures(dungeon, setting)
-    # labelRoutes(dungeon)
     # makeRiver(dungeon)
-    # makeFungi(dungeon)
     return dungeon
