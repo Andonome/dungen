@@ -603,6 +603,9 @@ civilFeatures = {
     },
 }
 
+for f in civilFeatures:
+    civilFeatures[f]["clashes"].add("civilized")
+
 treasures = {
 
     "alchemical book": {
