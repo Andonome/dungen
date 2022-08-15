@@ -53,17 +53,21 @@ def getContents(dungeon, x):
 def placeContents(dungeon, featureList, contentType, race=civilization):
     print( 30 * "=" + contentType)
     totalRooms = list(range(len(dungeon)))
-    for f in featureList:
-        for x in totalRooms:
-            contents = getContents(dungeon, x)
-            if (
-                race in featureList[f]["races"]
-                and featureList[f]["places"].intersection(contents)
-                and featureList[f]["clashes"].isdisjoint(contents)
-                and f not in dungeon[x]["features"]
-            ):
-                dungeon[x]["features"].append(f)
-                dungeon[x]["type"].append(contentType)
-                print(f)
-                totalRooms.remove(x)
-                break
+    n = 0
+    while n < 5:
+        for f in featureList:
+            for x in totalRooms:
+                contents = getContents(dungeon, x)
+                if (
+                    n < featureList[f]["number"]
+                    and race in featureList[f]["races"]
+                    and featureList[f]["places"].intersection(contents)
+                    and featureList[f]["clashes"].isdisjoint(contents)
+                    and f not in dungeon[x]["features"]
+                ):
+                    dungeon[x]["features"].append(f)
+                    dungeon[x]["type"].append(contentType)
+                    print(f)
+                    totalRooms.remove(x)
+                    break
+        n += 1
