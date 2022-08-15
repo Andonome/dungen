@@ -260,7 +260,7 @@ civilFeatures = {
             "guard post",
         },
     },
-    "worker's quarters": {
+    "workers' quarters": {
         "number": 1,
         "description": "",
         "races": {

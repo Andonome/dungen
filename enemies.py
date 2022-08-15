@@ -177,7 +177,7 @@ enemies = {
         "description": "ghoul " + civilization,
         "places": {
             "living quarters",
-            "servants' quarters",
+            "workers' quarters",
             "vault",
         },
         "clashes": {
@@ -195,7 +195,7 @@ enemies = {
         "description": "taken as a prize from a nearby raise",
         "places": {
             "living quarters",
-            "servants' quarters",
+            "workers' quarters",
             "vault",
             "feasting hall",
         },
@@ -252,7 +252,7 @@ enemies = {
         },
         "clashes": {
             -1,
-            "worker's quarters",
+            "workers' quarters",
             "workshop",
             "kitchen",
         },

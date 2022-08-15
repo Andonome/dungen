@@ -47,7 +47,7 @@ def graph(dungeon, setting, civilization):
                 + contents
                 + "| { Room | Room | Room | Room }"
             )
-        elif "servants' quarters" in dungeon[x]["features"]:
+        elif "workers' quarters" in dungeon[x]["features"]:
             roomShape = "record"
             contents = (
                 " { Room | Room | Room | Room } |"
