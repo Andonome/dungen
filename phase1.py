@@ -170,19 +170,25 @@ def labelAlternatives(dungeon):
 # turn one dead end into an entrance
 def deadToEntrance(dungeon):
     endPoints = []
+    totalEntrances = 1
     for x in range(len(dungeon)):
         if "dead end" in dungeon[x]["type"]:
             endPoints.append(x)
-    while len(endPoints) > 3 and tn(6):
-        choice = endPoints[-2]
-        dungeon[choice]["type"].remove("dead end")
-        if "end" in dungeon[choice]["type"]:
-            dungeon[choice]["type"].remove("end")
-        dungeon[choice]["type"].append("entrance")
-        del endPoints[-2]
-        random.shuffle(endPoints)
+    maxEnds = int(len(dungeon) / 10)
+    for _ in range(maxEnds):
+        if tn(9 - len(endPoints)):
+            newEntrance = random.choice(endPoints)
+            endPoints.remove(newEntrance)
+            dungeon[newEntrance]["type"].remove("dead end")
+            if "end" in dungeon[newEntrance]["type"]:
+                dungeon[newEntrance]["type"].remove("end")
+            dungeon[newEntrance]["type"].append("entrance")
+            totalEntrances += 1
+        else:
+            break
+        break
     print("Dead ends: " + str(len(endPoints)))
-
+    print("Entrances: " + str(totalEntrances))
 
 def makeDungeon(setting, dunSize):
     dungeon = newDungeon(setting, dunSize)
