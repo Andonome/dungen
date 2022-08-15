@@ -178,7 +178,7 @@ civilFeatures = {
         },
     },
     "wooden bridge": {
-        "number": 1,
+        "number": 3,
         "description": "over troubled water",
         "races": {
             "dwarves",
@@ -195,7 +195,7 @@ civilFeatures = {
         },
     },
     "gas patches": {
-        "number": 1,
+        "number": 3,
         "description": "clay patches to stop gass vent",
         "races": {
             "dwarves",
@@ -210,7 +210,7 @@ civilFeatures = {
         },
     },
     "boats": {
-        "number": 1,
+        "number": 3,
         "description": "over troubled water",
         "races": {
             "dwarves",
@@ -240,7 +240,6 @@ civilFeatures = {
             "dead end",
         },
         "places": {
-            "split",
             "entrance",
         },
     },
@@ -298,7 +297,7 @@ civilFeatures = {
         },
     },
     "garden": {
-        "number": 1,
+        "number": 3,
         "description": "normal sunlit garden",
         "races": {
             "elves",
@@ -311,7 +310,7 @@ civilFeatures = {
         },
     },
     "fungal garden": {
-        "number": 1,
+        "number": 2,
         "description": "placed by water",
         "races": {
             "dwarves",
@@ -339,7 +338,6 @@ civilFeatures = {
             "lake",
             "stallagmites",
             "chasm",
-            "tunnel",
         },
         "places": {
             "dead end",
@@ -403,7 +401,7 @@ civilFeatures = {
         },
     },
     "art hall": {
-        "number": 1,
+        "number": 4,
         "description": "statues, mostly",
         "races": {
             "elves",
@@ -498,6 +496,8 @@ civilFeatures = {
         },
         "clashes": {
             "mana lake",
+            "lake",
+            "river",
         },
         "places": {
             "alternative",
@@ -558,7 +558,7 @@ civilFeatures = {
         },
     },
     "shrine to Cale": {
-        "number": 1,
+        "number": 2,
         "description": "a large carving of a book, with a riddle written on it",
         "races": {
             "gnomes",
@@ -571,8 +571,8 @@ civilFeatures = {
             "dead end",
         },
     },
-    "shrine to Qualme": {
-        "number": 1,
+    "ancestors' shrine": {
+        "number": 4,
         "description": "a tall stone, with a family tree carved from the bottom, upwards",
         "races": {
             "dwarves",
