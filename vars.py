@@ -60,6 +60,7 @@ def placeContents(dungeon, featureList, contentType, race=civilization):
                 race in featureList[f]["races"]
                 and featureList[f]["places"].intersection(contents)
                 and featureList[f]["clashes"].isdisjoint(contents)
+                and f not in dungeon[x]["features"]
             ):
                 dungeon[x]["features"].append(f)
                 dungeon[x]["type"].append(contentType)

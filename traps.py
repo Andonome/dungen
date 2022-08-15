@@ -17,7 +17,7 @@ traps = {
         "atDoor": False,
         "races": [
             "dwarves",
-            "goblins",
+            "nura",
         ],
         "description": """a great hole in the ground has been covered by some wooden planks. It feels obviously wrong just walking across it, but by then it may be too late.  Anyone with Strength +2 or greater will collapse the entire floor, falling into the pit, five squares deep.
 
@@ -59,6 +59,7 @@ In this way, the {} once traped intruders.""",
         "atDoor": False,
         "races": [
             "dwarves",
+            "necromancer",
         ],
         "description": "This skull once belonged to a priest of the {}, and now stands to guard their halls.  It will animate from the dead, any dead creature, within the area, or any nearby areas. When the {} still lived here, it also stood as a reminder that no two {} should ever fight each other, or the Skull would punish them",
     },
@@ -73,7 +74,7 @@ In this way, the {} once traped intruders.""",
         },
         "atDoor": True,
         "races": [
-            "goblins",
+            "nura",
             "gnomes",
         ],
         "description": """This long passage slopes gently down, then less gently, and once the slimy floor gets under-foot, it whisks the walker down-hill, and into a nasty barricade of metal a spikes.""",
@@ -88,7 +89,7 @@ In this way, the {} once traped intruders.""",
         "atDoor": False,
         "races": [
             "dwarves",
-            "goblins",
+            "nura",
             "gnomes",
         ],
         "description": """These carefully tended mushrooms emit noxious spores into the air. Anyone not Keeping Edgy must make a Wits + Survival check at TN 8.  Those failing the roll receive 4 Fatigue Points, plus one for every Failure Margin.  They also begin coughing profusely, and must make a Strength + Survival check, TN 10, to act for a round.  This effect lasts for the remainder of the scene.
@@ -108,7 +109,7 @@ Anyone wishing to sneak past the mushrooms without disturbing them can make a De
         "atDoor": False,
         "races": [
             "dwarves",
-            "goblins",
+            "nura",
         ],
         "description": "Rocks fall. Everyone dies",
     },
@@ -116,11 +117,11 @@ Anyone wishing to sneak past the mushrooms without disturbing them can make a De
 
 # Pit-traps have these things at the bottom.
 pitBottoms = {
-    "chitincrawlers": {"description": "Big spiders", "races": ["goblins", "gnomes"]},
+    "chitincrawlers": {"description": "Big spiders", "races": ["nura", "gnomes"]},
     "stallagmites": {
         "description": "stallagmites. Does 1D6 Damage.",
         "races": [
-            "goblins",
+            "nura",
             "gnomes",
             "dwarves",
         ],
