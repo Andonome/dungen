@@ -9,11 +9,6 @@ def tn(tn):
         return False
 
 
-# Just for debugging.
-def show(x):
-    pprint.pprint(x)
-
-
 dunSize = random.randint(8, 30)
 print("Size: " + str(dunSize))
 setting = random.choice(["mine", "caves"])
@@ -50,11 +45,11 @@ def getContents(dungeon, x):
     return set(contents)
 
 
-def placeContents(dungeon, featureList, contentType, race=civilization,TN=3):
-    print( 30 * "=" + contentType)
+def placeContents(dungeon, featureList, contentType, race=civilization, TN=3):
+    print(30 * "=" + contentType)
     n = 0
     while n < 5:
-        totalRooms = list(range(n,len(dungeon)-1))
+        totalRooms = list(range(n, len(dungeon) - 1))
         for f in featureList:
             for x in totalRooms:
                 contents = getContents(dungeon, x)

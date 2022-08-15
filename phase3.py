@@ -3,6 +3,7 @@ from traps import *
 from enemies import *
 from vars import *
 
+
 def tunnelInvasion(dungeon):
     x = len(dungeon)
     dungeon.append({})
@@ -12,23 +13,24 @@ def tunnelInvasion(dungeon):
     dungeon[x]["height"] = 1
     dungeon[x]["type"] = []
 
+
 def rampage(dungeon):
     if (
-    enemy == "nura"
-    and tn(6)
-    and "entrance" not in dungeon[len(dungeon)-1]["type"]
+        enemy == "nura"
+        and tn(6)
+        and "entrance" not in dungeon[len(dungeon) - 1]["type"]
     ):
         tunnelInvasion(dungeon)
     placeContents(
         dungeon,
         enemies,
-        contentType = "invaders",
-        race = enemy,
-        TN = 6,
-        )
+        contentType="invaders",
+        race=enemy,
+        TN=6,
+    )
     placeContents(
         dungeon,
         traps,
-        contentType = "invader traps",
-        race = enemy,
-        )
+        contentType="invader traps",
+        race=enemy,
+    )

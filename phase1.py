@@ -1,6 +1,4 @@
 import random
-import copy
-import pprint
 from vars import *
 from features import *
 
@@ -62,11 +60,11 @@ def giveFeatures(dungeon, setting):
     while n < 5:
         for f in primitiveFeatures:
             if (
-            tn (6)
-            and setting in primitiveFeatures[f]["settings"]
-            and n < primitiveFeatures[f]["number"]
+                tn(6)
+                and setting in primitiveFeatures[f]["settings"]
+                and n < primitiveFeatures[f]["number"]
             ):
-                    localFeatures.append(f)
+                localFeatures.append(f)
         n += 1
     x = -1
     for f in localFeatures:
@@ -82,7 +80,7 @@ def giveFeatures(dungeon, setting):
 
 
 def labelType(dungeon):
-    dungeon[len(dungeon)-1]["type"].append("end")
+    dungeon[len(dungeon) - 1]["type"].append("end")
     for x in range(len(dungeon)):
         if len(dungeon[x]["connections"]) == 1:
             dungeon[x]["type"].append("dead end")
@@ -105,7 +103,7 @@ def labelType(dungeon):
                 dungeon[c]["type"].append("tunnel")
 
 
-def findExit(dungeon, c = ""):
+def findExit(dungeon, c=""):
     if c == "":
         # start at the highest room
         c = len(dungeon) - 1
@@ -125,9 +123,10 @@ def findExit(dungeon, c = ""):
     else:
         return route2
 
-def findRoute(dungeon,x,y):
-    x = findExit(dungeon,x)
-    y = findExit(dungeon,y)
+
+def findRoute(dungeon, x, y):
+    x = findExit(dungeon, x)
+    y = findExit(dungeon, y)
     while x[-1] == y[-1]:
         join = x[-1]
         x.remove(x[-1])
@@ -138,6 +137,7 @@ def findRoute(dungeon,x,y):
     y.reverse()
     x += y
     return x
+
 
 def labelRoutes(dungeon):
     paths = []
@@ -188,6 +188,7 @@ def deadToEntrance(dungeon):
         break
     print("Dead ends: " + str(len(endPoints)))
     print("Entrances: " + str(totalEntrances))
+
 
 def makeDungeon(setting, dunSize):
     dungeon = newDungeon(setting, dunSize)

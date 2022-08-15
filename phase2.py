@@ -1,9 +1,3 @@
-# Unsure how to do this part.  Some areas get built the
-# same way - everyone needs a fungus garden and bridges
-# over rivers.  But then some races will need different
-# functions for where to build things.
-
-import copy
 import random
 from features import *
 from traps import *
@@ -16,25 +10,20 @@ elif civilization == "dwarves":
 else:
     trapsNo = 7
 
+
 def civilize(dungeon):
     placeContents(
-    dungeon,
-    civilFeatures,
-    contentType = "civilized",
-    race=civilization,
-    TN = 7,
+        dungeon,
+        civilFeatures,
+        contentType="civilized",
+        race=civilization,
+        TN=7,
     )
+    placeContents(dungeon, traps, contentType="traps", race=civilization, TN=trapsNo)
     placeContents(
-    dungeon,
-    traps,
-    contentType = "traps",
-    race = civilization,
-    TN = trapsNo
-    )
-    placeContents(
-    dungeon,
-    treasures,
-    contentType = "treasures",
-    race = civilization,
-    TN = 6,
+        dungeon,
+        treasures,
+        contentType="treasures",
+        race=civilization,
+        TN=6,
     )

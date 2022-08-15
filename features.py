@@ -613,7 +613,6 @@ for f in civilFeatures:
     civilFeatures[f]["clashes"].add("civilized")
 
 treasures = {
-
     "alchemical book": {
         "number": 2,
         "description": "don't ruin the ending",

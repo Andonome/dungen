@@ -1,7 +1,3 @@
-# Some traps can be passed by the inhabitant (e.g. a scary
-# illusion), while others cannot.  Some operate inside a
-# room, others only in a doorway.
-
 traps = {
     "rickety floor": {
         "number": 1,

@@ -13,8 +13,6 @@ import time
 
 dungeon = makeDungeon(setting, dunSize)
 
-# time.sleep(2)
-
 civilize(dungeon)
 
 rampage(dungeon)
