@@ -55,7 +55,7 @@ def placeContents(dungeon, featureList, contentType, race=civilization, TN=3):
                 contents = getContents(dungeon, x)
                 if (
                     n < featureList[f]["number"]
-                    and tn(TN)
+                    and tn(TN + n)
                     and race in featureList[f]["races"]
                     and featureList[f]["places"].intersection(contents)
                     and featureList[f]["clashes"].isdisjoint(contents)

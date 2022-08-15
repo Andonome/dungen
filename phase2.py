@@ -17,7 +17,7 @@ def civilize(dungeon):
         civilFeatures,
         contentType="civilized",
         race=civilization,
-        TN=7,
+        TN=5,
     )
     placeContents(dungeon, traps, contentType="traps", race=civilization, TN=trapsNo)
     placeContents(

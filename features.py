@@ -682,6 +682,8 @@ treasures = {
         },
         "clashes": {
             "gas patch",
+            "lake",
+            "river",
         },
     },
     "fancy dagger": {
