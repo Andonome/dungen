@@ -27,3 +27,17 @@ def civilize(dungeon):
         race=civilization,
         TN=6,
     )
+    placeContents(
+        dungeon,
+        mobilityFeatures,
+        contentType="mobility",
+        race=civilization,
+        TN=2,
+    )
+    placeContents(
+        dungeon,
+        specialDoors,
+        contentType="doors",
+        race=civilization,
+        TN=8,
+    )

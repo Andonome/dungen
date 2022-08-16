@@ -732,3 +732,48 @@ treasures = {
         },
     },
 }
+
+specialDoors = {
+    "real fake door": {
+        "number": 1,
+        "description": "This ornate stone carving of a door looks very convincing, but it does nothing.  The real door lies to the side, disguised by shadows, ivy, and assumptions.",
+        "races": {
+            "elves",
+        },
+        "clashes": {
+            "living quarters",
+            "alternative",
+        },
+        "places": {
+            "civilized",
+        },
+    },
+    "teamwork door": {
+        "number": 1,
+        "description": "This heavy door has three handles which must be turned at once, all in different locations.",
+        "races": {
+            "gnomes",
+        },
+        "clashes": {
+            "lake",
+            "alternative",
+        },
+        "places": {
+            -1,
+        },
+    },
+    "rune door": {
+        "number": 1,
+        "description": "Speak the password in dwarvish to enter.",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "lake",
+            "alternative",
+        },
+        "places": {
+            "mana lake",
+        },
+    },
+}
