@@ -161,41 +161,6 @@ primitiveFeatures = {
 
 
 civilFeatures = {
-    "stone bridge": {
-        "number": 1,
-        "description": "over troubled water",
-        "races": {
-            "dwarves",
-            "gnomes",
-        },
-        "clashes": {
-            "alternative",
-            "dead end",
-            "wooden bridge",
-        },
-        "places": {
-            "chasm",
-            "river",
-        },
-    },
-    "wooden bridge": {
-        "number": 3,
-        "description": "over troubled water",
-        "races": {
-            "dwarves",
-            "elves",
-            "gnomes",
-        },
-        "clashes": {
-            "alternative",
-            "dead end",
-            "stone bridge",
-        },
-        "places": {
-            "chasm",
-            "river",
-        },
-    },
     "gas patches": {
         "number": 3,
         "description": "clay patches to stop gass vent",
@@ -211,24 +176,8 @@ civilFeatures = {
             "gas leak",
         },
     },
-    "boats": {
-        "number": 3,
-        "description": "over troubled water",
-        "races": {
-            "dwarves",
-            "elves",
-            "gnomes",
-        },
-        "clashes": {
-            "alternative",
-            "dead end",
-        },
-        "places": {
-            "lake",
-        },
-    },
     "guard post": {
-        "number": 2,
+        "number": 3,
         "description": "OC, don't steal",
         "races": {
             "dwarves",
@@ -625,6 +574,59 @@ civilFeatures = {
 
 for f in civilFeatures:
     civilFeatures[f]["clashes"].add("civilized")
+
+mobilityFeatures = {
+    "stone bridge": {
+        "number": 1,
+        "description": "over troubled water",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "chasm",
+            "river",
+        },
+    },
+    "wooden bridge": {
+        "number": 3,
+        "description": "over troubled water",
+        "races": {
+            "dwarves",
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "alternative",
+            "dead end",
+            "stone bridge",
+        },
+        "places": {
+            "chasm",
+            "river",
+        },
+    },
+    "boats": {
+        "number": 3,
+        "description": "over troubled water",
+        "races": {
+            "dwarves",
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "lake",
+        },
+    },
+}
 
 treasures = {
     "alchemical book": {
