@@ -26,11 +26,12 @@ def rampage(dungeon):
         enemies,
         contentType="invaders",
         race=enemy,
-        TN=6,
+        TN=7,
     )
     placeContents(
         dungeon,
         traps,
         contentType="invader traps",
         race=enemy,
+        TN=7,
     )
