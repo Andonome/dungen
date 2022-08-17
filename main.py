@@ -11,10 +11,9 @@ import random
 import time
 
 
-dungeon = makeDungeon(setting, dunSize)
+def gogoDungeon(setting=setting, dunSize=dunSize, civilization=civilization):
+    dungeon = makeDungeon(setting, dunSize)
+    civilize(dungeon)
+    rampage(dungeon)
+    graph(dungeon, setting, civilization)
 
-civilize(dungeon)
-
-rampage(dungeon)
-
-graph(dungeon, setting, civilization)
