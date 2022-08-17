@@ -15,6 +15,21 @@ enemies = {
             "mana lake",
         },
     },
+    "x-prisoners": {
+        "number": 2,
+        "races": {
+            "nura",
+        },
+        "description": "kidnapped {}, waiting to be devoured",
+        "places": {
+            "jail",
+            "dead end",
+        },
+        "clashes": {
+            "entrance",
+            "sunroof",
+        },
+    },
     "human prisoners": {
         "number": 1,
         "races": {
@@ -73,6 +88,8 @@ enemies = {
         },
         "clashes": {
             "river",
+            "human prisoners",
+            "x-prisoners",
         },
     },
     "ogres": {
@@ -113,9 +130,12 @@ enemies = {
         "places": {
             "kitchen",
             "feasting hall",
+            "underdark",
         },
         "clashes": {
             "invaders",
+            "human prisoners",
+            "x-prisoners",
         },
     },
     "watcher": {
