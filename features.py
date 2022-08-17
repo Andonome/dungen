@@ -16,16 +16,16 @@ primitiveFeatures = {
             "caves",
         ],
     },
-    "chasm": {
-        "number": 3,
-        "description": "big hole",
+    "sunroof": {
+        "number": 2,
+        "description": "This area of the cave opens upwards, to the sunlight",
         "places": {
             "tunnel",
             "split",
+            "dead end",
         },
         "clashes": {
             "entrance",
-            "dead end",
         },
         "settings": [
             "caves",
@@ -45,21 +45,6 @@ primitiveFeatures = {
             "mine",
         ],
     },
-    "sunroof": {
-        "number": 3,
-        "description": "This area of the cave opens upwards, to the sunlight",
-        "places": {
-            "tunnel",
-            "split",
-            "dead end",
-        },
-        "clashes": {
-            "entrance",
-        },
-        "settings": [
-            "caves",
-        ],
-    },
     "river": {
         "number": 4,
         "description": "big hole with water",
@@ -75,6 +60,21 @@ primitiveFeatures = {
             "mine",
         ],
     },
+    "chasm": {
+        "number": 3,
+        "description": "big hole",
+        "places": {
+            "tunnel",
+            "split",
+        },
+        "clashes": {
+            "entrance",
+            "dead end",
+        },
+        "settings": [
+            "caves",
+        ],
+    },
     "mana lake": {
         "number": 1,
         "description": "sparkly magic cave",
@@ -85,21 +85,6 @@ primitiveFeatures = {
         "clashes": set(),
         "settings": [
             "caves",
-        ],
-    },
-    "gas leak": {
-        "number": 1,
-        "description": "fissures of farts",
-        "places": {
-            "dead end",
-            "end",
-        },
-        "clashes": {
-            "entrance",
-        },
-        "settings": [
-            "caves",
-            "mine",
         ],
     },
     "tin seam": {
@@ -154,6 +139,21 @@ primitiveFeatures = {
             "entrance",
         },
         "settings": [
+            "mine",
+        ],
+    },
+    "gas leak": {
+        "number": 1,
+        "description": "fissures of farts",
+        "places": {
+            "dead end",
+            "end",
+        },
+        "clashes": {
+            "entrance",
+        },
+        "settings": [
+            "caves",
             "mine",
         ],
     },
@@ -391,6 +391,24 @@ civilFeatures = {
             "end",
         },
     },
+    "secret library": {
+        "number": 1,
+        "description": "big porn stash",
+        "races": {
+            "dwarves",
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "stallagmites",
+            "lake",
+            "river",
+            "sunroof",
+        },
+        "places": {
+            "hidden",
+        },
+    },
     "runemaster's quarters": {
         "number": 1,
         "description": "Where a runemaster sleeps",
@@ -481,6 +499,24 @@ civilFeatures = {
             "end",
         },
     },
+    "spell training": {
+        "number": 1,
+        "description": "burnt wooden statues everywhere",
+        "races": {
+            "gnomes",
+            "elves",
+        },
+        "clashes": {
+            "chasm",
+            "river",
+            "lake",
+        },
+        "places": {
+            "dead end",
+            "alternative",
+            "end",
+        },
+    },
     "queen's room": {
         "number": 1,
         "description": "Where a queen sleeps",
@@ -496,6 +532,7 @@ civilFeatures = {
         "places": {
             "dead end",
             "end",
+            "hidden",
         },
     },
     "throne room": {
@@ -526,6 +563,170 @@ civilFeatures = {
         },
         "places": {
             "dead end",
+            "hidden",
+        },
+    },
+    "shrine to Cale": {
+        "number": 2,
+        "description": "a large carving of a book, with a riddle written on it",
+        "races": {
+            "gnomes",
+        },
+        "clashes": {
+            "stallagmites",
+        },
+        "places": {
+            "tunnel",
+            "dead end",
+        },
+    },
+    "ancestors' shrine": {
+        "number": 2,
+        "description": "a tall stone, with a family tree carved from the bottom, upwards",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "stallagmites",
+        },
+        "places": {
+            "tunnel",
+            "entrance",
+            "split",
+        },
+    },
+    "blessings of the rocks": {
+        "number": 1,
+        "description": "Magical slab. Blesses the onlooker with the additional Crafts abilities.",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "river",
+        },
+        "places": {
+            "mana lake",
+        },
+    },
+}
+
+for f in civilFeatures:
+    civilFeatures[f]["clashes"].add("civilized")
+
+mobilityFeatures = {
+    "stone bridge": {
+        "number": 1,
+        "description": "over troubled water",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "chasm",
+            "river",
+        },
+    },
+    "wooden bridge": {
+        "number": 3,
+        "description": "over troubled water",
+        "races": {
+            "dwarves",
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "alternative",
+            "dead end",
+            "stone bridge",
+        },
+        "places": {
+            "chasm",
+            "river",
+        },
+    },
+    "boats": {
+        "number": 3,
+        "description": "over troubled water",
+        "races": {
+            "dwarves",
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "alternative",
+            "dead end",
+        },
+        "places": {
+            "lake",
+        },
+    },
+}
+
+treasures = {
+    "alchemical book": {
+        "number": 2,
+        "description": "don't ruin the ending",
+        "races": {
+            "gnomes",
+        },
+        "places": {
+            "library",
+        },
+        "clashes": {
+            "hobgoblins",
+        },
+    },
+    "queen's room": {
+        "number": 1,
+        "description": "Where a queen sleeps",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "chasm",
+            "stallagmites",
+            "river",
+            "sunroof",
+        },
+        "places": {
+            "dead end",
+            "end",
+            "hidden",
+        },
+    },
+    "throne room": {
+        "number": 1,
+        "description": "Where a monarch sits",
+        "races": {
+            "dwarves",
+        },
+        "clashes": {
+            "river",
+            "sunroof",
+        },
+        "places": {
+            "end",
+        },
+    },
+    "vault": {
+        "number": 1,
+        "description": "Lots of shiny",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "clashes": {
+            "chasm",
+            "lake",
+            "sunroof",
+        },
+        "places": {
+            "dead end",
+            "hidden",
         },
     },
     "shrine to Cale": {
@@ -669,7 +870,7 @@ treasures = {
         },
     },
     "poetry book": {
-        "number": 4,
+        "number": 2,
         "description": "Famous author. Hates himself.",
         "races": {
             "dwarves",
@@ -685,7 +886,7 @@ treasures = {
         },
     },
     "portrait": {
-        "number": 3,
+        "number": 2,
         "description": "Famous elf, killing a dragon.",
         "races": {
             "elves",
