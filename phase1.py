@@ -167,7 +167,7 @@ def labelAlternatives(dungeon):
 
 
 # turn one dead end into an entrance
-def deadToEntrance(dungeon):
+def deadEndsConversion(dungeon):
     endPoints = []
     totalEntrances = 1
     for x in range(len(dungeon)):
@@ -186,6 +186,15 @@ def deadToEntrance(dungeon):
         else:
             break
         break
+    for x in endPoints:
+        entryway = x + dungeon[x]["connections"][0]
+        if tn(4 + len(endPoints)) and "split" not in dungeon[entryway]["type"]:
+            dungeon[x]["type"].remove("dead end")
+            dungeon[x]["type"].append("hidden")
+            dungeon[entryway]["type"].append("dead end")
+            if "end" in dungeon[x]["type"]:
+                dungeon[x]["type"].remove("end")
+            print("Hidden room: " + str(x))
     print("Dead ends: " + str(len(endPoints)))
     print("Entrances: " + str(totalEntrances))
 
@@ -194,7 +203,7 @@ def makeDungeon(setting, dunSize):
     dungeon = newDungeon(setting, dunSize)
     labelType(dungeon)
     labelAlternatives(dungeon)
-    deadToEntrance(dungeon)
+    deadEndsConversion(dungeon)
     giveFeatures(dungeon, setting)
     # makeRiver(dungeon)
     return dungeon
