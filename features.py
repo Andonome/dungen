@@ -650,7 +650,7 @@ mobilityFeatures = {
     },
     "boats": {
         "number": 3,
-        "description": "over troubled water",
+        "description": "left by the {} to travel overe the lake",
         "races": {
             "dwarves",
             "elves",
@@ -977,4 +977,66 @@ specialDoors = {
             "mana lake",
         },
     },
+    "tapestry": {
+        "number": 2,
+        "description": "pay no attention",
+        "races": {
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "tunnel",
+        },
+        "places": {
+            "hidden",
+        },
+    },
+    "cupboard door": {
+        "number": 1,
+        "description": "this little cupboard can be pulled right out, revealing a full new room",
+        "races": {
+            "elves",
+            "gnomes",
+            "dwarves",
+        },
+        "clashes": {
+            "tunnel",
+        },
+        "places": {
+            "hidden",
+        },
+    },
+    "false book": {
+        "number": 1,
+        "description": "a little bookcase, with a single false book, which acts as a lever to open the book case",
+        "races": {
+            "elves",
+            "gnomes",
+        },
+        "clashes": {
+            "tunnel",
+        },
+        "places": {
+            "hidden",
+        },
+    },
+    "wall door": {
+        "number": 1,
+        "description": "this door has been perfectly crafted to look like the rest of the wall",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "clashes": {
+            "tunnel",
+        },
+        "places": {
+            "hidden",
+        },
+    },
 }
+
+
+
+for f in specialDoors:
+    specialDoors[f]["clashes"].add("doors")
