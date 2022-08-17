@@ -28,6 +28,7 @@ enemies = {
         "clashes": {
             "entrance",
             "sunroof",
+            "invaders",
         },
     },
     "human prisoners": {
@@ -43,6 +44,7 @@ enemies = {
         "clashes": {
             "entrance",
             "sunroof",
+            "invaders",
         },
     },
     "hobgoblins": {
@@ -118,7 +120,7 @@ enemies = {
             "lake",
         },
         "clashes": {
-            "tin seam",
+            "invaders",
         },
     },
     "umber hulk": {
@@ -188,25 +190,6 @@ enemies = {
             "chasm",
         },
     },
-    "x-ghouls": {
-        "number": 1,
-        "races": {
-            "necromancer",
-            "nura",
-        },
-        "description": "ghoul " + civilization,
-        "places": {
-            "living quarters",
-            "workers' quarters",
-            "vault",
-        },
-        "clashes": {
-            "mana lake",
-            "sunroof",
-            "chasm",
-            "traps",
-        },
-    },
     "human ghouls": {
         "number": 2,
         "races": {
@@ -222,6 +205,22 @@ enemies = {
         "clashes": {
             "mana lake",
             "chasm",
+            "traps",
+            "sunroof",
+        },
+    },
+    "undead ogre": {
+        "number": 3,
+        "races": {
+            "necromancer",
+        },
+        "description": "big, dead, smelly thing",
+        "places": {
+            "split",
+            "tunnel",
+        },
+        "clashes": {
+            "mana lake",
             "traps",
             "sunroof",
         },
