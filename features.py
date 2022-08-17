@@ -826,7 +826,7 @@ treasures = {
         },
     },
     "fancy dagger": {
-        "number": 3,
+        "number": 1,
         "description": "Shiny and practical",
         "races": {
             "elves",
@@ -839,6 +839,21 @@ treasures = {
         },
         "clashes": {
             "gas patch",
+        },
+    },
+    "dungeon map": {
+        "number": 1,
+        "description": "A simple map of the dungeon as it was before the invasion",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "places": {
+            "library",
+            "runemaster's quarters",
+        },
+        "clashes": {
+            "stallagmites",
         },
     },
     "illusion play altar": {
