@@ -51,9 +51,7 @@ def graph(dungeon, setting, civilization):
             roomShape = "record"
             contents = (
                 " { Room | Room | Room | Room } |"
-                + str(x)
-                + ": "
-                + "workers'&#92;nquarters"
+                + contents
                 + "| { Room | Room | Room | Room }"
             )
         dunMap.node(str(x), contents, shape=roomShape)
