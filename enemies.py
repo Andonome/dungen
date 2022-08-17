@@ -276,4 +276,38 @@ enemies = {
             "kitchen",
         },
     },
+    "x-ghouls": {
+        "number": 4,
+        "races": {
+            "necromancer",
+            "nura",
+        },
+        "description": "ghoul " + civilization,
+        "places": {
+            "living quarters",
+            "workers' quarters",
+            "vault",
+        },
+        "clashes": {
+            "mana lake",
+            "sunroof",
+            "chasm",
+            "traps",
+        },
+    },
+    "sleeping goblin": {
+        "number": 1,
+        "races": {
+            "nura",
+        },
+        "description": "standard, snotty goblin",
+        "places": {
+            "tunnel",
+            "split",
+        },
+        "clashes": {
+            "sunroof",
+            "traps",
+        },
+    },
 }
