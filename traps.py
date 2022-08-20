@@ -6,6 +6,7 @@ traps = {
             "dead end",
             "river",
             "lake",
+            "chasm",
         },
         "places": {
             "tunnel",
