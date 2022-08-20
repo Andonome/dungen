@@ -666,35 +666,6 @@ mobilityFeatures = {
     },
 }
 
-treasures = {
-    "alchemical book": {
-        "number": 2,
-        "description": "don't ruin the ending",
-        "races": {
-            "gnomes",
-        },
-        "places": {
-            "library",
-        },
-        "clashes": {
-            "hobgoblins",
-        },
-    },
-    "blessings of the rocks": {
-        "number": 1,
-        "description": "Magical slab. Blesses the onlooker with the additional Crafts abilities.",
-        "races": {
-            "dwarves",
-        },
-        "clashes": {
-            "river",
-        },
-        "places": {
-            "mana lake",
-        },
-    },
-}
-
 for f in civilFeatures:
     civilFeatures[f]["clashes"].add("civilized")
 
