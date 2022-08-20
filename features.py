@@ -812,6 +812,20 @@ treasures = {
             "gas patch",
         },
     },
+    "massive diamond": {
+        "number": 1,
+        "description": "A great, stonking diamon, hidden in someone's old coat pocket.",
+        "races": {
+            "dwarves",
+            "gnomes",
+        },
+        "places": {
+            "workers' quarters",
+        },
+        "clashes": {
+            "stallagmites",
+        },
+    },
     "dungeon map": {
         "number": 1,
         "description": "A simple map of the dungeon as it was before the invasion",
