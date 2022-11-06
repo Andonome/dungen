@@ -28,6 +28,7 @@ Anyone calling into the pit receives 2D6 Damage.
         "clashes": {
             "alternative",
             "split",
+            "traps",
         },
         "places": {
             "tunnel",
