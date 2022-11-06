@@ -23,8 +23,12 @@ def newDungeon(setting, dunSize):
     return dungeon
 
 
-# junJoin joins dungeon pieces, usually straight down (4 -- > 3), but
+# dunJoin joins dungeon pieces, usually straight down (4 -- > 3), but
 # sometimes skips down (7 --> 3).
+# Each connection is relative, so 'dungeon[3]["connection"] = -1'
+# means that room 3 is connected to 2 (3-1 = 2), and
+# 'dungeon[5]["connection"] = -3' means that room 5 is
+# connected to room 2 (5-3 = 2).
 
 
 def dunJoin(dungeon, x, joinChance):
@@ -53,6 +57,11 @@ def dunJoin(dungeon, x, joinChance):
 
 # Now the dungeon gets features, like 'chasm', or 'mana
 # lakes'.
+# These come from the 'primitiveFeatures' list, then each one is checked to see if it fits in the current 'setting' ("mine", or "dungeon").
+# If so, it's added to the list.
+# We then skip along the dungeon's rooms randomly dropping
+# our list-items: 1,3,5,11,13,14.
+
 def giveFeatures(dungeon, setting):
     localFeatures = []
     # n tracks features which have multiple
@@ -102,6 +111,10 @@ def labelType(dungeon):
             elif "split" not in dungeon[c]["type"]:
                 dungeon[c]["type"].append("tunnel")
 
+# This function literally just finds an exit. Give it a room
+# number, and it return a list of the rooms to move through
+# to get to the entrance.
+
 
 def findExit(dungeon, c=""):
     if c == "":
@@ -123,6 +136,8 @@ def findExit(dungeon, c=""):
     else:
         return route2
 
+# I've never used this function, but I still like it. It
+# finds a route from room x to room y.
 
 def findRoute(dungeon, x, y):
     x = findExit(dungeon, x)
@@ -138,20 +153,17 @@ def findRoute(dungeon, x, y):
     x += y
     return x
 
-
-def labelRoutes(dungeon):
-    paths = []
-    for x in range(len(dungeon) - 1, 1, -1):
-        if len(dungeon[x]["connections"]) > 1:
-            for _ in dungeon[x]["connections"]:
-                paths.append(findExit(dungeon, x))
-    return paths
-
-
 # Races can only place an impassable trap (like a swinging
 # sphere of anihilation) in tunnels which form alternative
-# routes - not the only  route to a place.
-
+# routes - not the only route to a place, or nobody would be
+# able to go to the toilet. Therefore, we find and label
+# all the alternative passages (which you don't have to go
+# through).
+# Actually, we just lavel everythign an 'alternative', then
+# go to every dead-end, and find the route to the exit, and
+# remove the label of 'alternative'. Anything which remains
+# with the label must really be an alternative, because
+# nobody needs it to reach the exit.
 
 def labelAlternatives(dungeon):
     for x in range(len(dungeon)):

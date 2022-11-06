@@ -45,6 +45,11 @@ def getContents(dungeon, x):
     return set(contents)
 
 
+# Here the elves/dwarves/necromancers leave their stuff in
+# places. Each one checks it's not classhing in some way,
+# e.g. a library should not be placed over a river, and a
+# cavern is no place to call home.
+
 def placeContents(dungeon, featureList, contentType, race=civilization, TN=3):
     contentList = []
     n = 0

@@ -11,6 +11,9 @@ else:
     trapsNo = 7
 
 
+# We place the elves, dwarves, or whichever race has come
+# in to civilize the would-be dingy and boring dungeon.
+
 def civilize(dungeon):
     placeContents(
         dungeon,

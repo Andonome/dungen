@@ -1,6 +1,8 @@
-# This function uses graphviz to output the map to a pdf file.
 import graphviz
 
+# This function uses graphviz to output the map to a pdf file.
+# Best to just look at graphviz docs for explanations.
+# https://www.graphviz.org/documentation/
 
 def graph(dungeon, setting, civilization):
     dunMap = graphviz.Digraph(
