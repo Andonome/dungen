@@ -2,6 +2,27 @@ import random
 from vars import *
 from features import *
 
+def newDungeon(setting, dunSize):
+    dungeon = []
+    # 'x' always refers to the dungeon area number, so x=3
+    # means 'area 3'.
+    x = 1
+    join = False
+    if setting == "mine":
+        joinChance = 5
+    elif setting == "caves":
+        joinChance = 9
+    for x in range(dunSize):
+        dungeon.append({})
+        dungeon[x]["connections"] = []
+        dungeon[x]["features"] = []
+        dungeon[x]["creatures"] = []
+        dungeon[x]["height"] = 1
+        dungeon[x]["type"] = []
+        joinChance = dunJoin(dungeon, x, joinChance)
+    return dungeon
+
+
 # junJoin joins dungeon pieces, usually straight down (4 -- > 3), but
 # sometimes skips down (7 --> 3).
 
@@ -29,26 +50,6 @@ def dunJoin(dungeon, x, joinChance):
             joinChance = dunJoin(dungeon, x, joinChance)
     return joinChance
 
-
-def newDungeon(setting, dunSize):
-    dungeon = []
-    # 'x' always refers to the dungeon area number, so x=3
-    # means 'area 3'.
-    x = 1
-    join = False
-    if setting == "mine":
-        joinChance = 5
-    elif setting == "caves":
-        joinChance = 9
-    for x in range(dunSize):
-        dungeon.append({})
-        dungeon[x]["connections"] = []
-        dungeon[x]["features"] = []
-        dungeon[x]["creatures"] = []
-        dungeon[x]["height"] = 1
-        dungeon[x]["type"] = []
-        joinChance = dunJoin(dungeon, x, joinChance)
-    return dungeon
 
 
 # Now the dungeon gets features, like 'chasm', or 'mana
