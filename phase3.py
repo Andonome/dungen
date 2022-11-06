@@ -10,7 +10,6 @@ def tunnelInvasion(dungeon):
     dungeon[x]["connections"] = [-1]
     dungeon[x]["features"] = ["underdark"]
     dungeon[x]["creatures"] = []
-    dungeon[x]["height"] = 1
     dungeon[x]["type"] = []
 
 

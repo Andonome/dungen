@@ -18,7 +18,6 @@ def newDungeon(setting, dunSize):
         dungeon[x]["connections"] = []
         dungeon[x]["features"] = []
         dungeon[x]["creatures"] = []
-        dungeon[x]["height"] = 1
         dungeon[x]["type"] = []
         joinChance = dunJoin(dungeon, x, joinChance)
     return dungeon
