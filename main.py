@@ -16,4 +16,25 @@ def gogoDungeon(setting=setting, dunSize=dunSize, civilization=civilization):
     civilize(dungeon)
     rampage(dungeon)
     graph(dungeon, setting, civilization)
+    return dungeon
+
+
+dungeon = gogoDungeon()
+
+testList = {}
+
+def testDicPresence(dungeon,dic,testList=testList):
+    for f in dic:
+        testList[f] = 0
+        for x in dungeon:
+            if f in x["features"]:
+                testList[f] += 1
+    return testList
+
+def testD(testList=testList):
+    for i in range(10):
+        i = gogoDungeon()
+        testList = testDicPresence(i,enemies,testList)
+    return testList
+
 
