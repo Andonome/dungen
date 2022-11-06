@@ -23,7 +23,8 @@ dungeon = gogoDungeon()
 
 testList = {}
 
-def testDicPresence(dungeon,dic,testList=testList):
+
+def testDicPresence(dungeon, dic, testList=testList):
     for f in dic:
         testList[f] = 0
         for x in dungeon:
@@ -31,10 +32,9 @@ def testDicPresence(dungeon,dic,testList=testList):
                 testList[f] += 1
     return testList
 
+
 def testD(testList=testList):
     for i in range(10):
         i = gogoDungeon()
-        testList = testDicPresence(i,enemies,testList)
+        testList = testDicPresence(i, enemies, testList)
     return testList
-
-

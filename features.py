@@ -959,6 +959,5 @@ specialDoors = {
 }
 
 
-
 for f in specialDoors:
     specialDoors[f]["clashes"].add("doors")

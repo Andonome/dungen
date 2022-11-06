@@ -2,6 +2,7 @@ import random
 from vars import *
 from features import *
 
+
 def newDungeon(setting, dunSize):
     dungeon = []
     # 'x' always refers to the dungeon area number, so x=3
@@ -49,7 +50,6 @@ def dunJoin(dungeon, x, joinChance):
         if tn(joinChance + 1):
             joinChance = dunJoin(dungeon, x, joinChance)
     return joinChance
-
 
 
 # Now the dungeon gets features, like 'chasm', or 'mana
