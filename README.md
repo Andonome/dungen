@@ -68,6 +68,16 @@ Types include:
 These types determine where rooms can go.
 You don't want a kitchen in a tunnel, or everyone will wander through while you're trying to cook, and there's no use having a guard room in last area of the dungeon, after some marauder has travelled past the living area and treasure room.
 
+# Tests
+
+To test a change, run
+
+> python -i main.py
+
+> testD(30)
+
+This will run 30 tests of the dungeon script, to see if any break.
+
 ```
 
                                                                                                                                                   ┌────────────────────────┐
