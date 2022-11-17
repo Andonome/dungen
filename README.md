@@ -4,7 +4,7 @@ This script crates a fantasy RPG dungeon as a conceptual map.
 
 ## Method
 
-The script will attempt to create a dungeon, step by step, going through the dungeon's history.
+The script will attempt to create a dungeon, step by step, going through the dungeon's history, and creating each area as if the dungeon were developing from empty caverns.
 It could start as the empty passages left by water erosion, or a tin-mine.
 
 After that, a civilization establishes itself, traps can be made, and finally, a nasty bad-guy faction invades, populating the place with nasty things.
