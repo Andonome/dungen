@@ -33,7 +33,7 @@ def testDicPresence(dungeon, dic, testList=testList):
     return testList
 
 
-def testD(noTests=10,testList=testList):
+def testD(noTests=10, testList=testList):
     for i in range(noTests):
         i = gogoDungeon()
         testList = testDicPresence(i, enemies, testList)

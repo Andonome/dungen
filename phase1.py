@@ -62,6 +62,7 @@ def dunJoin(dungeon, x, joinChance):
 # We then skip along the dungeon's rooms randomly dropping
 # our list-items: 1,3,5,11,13,14.
 
+
 def giveFeatures(dungeon, setting):
     localFeatures = []
     # n tracks features which have multiple
@@ -111,6 +112,7 @@ def labelType(dungeon):
             elif "split" not in dungeon[c]["type"]:
                 dungeon[c]["type"].append("tunnel")
 
+
 # This function literally just finds an exit. Give it a room
 # number, and it return a list of the rooms to move through
 # to get to the entrance.
@@ -136,8 +138,10 @@ def findExit(dungeon, c=""):
     else:
         return route2
 
+
 # I've never used this function, but I still like it. It
 # finds a route from room x to room y.
+
 
 def findRoute(dungeon, x, y):
     x = findExit(dungeon, x)
@@ -153,6 +157,7 @@ def findRoute(dungeon, x, y):
     x += y
     return x
 
+
 # Races can only place an impassable trap (like a swinging
 # sphere of anihilation) in tunnels which form alternative
 # routes - not the only route to a place, or nobody would be
@@ -164,6 +169,7 @@ def findRoute(dungeon, x, y):
 # remove the label of 'alternative'. Anything which remains
 # with the label must really be an alternative, because
 # nobody needs it to reach the exit.
+
 
 def labelAlternatives(dungeon):
     for x in range(len(dungeon)):

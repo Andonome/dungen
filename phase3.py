@@ -8,6 +8,7 @@ from vars import *
 # entrance. This creates a new entrance, labelled
 # 'underdark', where the goblins sneak in.
 
+
 def tunnelInvasion(dungeon):
     x = len(dungeon)
     dungeon.append({})
@@ -16,10 +17,12 @@ def tunnelInvasion(dungeon):
     dungeon[x]["creatures"] = []
     dungeon[x]["type"] = []
 
+
 # Rampage sets the stage - nura break in from below with a
 # tunnelInvasion, others enter through the entrance, place
 # their traps/ items/ monsters, and the dungeon's
 # complete.
+
 
 def rampage(dungeon):
     if (

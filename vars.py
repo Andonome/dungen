@@ -1,5 +1,6 @@
 import random
 
+
 # The TN function just rolls 2D6 to make choices.
 def tn(tn):
     roll = random.randint(1, 6) + random.randint(1, 6)
@@ -35,6 +36,7 @@ enemy = random.choice(invaders)
 
 print("Invaders: " + enemy)
 
+
 # Sometimes you just want a big list  of what's in a room,
 # e.g. ["river", "stone bridge", "tunnel"].
 def getContents(dungeon, x):
@@ -49,6 +51,7 @@ def getContents(dungeon, x):
 # places. Each one checks it's not classhing in some way,
 # e.g. a library should not be placed over a river, and a
 # cavern is no place to call home.
+
 
 def placeContents(dungeon, featureList, contentType, race=civilization, TN=3):
     contentList = []
