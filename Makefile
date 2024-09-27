@@ -15,3 +15,5 @@ $(VENV)/bin/activate: requirements.txt
 clean:
 	$(RM) -r __pycache__
 	$(RM) -r $(VENV)
+	$(RM) *.pdf
+	$(RM) *.gv
