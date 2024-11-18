@@ -9,6 +9,22 @@ def get_join_chance(setting : str) -> int:
     will make it easier to refactor later.  Sets join change to '5' if the setting is not known, as 5
     is a known-good number"""
 
+    """ Later, we can create 'settings' objects which can hold these attributes, and we can load them in from
+    YAML files.  Might look like this:
+    
+    dungeon_settings:
+        - resource_type: dungeon_setting
+          name: mine
+          join_chance: 5
+        - resource_type: dungeon_setting
+          name: caves
+          join_chance: 9
+        
+    Plus any other attributes you'd want in there. Later though.
+    
+    
+    """
+
     setting_join_chance = {"mine":5,
                            "caves":9}
 
@@ -33,41 +49,39 @@ def initialize_dungeon(setting: str, dungeon_size: int):
     ]
 
     for room_index in range(dungeon_size):
-        join_chance = dunJoin(dungeon, room_index, join_chance)
+        join_chance = join_room(dungeon, room_index, join_chance)
 
     return dungeon
 
+def join_room(dungeon, room_index : int, join_chance : int):
+    """
+    Joins dungeon pieces, usually straight down (4 -- > 3), but sometimes skips down (7 --> 3).
+    Each connection is relative, so 'dungeon[3]["connection"] = -1' means that room 3 is connected to 2 (3-1 = 2), and
+    'dungeon[5]["connection"] = -3' means that room 5 is connected to room 2 (5-3 = 2).
+    """
 
-# dunJoin joins dungeon pieces, usually straight down (4 -- > 3), but
-# sometimes skips down (7 --> 3).
-# Each connection is relative, so 'dungeon[3]["connection"] = -1'
-# means that room 3 is connected to 2 (3-1 = 2), and
-# 'dungeon[5]["connection"] = -3' means that room 5 is
-# connected to room 2 (5-3 = 2).
 
-
-def dunJoin(dungeon, x, joinChance):
-    if x == 0:
-        dungeon[x]["type"].append("entrance")
+    if room_index == 0:
+        dungeon[room_index]["type"].append("entrance")
     # Initial rooms (0 to 4) connect to the room before.  After
     # that, there's a chance they connect straight down.
-    elif len(dungeon[x]["connections"]) > 1:
+    elif len(dungeon[room_index]["connections"]) > 1:
         pass
-    elif x < 3:
-        dungeon[x]["connections"].append(-1)
-    elif tn(joinChance):
-        joinChance += 2
-        if -1 not in dungeon[x]["connections"]:
-            dungeon[x]["connections"].append(-1)
+    elif room_index < 3:
+        dungeon[room_index]["connections"].append(-1)
+    elif roll_for_tn(join_chance):
+        join_chance += 2
+        if -1 not in dungeon[room_index]["connections"]:
+            dungeon[room_index]["connections"].append(-1)
     else:
-        joinChance -= 2
-        lowPoint = (x - 1) * -1
+        join_chance -= 2
+        lowPoint = (room_index - 1) * -1
         join = random.randint(max(lowPoint, -4), -2)
-        if join not in dungeon[x]["connections"]:
-            dungeon[x]["connections"].append(join)
-        if tn(joinChance + 1):
-            joinChance = dunJoin(dungeon, x, joinChance)
-    return joinChance
+        if join not in dungeon[room_index]["connections"]:
+            dungeon[room_index]["connections"].append(join)
+        if roll_for_tn(join_chance + 1):
+            join_chance = join_room(dungeon, room_index, join_chance)
+    return join_chance
 
 
 # Now the dungeon gets features, like 'chasm', or 'mana
