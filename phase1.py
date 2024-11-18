@@ -33,7 +33,7 @@ Future Development Notes:
 
 
 import random
-from features import primative_features
+from features import primitive_features
 from vars import roll_for_tn
 
 def report_dungeon_stats(dungeon):
