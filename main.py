@@ -11,7 +11,7 @@ TESTLIST = {}
 
 
 def generate_dungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.civilization):
-    dungeon = ph1.makeDungeon(setting, dunSize)
+    dungeon = ph1.generate_dungeon_layout(setting, dunSize)
     ph2.civilize(dungeon)
     ph3.rampage(dungeon)
     gph.graph(dungeon, setting, civilization)

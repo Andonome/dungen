@@ -217,7 +217,7 @@ def deadEndsConversion(dungeon):
     print("Entrances: " + str(totalEntrances))
 
 
-def makeDungeon(setting, dunSize):
+def generate_dungeon_layout(setting, dunSize):
     dungeon = newDungeon(setting, dunSize)
     labelType(dungeon)
     labelAlternatives(dungeon)

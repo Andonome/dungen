@@ -1,41 +1,61 @@
 import random
 
+CIVILIZATIONS = [
+    "elves",
+    "dwarves",
+    "gnomes"
+]
 
-# The TN function just rolls 2D6 to make choices.
-def tn(tn):
+DUNGEON_SETTINGS = [
+    "mine",
+    "caves"
+]
+
+INVADERS = [
+    "nura",
+    "necromancer"
+]
+
+RANDOM_DUNGEON_MIN_DEFAULT = 8
+RANDOM_DUNGEON_MAX_DEFAULT = 30
+
+#TODO replace print statements that showed randomly selected dungeon parameters
+
+def roll_for_tn(tn : int) -> bool:
+    """The TN function just rolls 2D6 to make choices."""
     roll = random.randint(1, 6) + random.randint(1, 6)
     if roll >= tn:
         return True
     else:
         return False
 
+def generate_dungeon_size(size_min : int = RANDOM_DUNGEON_MIN_DEFAULT, size_max : int = RANDOM_DUNGEON_MAX_DEFAULT):
+    return random.randint(size_min, size_max)
 
-dunSize = random.randint(8, 30)
-print("Size: " + str(dunSize))
-setting = random.choice(["mine", "caves"])
-print("Setting: " + setting)
+def generate_dungeon_parameters(dungeon_size : int = None,
+                                setting : str = None,
+                                civilization : str = None,
+                                invaders : str = None) -> dict:
+    """ Generates dungeon parameters. Picks parameters at random from constants for parameters not given.
+    Currently does not validate selections. """
 
-civilizations = [
-    "elves",
-    "dwarves",
-    "gnomes",
-]
+    dungeon_parameters = {}
 
-civilization = random.choice(civilizations)
+    if not dungeon_size:
+        dungeon_size = generate_dungeon_size()
+    if not setting:
+        setting = random.choice(DUNGEON_SETTINGS)
+    if not civilization:
+        civilization = random.choice(CIVILIZATIONS)
+    if not invaders:
+        invaders = random.choice(INVADERS)
 
-race = civilization
+    dungeon_parameters["dungeon_size"] = dungeon_size
+    dungeon_parameters["setting"] = setting
+    dungeon_parameters["civilization"] = civilization
+    dungeon_parameters["invaders"] = invaders
 
-print("Race: " + civilization)
-
-invaders = [
-    "nura",
-    "necromancer",
-]
-
-enemy = random.choice(invaders)
-
-print("Invaders: " + enemy)
-
+    return dungeon_parameters
 
 # Sometimes you just want a big list  of what's in a room,
 # e.g. ["river", "stone bridge", "tunnel"].
