@@ -10,8 +10,8 @@ import vars
 TESTLIST = {}
 
 
-def generate_dungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.civilization):
-    dungeon = ph1.generate_dungeon_layout(setting, dunSize)
+def generate_dungeon(setting : str, dungeon_size : int, civilization : str, invaders : str):
+    dungeon = ph1.generate_dungeon_layout(setting, dungeon_size)
     ph2.civilize(dungeon)
     ph3.rampage(dungeon)
     gph.graph(dungeon, setting, civilization)
@@ -36,7 +36,8 @@ def testD(noTests=10, testList=TESTLIST):
 
 
 def main():
-    dungeon = generate_dungeon()
+    dungeon_parameters = vars.generate_dungeon_parameters()
+    dungeon = generate_dungeon(**dungeon_parameters)
 
 if __name__ == "__main__":
     main()
