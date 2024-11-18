@@ -19,8 +19,6 @@ INVADERS = [
 RANDOM_DUNGEON_MIN_DEFAULT = 8
 RANDOM_DUNGEON_MAX_DEFAULT = 30
 
-#TODO replace print statements that showed randomly selected dungeon parameters
-
 def roll_for_tn(tn : int) -> bool:
     """The TN function just rolls 2D6 to make choices."""
     roll = random.randint(1, 6) + random.randint(1, 6)
@@ -56,6 +54,15 @@ def generate_dungeon_parameters(dungeon_size : int = None,
     dungeon_parameters["civilization"] = civilization
     dungeon_parameters["invaders"] = invaders
 
+    print("== Dungeon parameters set ==")
+    print(f"Size: {dungeon_size}")
+    print(f"Setting: {setting}")
+    print(f"Civilization: {civilization}")
+    print(f"Invaders: {invaders}")
+    print("="*30)
+
+
+
     return dungeon_parameters
 
 def get_contents(dungeon, room_index):
@@ -65,13 +72,6 @@ def get_contents(dungeon, room_index):
         if type(dungeon[room_index][thing]) == list:
             contents += dungeon[room_index][thing]
     return set(contents)
-
-
-# Here the elves/dwarves/necromancers leave their stuff in
-# places. Each one checks it's not classhing in some way,
-# e.g. a library should not be placed over a river, and a
-# cavern is no place to call home.
-
 
 def place_contents(dungeon, feature_list, content_type, civilization, tn=3):
     """
