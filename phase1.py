@@ -49,7 +49,7 @@ def initialize_dungeon(setting: str, dungeon_size: int):
     ]
 
     for room_index in range(dungeon_size):
-        join_chance = join_room(dungeon, room_index, join_chance)
+        join_chance, dungeon = join_room(dungeon, room_index, join_chance)
 
     return dungeon
 
@@ -81,7 +81,7 @@ def join_room(dungeon, room_index : int, join_chance : int):
             dungeon[room_index]["connections"].append(join)
         if roll_for_tn(join_chance + 1):
             join_chance = join_room(dungeon, room_index, join_chance)
-    return join_chance
+    return join_chance, dungeon
 
 
 # Now the dungeon gets features, like 'chasm', or 'mana
@@ -99,7 +99,7 @@ def giveFeatures(dungeon, setting):
     while n < 5:
         for f in primitiveFeatures:
             if (
-                vars.roll_for_tn(6)
+                roll_for_tn(6)
                 and setting in primitiveFeatures[f]["settings"]
                 and n < primitiveFeatures[f]["number"]
             ):
