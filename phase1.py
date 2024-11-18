@@ -1,10 +1,42 @@
-import random
+"""
+Dungeon Generation Module
 
+This module handles the generation and modification of dungeon layouts, including:
+- Room connections and structure
+- Room type labeling (dead ends, tunnels, etc.)
+- Feature placement
+- Entrance/exit handling
+- Alternative path marking
+
+A dungeon is represented as a list of room dictionaries, where each room has:
+- connections: List of relative offsets to connected rooms
+- features: List of environmental features
+- creatures: List of creatures in the room
+- type: List of room type labels
+
+Future Development Notes:
+    Settings and configuration could be moved to YAML files, for example:
+
+    dungeon_settings:
+        - resource_type: dungeon_setting
+          name: mine
+          join_chance: 5
+        - resource_type: dungeon_setting
+          name: caves
+          join_chance: 9
+
+    This will allow for easier configuration of dungeon attributes without
+    code changes. With all resources set up like this, we can even later convert stat blocks and other things like that
+    into YAML files, making production even faster.  Imagine just... importing the player handbook or additional books.
+
+"""
+
+
+import random
 from features import primitiveFeatures
 from vars import roll_for_tn
 
 #TODO: Replace print statements reporting dead ends and entrances
-
 
 def get_join_chance(setting : str) -> int:
     """
@@ -111,34 +143,59 @@ def join_room(dungeon, room_index : int, join_chance : int):
             join_chance = join_room(dungeon, room_index, join_chance)
     return join_chance, dungeon
 
-# Now the dungeon gets features, like 'chasm', or 'mana
-# lakes'.
-# These come from the 'primitiveFeatures' list, then each one is checked to see if it fits in the current 'setting' ("mine", or "dungeon").
-# If so, it's added to the list.
-# We then skip along the dungeon's rooms randomly dropping
-# our list-items: 1,3,5,11,13,14.
+def add_features(dungeon, setting):
+    """
+    Adds environmental features (like chasms or mana lakes) to dungeon rooms.
 
+    Algorithm:
+    1. First collects potential features that:
+       - Pass a difficulty 6 roll
+       - Are valid for the given setting
+       - Haven't exceeded their maximum instances
+    2. Then distributes these features randomly through the dungeon,
+       spacing them out by 1-6 rooms each time
 
-def giveFeatures(dungeon, setting):
-    localFeatures = []
-    # n tracks features which have multiple
-    n = 0
-    while n < 5:
-        for f in primitiveFeatures:
-            if (
-                roll_for_tn(6)
-                and setting in primitiveFeatures[f]["settings"]
-                and n < primitiveFeatures[f]["number"]
-            ):
-                localFeatures.append(f)
-        n += 1
-    x = -1
-    for f in localFeatures:
-        x += random.randint(1, 6)
-        if x < len(dungeon) - 1:
-            dungeon[x]["features"].append(f)
-            print(f)
+    Args:
+        dungeon (list): List of room dictionaries containing features lists
+        setting (str): Dungeon setting (e.g., "mine", "dungeon") to filter valid features
 
+    Returns:
+        list: The dungeon with added features
+    """
+
+    def collect_valid_features():
+        """Gathers features valid for this setting, limited by their max instances."""
+        valid_features = []
+        feature_counts = {feature: 0 for feature in primitiveFeatures}
+
+        for _ in range(5):  # Try to add up to 5 features
+            for feature_name in primitiveFeatures:
+                feature = primitiveFeatures[feature_name]
+                if (roll_for_tn(6) and
+                        setting in feature["settings"] and
+                        feature_counts[feature_name] < feature["number"]):
+                    valid_features.append(feature_name)
+                    feature_counts[feature_name] += 1
+
+        return valid_features
+
+    def distribute_features(features):
+        """Places features in dungeon rooms with random spacing."""
+        current_room = -1
+
+        for feature in features:
+            # Skip ahead 1-6 rooms
+            current_room += random.randint(1, 6)
+
+            # If we're still in the dungeon, add the feature
+            if current_room < len(dungeon) - 1:
+                dungeon[current_room]["features"].append(feature)
+                print(f"Added {feature} to room {current_room}")
+
+    selected_features = collect_valid_features()
+    distribute_features(selected_features)
+
+    return dungeon
 
 def label_rooms(dungeon):
     """
@@ -186,7 +243,6 @@ def label_rooms(dungeon):
                 connected_room["type"].append("tunnel")
 
     return dungeon
-
 
 def convert_dead_ends(dungeon):
     """
@@ -354,10 +410,11 @@ def generate_initial_layout(setting : str, dungeon_size : int):
     dungeon = initialize_dungeon(setting, dungeon_size)
     dungeon = label_rooms(dungeon)
     dungeon = label_alternatives(dungeon)
-    deadEndsConversion(dungeon)
-    giveFeatures(dungeon, setting)
+    dungeon = convert_dead_ends(dungeon)
+    dungeon = add_features(dungeon, setting)
     # makeRiver(dungeon)
     return dungeon
+
 
 
 
