@@ -31,17 +31,17 @@ def rampage(dungeon, invaders : str):
         and "entrance" not in dungeon[len(dungeon) - 1]["type"]
     ):
         tunnelInvasion(dungeon)
-    placeContents(
+    place_contents(
         dungeon,
         enemies,
-        contentType="invaders",
+        content_type="invaders",
         civilization=invaders,
         tn=7,
     )
-    placeContents(
+    place_contents(
         dungeon,
         traps,
-        contentType="invader traps",
+        content_type="invader traps",
         civilization=invaders,
         tn=7,
     )

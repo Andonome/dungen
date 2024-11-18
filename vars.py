@@ -22,10 +22,9 @@ RANDOM_DUNGEON_MAX_DEFAULT = 30
 #TODO replace print statements that showed randomly selected dungeon parameters
 
 def roll_for_tn(tn : int) -> bool:
-    print('roll_for_tn')
     """The TN function just rolls 2D6 to make choices."""
     roll = random.randint(1, 6) + random.randint(1, 6)
-    print(f"tn: {type(tn)}")
+
     if roll >= tn:
         return True
     else:
@@ -74,27 +73,47 @@ def get_contents(dungeon, room_index):
 # cavern is no place to call home.
 
 
-def placeContents(dungeon, featureList, contentType, civilization, tn=3):
-    contentList = []
-    n = 0
-    while n < 5:
-        totalRooms = list(range(n, len(dungeon)))
-        for f in featureList:
-            for x in totalRooms:
-                contents = get_contents(dungeon, x)
-                if (
-                    n < featureList[f]["number"]
-                    and roll_for_tn(tn + n)
-                    and civilization in featureList[f]["races"]
-                    and featureList[f]["places"].intersection(contents)
-                    and featureList[f]["clashes"].isdisjoint(contents)
-                    and f not in dungeon[x]["features"]
-                ):
-                    dungeon[x]["features"].append(f)
-                    dungeon[x]["type"].append(contentType)
-                    contentList.append(f)
-                    totalRooms.remove(x)
+def place_contents(dungeon, feature_list, content_type, civilization, tn=3):
+    """
+    Places features from a civilization in valid dungeon rooms.
+
+    Here the elves/dwarves/necromancers leave their stuff in places. Each one checks it's not clashing in some way,
+    e.g. a library should not be placed over a river, and a cavern is no place to call home.
+
+    Args:
+        dungeon (list): The dungeon to place contents in
+        feature_list (dict): Features that can be placed
+        content_type (str): Type of content being placed
+        civilization (str): Who is placing the contents
+        tn (int): Target number for placement rolls, defaults to 3
+
+    Returns:
+        list: The modified dungeon
+    """
+    placed_features = []
+    attempts = 0
+
+    while attempts < 5:
+        available_rooms = list(range(attempts, len(dungeon)))
+        for feature_name in feature_list:
+            for room_index in available_rooms:
+                room_contents = get_contents(dungeon, room_index)
+                feature = feature_list[feature_name]
+
+                if (attempts < feature["number"] and
+                        roll_for_tn(tn + attempts) and
+                        civilization in feature["races"] and
+                        feature["places"].intersection(room_contents) and
+                        feature["clashes"].isdisjoint(room_contents) and
+                        feature_name not in dungeon[room_index]["features"]):
+                    dungeon[room_index]["features"].append(feature_name)
+                    dungeon[room_index]["type"].append(content_type)
+                    placed_features.append(feature_name)
+                    available_rooms.remove(room_index)
                     break
-        n += 1
-    print(30 * "=" + contentType)
-    print(contentList)
+        attempts += 1
+
+    print("=" * 30 + content_type)
+    print(placed_features)
+
+    return dungeon

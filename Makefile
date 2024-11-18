@@ -2,6 +2,7 @@ VENV = venv
 PYTHON = $(VENV)/bin/python3
 PIP = $(VENV)/bin/pip
 
+# Check for system graphviz
 GRAPHVIZ_CHECK := $(shell which dot 2>/dev/null)
 
 run: $(VENV)/bin/activate

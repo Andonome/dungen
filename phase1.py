@@ -122,7 +122,6 @@ def initialize_dungeon(setting: str, dungeon_size: int):
 
     """
     join_chance = get_join_chance(setting)
-    print(f"join_chance: {type(join_chance)}")
 
     dungeon = [
         {
@@ -140,7 +139,7 @@ def initialize_dungeon(setting: str, dungeon_size: int):
     return dungeon
 
 def join_room(dungeon, room_index : int, join_chance : int):
-    print("join_room")
+
     """
     Joins dungeon pieces, usually straight down (4 -- > 3), but sometimes skips down (7 --> 3).
     Each connection is relative, so 'dungeon[3]["connection"] = -1' means that room 3 is connected to 2 (3-1 = 2), and
