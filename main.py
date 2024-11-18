@@ -13,7 +13,7 @@ TESTLIST = {}
 def generate_dungeon(setting : str, dungeon_size : int, civilization : str, invaders : str):
     dungeon = ph1.generate_initial_layout(setting, dungeon_size)
     ph2.civilize(dungeon, civilization)
-    ph3.rampage(dungeon)
+    ph3.rampage(dungeon, invaders)
     gph.graph(dungeon, setting, civilization)
     return dungeon
 

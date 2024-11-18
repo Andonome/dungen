@@ -1,7 +1,7 @@
 from features import *
 from traps import *
 from enemies import *
-from vars import *
+from vars import roll_for_tn
 
 # A tunnel invasion is when the enemy break into the
 # dungeon from some inner room, rather than through the
@@ -24,10 +24,10 @@ def tunnelInvasion(dungeon):
 # complete.
 
 
-def rampage(dungeon):
+def rampage(dungeon, invaders : str):
     if (
-        enemy == "nura"
-        and tn(6)
+        invaders == "nura"
+        and roll_for_tn(6)
         and "entrance" not in dungeon[len(dungeon) - 1]["type"]
     ):
         tunnelInvasion(dungeon)
@@ -35,13 +35,13 @@ def rampage(dungeon):
         dungeon,
         enemies,
         contentType="invaders",
-        race=enemy,
-        TN=7,
+        civilization=invaders,
+        tn=7,
     )
     placeContents(
         dungeon,
         traps,
         contentType="invader traps",
-        race=enemy,
-        TN=7,
+        civilization=invaders,
+        tn=7,
     )

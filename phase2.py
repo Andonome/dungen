@@ -1,6 +1,6 @@
 import random
 import features
-import traps
+from traps import traps
 import vars
 
 # We place the elves, dwarves, or whichever race has come
@@ -26,27 +26,27 @@ def civilize(dungeon, civilization : str):
         features.civilFeatures,
         contentType="civilized",
         civilization=civilization,
-        TN=5,
+        tn=5,
     )
-    vars.placeContents(dungeon, traps, contentType="traps", race=civilization, TN=traps_number)
+    vars.placeContents(dungeon, traps, contentType="traps", civilization=civilization, tn=traps_number)
     vars.placeContents(
         dungeon,
         features.treasures,
         contentType="treasures",
         civilization=civilization,
-        TN=6,
+        tn=6,
     )
     vars.placeContents(
         dungeon,
         features.mobilityFeatures,
         contentType="mobility",
         civilization=civilization,
-        TN=2,
+        tn=2,
     )
     vars.placeContents(
         dungeon,
         features.specialDoors,
         contentType="doors",
         civilization=civilization,
-        TN=8,
+        tn=8,
     )
