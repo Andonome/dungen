@@ -210,7 +210,7 @@ def convert_dead_ends(dungeon):
         list: The modified dungeon with converted dead ends
     """
 
-    def convert_to_entrance(room, room_index):
+    def convert_to_entrance(room):
         """Converts a dead end room into an entrance."""
         room["type"].remove("dead end")
         if "end" in room["type"]:
@@ -244,8 +244,7 @@ def convert_dead_ends(dungeon):
         new_entrance_index = random.choice(dead_end_indices)
         dead_end_indices.remove(new_entrance_index)
         dungeon[new_entrance_index] = convert_to_entrance(
-            dungeon[new_entrance_index],
-            new_entrance_index
+            dungeon[new_entrance_index]
         )
         entrance_count = 1
     else:
@@ -256,8 +255,7 @@ def convert_dead_ends(dungeon):
         new_entrance_index = random.choice(dead_end_indices)
         dead_end_indices.remove(new_entrance_index)
         dungeon[new_entrance_index] = convert_to_entrance(
-            dungeon[new_entrance_index],
-            new_entrance_index
+            dungeon[new_entrance_index]
         )
         entrance_count += 1
 
