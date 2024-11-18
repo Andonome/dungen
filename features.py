@@ -2,7 +2,7 @@
 # with a list of how common they are, a sub-list of where they might occur, and a description.
 
 
-primitiveFeatures = {
+primative_features = {
     "stallagmites": {
         "number": 2,
         "description": "difficult to walk over",
