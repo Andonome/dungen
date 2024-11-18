@@ -122,6 +122,7 @@ def initialize_dungeon(setting: str, dungeon_size: int):
 
     """
     join_chance = get_join_chance(setting)
+    print(f"join_chance: {type(join_chance)}")
 
     dungeon = [
         {
@@ -139,6 +140,7 @@ def initialize_dungeon(setting: str, dungeon_size: int):
     return dungeon
 
 def join_room(dungeon, room_index : int, join_chance : int):
+    print("join_room")
     """
     Joins dungeon pieces, usually straight down (4 -- > 3), but sometimes skips down (7 --> 3).
     Each connection is relative, so 'dungeon[3]["connection"] = -1' means that room 3 is connected to 2 (3-1 = 2), and
@@ -175,7 +177,8 @@ def join_room(dungeon, room_index : int, join_chance : int):
         if join not in dungeon[room_index]["connections"]:
             dungeon[room_index]["connections"].append(join)
         if roll_for_tn(join_chance + 1):
-            join_chance = join_room(dungeon, room_index, join_chance)
+            # Unpacking and catching the dungeon that we're not using to prevent catching both as a tuple
+            join_chance, _ = join_room(dungeon, room_index, join_chance)
     return join_chance, dungeon
 
 def add_features(dungeon, setting):

@@ -25,7 +25,7 @@ def civilize(dungeon, civilization : str):
         dungeon,
         features.civilFeatures,
         contentType="civilized",
-        race=civilization,
+        civilization=civilization,
         TN=5,
     )
     vars.placeContents(dungeon, traps, contentType="traps", race=civilization, TN=traps_number)
@@ -33,20 +33,20 @@ def civilize(dungeon, civilization : str):
         dungeon,
         features.treasures,
         contentType="treasures",
-        race=civilization,
+        civilization=civilization,
         TN=6,
     )
     vars.placeContents(
         dungeon,
         features.mobilityFeatures,
         contentType="mobility",
-        race=civilization,
+        civilization=civilization,
         TN=2,
     )
     vars.placeContents(
         dungeon,
         features.specialDoors,
         contentType="doors",
-        race=civilization,
+        civilization=civilization,
         TN=8,
     )

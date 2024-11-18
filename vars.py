@@ -22,8 +22,10 @@ RANDOM_DUNGEON_MAX_DEFAULT = 30
 #TODO replace print statements that showed randomly selected dungeon parameters
 
 def roll_for_tn(tn : int) -> bool:
+    print('roll_for_tn')
     """The TN function just rolls 2D6 to make choices."""
     roll = random.randint(1, 6) + random.randint(1, 6)
+    print(f"tn: {type(tn)}")
     if roll >= tn:
         return True
     else:
@@ -57,13 +59,12 @@ def generate_dungeon_parameters(dungeon_size : int = None,
 
     return dungeon_parameters
 
-# Sometimes you just want a big list  of what's in a room,
-# e.g. ["river", "stone bridge", "tunnel"].
-def getContents(dungeon, x):
+def get_contents(dungeon, room_index):
+    """Returns a set of what's in the room. Ignores duplicates."""
     contents = []
-    for thing in dungeon[x]:
-        if type(dungeon[x][thing]) == list:
-            contents += dungeon[x][thing]
+    for thing in dungeon[room_index]:
+        if type(dungeon[room_index][thing]) == list:
+            contents += dungeon[room_index][thing]
     return set(contents)
 
 
@@ -73,18 +74,18 @@ def getContents(dungeon, x):
 # cavern is no place to call home.
 
 
-def placeContents(dungeon, featureList, contentType, race=civilization, TN=3):
+def placeContents(dungeon, featureList, contentType, civilization, tn=3):
     contentList = []
     n = 0
     while n < 5:
         totalRooms = list(range(n, len(dungeon)))
         for f in featureList:
             for x in totalRooms:
-                contents = getContents(dungeon, x)
+                contents = get_contents(dungeon, x)
                 if (
                     n < featureList[f]["number"]
-                    and tn(TN + n)
-                    and race in featureList[f]["races"]
+                    and roll_for_tn(tn + n)
+                    and civilization in featureList[f]["races"]
                     and featureList[f]["places"].intersection(contents)
                     and featureList[f]["clashes"].isdisjoint(contents)
                     and f not in dungeon[x]["features"]

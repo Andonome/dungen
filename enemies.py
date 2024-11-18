@@ -282,7 +282,7 @@ enemies = {
             "necromancer",
             "nura",
         },
-        "description": "ghoul " + civilization,
+        "description": "ghoul $civilization",
         "places": {
             "living quarters",
             "workers' quarters",
