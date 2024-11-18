@@ -16,8 +16,6 @@ def gogoDungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.ci
     return dungeon
 
 
-dungeon = gogoDungeon()
-
 testList = {}
 
 
@@ -35,3 +33,11 @@ def testD(noTests=10, testList=testList):
         i = gogoDungeon()
         testList = testDicPresence(i, vars.enemies, testList)
     return testList
+
+
+
+def main():
+    dungeon = gogoDungeon()
+
+if __name__ == "__main__":
+    main()
