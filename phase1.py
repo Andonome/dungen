@@ -174,49 +174,7 @@ def label_rooms(dungeon):
     return dungeon
 
 
-# This function literally just finds an exit. Give it a room
-# number, and it return a list of the rooms to move through
-# to get to the entrance.
 
-
-def findExit(dungeon, c=""):
-    if c == "":
-        # start at the highest room
-        c = len(dungeon) - 1
-    # start mapping the root,  from e.g. room 25
-    choice = c
-    route1 = [c]
-    route2 = [c]
-    while c > 0:
-        c = c + dungeon[c]["connections"][0]
-        route1.append(c)
-    c = choice
-    while c > 0:
-        c = c + dungeon[c]["connections"][-1]
-        route2.append(c)
-    if len(route1) <= len(route2):
-        return route1
-    else:
-        return route2
-
-
-# I've never used this function, but I still like it. It
-# finds a route from room x to room y.
-
-
-def findRoute(dungeon, x, y):
-    x = findExit(dungeon, x)
-    y = findExit(dungeon, y)
-    while x[-1] == y[-1]:
-        join = x[-1]
-        x.remove(x[-1])
-        y.remove(y[-1])
-        if len(x) * len(y) == 0:
-            break
-    x.append(join)
-    y.reverse()
-    x += y
-    return x
 
 
 # Races can only place an impassable trap (like a swinging
@@ -286,3 +244,48 @@ def generate_initial_layout(setting : str, dungeon_size : int):
     giveFeatures(dungeon, setting)
     # makeRiver(dungeon)
     return dungeon
+
+
+# This function literally just finds an exit. Give it a room
+# number, and it return a list of the rooms to move through
+# to get to the entrance.
+
+
+# def findExit(dungeon, c=""):
+#     if c == "":
+#         # start at the highest room
+#         c = len(dungeon) - 1
+#     # start mapping the root,  from e.g. room 25
+#     choice = c
+#     route1 = [c]
+#     route2 = [c]
+#     while c > 0:
+#         c = c + dungeon[c]["connections"][0]
+#         route1.append(c)
+#     c = choice
+#     while c > 0:
+#         c = c + dungeon[c]["connections"][-1]
+#         route2.append(c)
+#     if len(route1) <= len(route2):
+#         return route1
+#     else:
+#         return route2
+
+
+# I've never used this function, but I still like it. It
+# finds a route from room x to room y.
+
+
+# def findRoute(dungeon, x, y):
+#     x = findExit(dungeon, x)
+#     y = findExit(dungeon, y)
+#     while x[-1] == y[-1]:
+#         join = x[-1]
+#         x.remove(x[-1])
+#         y.remove(y[-1])
+#         if len(x) * len(y) == 0:
+#             break
+#     x.append(join)
+#     y.reverse()
+#     x += y
+#     return x
