@@ -3,11 +3,22 @@ import random
 from features import primitiveFeatures
 from vars import roll_for_tn
 
+#TODO: Replace print statements reporting dead ends and entrances
+
 
 def get_join_chance(setting : str) -> int:
-    """ Until this is an attribute of an object, separating this out into its own function
+    """
+    Until this is an attribute of an object, separating this out into its own function
     will make it easier to refactor later.  Sets join change to '5' if the setting is not known, as 5
-    is a known-good number"""
+    is a known-good number
+
+    Args:
+        setting (string): The dungeon setting, such as 'caves' or 'mine'
+
+    Returns:
+        join_chance (int): The join chance, to be rolled against TN
+
+    """
 
     """ Later, we can create 'settings' objects which can hold these attributes, and we can load them in from
     YAML files.  Might look like this:
@@ -33,8 +44,16 @@ def get_join_chance(setting : str) -> int:
 
 def initialize_dungeon(setting: str, dungeon_size: int):
     """
-    Initializes a new dungeon by its size,
-    joining based on its settings attribute for join chance.
+    Initializes a new dungeon by its size, joining rooms based on its settings attribute for join chance.
+    A dungeon is a list of rooms that contain attribute dictionaries.
+
+    Args:
+        setting (string): The dungeon setting, such as 'caves' or 'mine'
+        dungeon_size (int): The size, in rooms, of the dungeon.
+
+    Returns:
+        dungeon (list): Returns the dungeon.
+
     """
     join_chance = get_join_chance(setting)
 
@@ -58,6 +77,16 @@ def join_room(dungeon, room_index : int, join_chance : int):
     Joins dungeon pieces, usually straight down (4 -- > 3), but sometimes skips down (7 --> 3).
     Each connection is relative, so 'dungeon[3]["connection"] = -1' means that room 3 is connected to 2 (3-1 = 2), and
     'dungeon[5]["connection"] = -3' means that room 5 is connected to room 2 (5-3 = 2).
+
+    Args:
+        dungeon (list): A list of rooms containing a dictionary of room attributes
+        room_index (int): The index number of the room in the dungeon
+        join_chance (int): The chance for a room to be joined.
+
+    Returns:
+        join_chance (int): The updated join chance
+        dungeon (list): The updated dungeon
+
     """
 
 
@@ -126,6 +155,9 @@ def label_rooms(dungeon):
 
     Args:
         dungeon (list): List of room dictionaries
+
+    Returns:
+        dungeon (list): Returns the dungeon. Not necessary but will make refactoring easier.
     """
 
     def get_initial_room_type(connections, is_special_room):
@@ -173,36 +205,6 @@ def label_rooms(dungeon):
 
     return dungeon
 
-
-
-
-
-# Races can only place an impassable trap (like a swinging
-# sphere of anihilation) in tunnels which form alternative
-# routes - not the only route to a place, or nobody would be
-# able to go to the toilet. Therefore, we find and label
-# all the alternative passages (which you don't have to go
-# through).
-# Actually, we just lavel everythign an 'alternative', then
-# go to every dead-end, and find the route to the exit, and
-# remove the label of 'alternative'. Anything which remains
-# with the label must really be an alternative, because
-# nobody needs it to reach the exit.
-
-
-def labelAlternatives(dungeon):
-    for x in range(len(dungeon)):
-        if "dead end" not in dungeon[x]["type"]:
-            dungeon[x]["type"].append("alternative")
-        if len(dungeon[x]["connections"]) == 1:
-            c = x + dungeon[x]["connections"][0]
-            if "alternative" in dungeon[c]["type"]:
-                dungeon[c]["type"].remove("alternative")
-        for x in findExit(dungeon):
-            if "alternative" in dungeon[x]["type"]:
-                dungeon[x]["type"].remove("alternative")
-
-
 # turn one dead end into an entrance
 def deadEndsConversion(dungeon):
     endPoints = []
@@ -238,40 +240,91 @@ def deadEndsConversion(dungeon):
 
 def generate_initial_layout(setting : str, dungeon_size : int):
     dungeon = initialize_dungeon(setting, dungeon_size)
-    label_rooms(dungeon)
-    labelAlternatives(dungeon)
+    dungeon = label_rooms(dungeon)
+    dungeon = label_alternatives(dungeon)
     deadEndsConversion(dungeon)
     giveFeatures(dungeon, setting)
     # makeRiver(dungeon)
     return dungeon
 
 
-
-
-
-def findExit(dungeon, c=""):
+def find_exit(dungeon, start=None):
     """
-    This function literally just finds an exit. Give it a room number, and it return a list of the rooms to move through
-    to get to the entrance.
+    Finds a path from a given room to the entrance (room 0).
+    Returns the shorter path between:
+    - Always taking first available connection
+    - Always taking last available connection
+
+    Dungeon not returned as it is not modified.
+
+    Args:
+        dungeon (list): List of room dictionaries with connections
+        start (int, optional): Starting room number. If None, starts from last room.
+
+    Returns:
+        list: Room indexes forming the shorter path to the entrance
     """
-    if c == "":
-        # start at the highest room
-        c = len(dungeon) - 1
-    # start mapping the root,  from e.g. room 25
-    choice = c
-    route1 = [c]
-    route2 = [c]
-    while c > 0:
-        c = c + dungeon[c]["connections"][0]
-        route1.append(c)
-    c = choice
-    while c > 0:
-        c = c + dungeon[c]["connections"][-1]
-        route2.append(c)
-    if len(route1) <= len(route2):
-        return route1
-    else:
-        return route2
+    # Use last room as default starting point
+    current = len(dungeon) - 1 if start is None else start
+
+    # Try path using first connections
+    path1 = [current]
+    room = current
+    while room > 0:
+        room = room + dungeon[room]["connections"][0]
+        path1.append(room)
+
+    # Try path using last connections
+    path2 = [current]
+    room = current
+    while room > 0:
+        room = room + dungeon[room]["connections"][-1]
+        path2.append(room)
+
+    # Return the shorter path
+    return path1 if len(path1) <= len(path2) else path2
+
+
+def label_alternatives(dungeon):
+    """
+    Labels paths that might be suitable for traps (non-critical paths).
+    First marks all non-dead-ends as alternative routes, then removes
+    this label from one valid path to the exit.
+
+    Args:
+        dungeon (list): List of room dictionaries
+
+    Returns:
+        list: The modified dungeon with alternative paths labeled. Not neccesary, but will make refactoring easier later.
+
+
+    Races can only place an impassable trap (like a swinging sphere of annihilation) in tunnels which form alternative
+    routes - not the only route to a place, or nobody would be able to go to the toilet. Therefore, we find and label
+    all the alternative passages (which you don't have to go through).
+
+    Actually, we just label everything an 'alternative', then go to every dead-end, and find the route to the exit, and
+    remove the label of 'alternative'. Anything which remains with the label must really be an alternative, because
+    nobody needs it to reach the exit.
+
+    """
+    # Mark all non-dead-ends as potential alternatives
+    for room in dungeon:
+        if "dead end" not in room["type"]:
+            room["type"].append("alternative")
+
+    # Remove alternative label if the room connects to a dead end.
+    for i, room in enumerate(dungeon):
+        if len(room["connections"]) == 1:
+            connected_room = i + room["connections"][0]
+            if "alternative" in dungeon[connected_room]["type"]:
+                dungeon[connected_room]["type"].remove("alternative")
+
+    # Find a path to the exit, remove alternative label from that path.
+    for room_index in find_exit(dungeon):
+        if "alternative" in dungeon[room_index]["type"]:
+            dungeon[room_index]["type"].remove("alternative")
+
+    return dungeon
 
 
 # I've never used this function, but I still like it. It
