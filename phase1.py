@@ -64,7 +64,7 @@ def join_room(dungeon, room_index : int, join_chance : int):
     if room_index == 0:
         dungeon[room_index]["type"].append("entrance")
     # Initial rooms (0 to 4) connect to the room before.  After
-    # that, there's a chance they connect straight down..
+    # that, there's a chance they connect straight down.
     elif len(dungeon[room_index]["connections"]) > 1:
         pass
     elif room_index < 3:
@@ -75,8 +75,8 @@ def join_room(dungeon, room_index : int, join_chance : int):
             dungeon[room_index]["connections"].append(-1)
     else:
         join_chance -= 2
-        lowPoint = (room_index - 1) * -1
-        join = random.randint(max(lowPoint, -4), -2)
+        low_point = (room_index - 1) * -1
+        join = random.randint(max(low_point, -4), -2)
         if join not in dungeon[room_index]["connections"]:
             dungeon[room_index]["connections"].append(join)
         if roll_for_tn(join_chance + 1):
@@ -113,13 +113,17 @@ def giveFeatures(dungeon, setting):
             print(f)
 
 
-# Room types show relations between rooms, such as 'the
-# entrance', or a simple tunnel - a room which goes to
-# another room.
+
 
 
 def labelType(dungeon):
-    dungeon[len(dungeon) - 1]["type"].append("end")
+    """
+    Room types show relations between rooms, such as 'the entrance', or a simple tunnel - a room which goes
+    to another room.
+    """
+
+    dungeon[-1]["type"].append("end")
+
     for x in range(len(dungeon)):
         if len(dungeon[x]["connections"]) == 1:
             dungeon[x]["type"].append("dead end")
