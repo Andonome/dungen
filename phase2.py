@@ -1,7 +1,7 @@
 import random
-from features import *
-from traps import *
-from vars import *
+import features
+import traps
+import vars
 
 if civilization == "gnomes":
     trapsNo = 3
@@ -16,31 +16,31 @@ else:
 
 
 def civilize(dungeon):
-    placeContents(
+    vars.placeContents(
         dungeon,
-        civilFeatures,
+        features.civilFeatures,
         contentType="civilized",
         race=civilization,
         TN=5,
     )
-    placeContents(dungeon, traps, contentType="traps", race=civilization, TN=trapsNo)
-    placeContents(
+    vars.placeContents(dungeon, traps, contentType="traps", race=civilization, TN=trapsNo)
+    vars.placeContents(
         dungeon,
-        treasures,
+        traps.treasures,
         contentType="treasures",
         race=civilization,
         TN=6,
     )
-    placeContents(
+    vars.placeContents(
         dungeon,
-        mobilityFeatures,
+        features.mobilityFeatures,
         contentType="mobility",
         race=civilization,
         TN=2,
     )
-    placeContents(
+    vars.placeContents(
         dungeon,
-        specialDoors,
+        features.specialDoors,
         contentType="doors",
         race=civilization,
         TN=8,
