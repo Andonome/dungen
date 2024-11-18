@@ -64,7 +64,7 @@ def join_room(dungeon, room_index : int, join_chance : int):
     if room_index == 0:
         dungeon[room_index]["type"].append("entrance")
     # Initial rooms (0 to 4) connect to the room before.  After
-    # that, there's a chance they connect straight down.
+    # that, there's a chance they connect straight down..
     elif len(dungeon[room_index]["connections"]) > 1:
         pass
     elif room_index < 3:
