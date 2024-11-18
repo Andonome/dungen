@@ -36,7 +36,42 @@ import random
 from features import primitiveFeatures
 from vars import roll_for_tn
 
-#TODO: Replace print statements reporting dead ends and entrances
+def report_dungeon_stats(dungeon):
+    """
+    Generates a summary report of dungeon statistics.
+
+    Args:
+        dungeon (list): The complete dungeon structure
+
+    Returns:
+        dict: Statistics about the dungeon
+    """
+    stats = {
+        "total_rooms": len(dungeon),
+        "entrances": sum(1 for room in dungeon if "entrance" in room["type"]),
+        "dead_ends": sum(1 for room in dungeon if "dead end" in room["type"]),
+        "hidden_rooms": sum(1 for room in dungeon if "hidden" in room["type"]),
+        "features": {
+            room_index: room["features"]
+            for room_index, room in enumerate(dungeon)
+            if room["features"]
+        }
+    }
+
+    # Print the report
+    print("\nDungeon Generation Report:")
+    print(f"Total Rooms: {stats['total_rooms']}")
+    print(f"Entrances: {stats['entrances']}")
+    print(f"Dead Ends: {stats['dead_ends']}")
+    print(f"Hidden Rooms: {stats['hidden_rooms']}")
+
+    if stats['features']:
+        print("\nFeatures by Room:")
+        for room_index, features in stats['features'].items():
+            print(f"Room {room_index}: {', '.join(features)}")
+
+    return stats
+
 
 def get_join_chance(setting : str) -> int:
     """
@@ -412,6 +447,7 @@ def generate_initial_layout(setting : str, dungeon_size : int):
     dungeon = label_alternatives(dungeon)
     dungeon = convert_dead_ends(dungeon)
     dungeon = add_features(dungeon, setting)
+    report_dungeon_stats(dungeon)
     # makeRiver(dungeon)
     return dungeon
 
