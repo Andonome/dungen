@@ -1,7 +1,7 @@
 import random
-from vars import *
-from features import *
 
+from features import primitiveFeatures
+from vars import roll_for_tn
 
 
 def get_join_chance(setting : str) -> int:
@@ -99,7 +99,7 @@ def giveFeatures(dungeon, setting):
     while n < 5:
         for f in primitiveFeatures:
             if (
-                tn(6)
+                vars.roll_for_tn(6)
                 and setting in primitiveFeatures[f]["settings"]
                 and n < primitiveFeatures[f]["number"]
             ):
@@ -222,7 +222,7 @@ def deadEndsConversion(dungeon):
             endPoints.append(x)
     maxEnds = int(len(dungeon) / 10)
     for _ in range(maxEnds):
-        if tn(9 - len(endPoints)) and len(endPoints) > 0:
+        if roll_for_tn(9 - len(endPoints)) and len(endPoints) > 0:
             newEntrance = random.choice(endPoints)
             endPoints.remove(newEntrance)
             dungeon[newEntrance]["type"].remove("dead end")
@@ -235,7 +235,7 @@ def deadEndsConversion(dungeon):
         break
     for x in endPoints:
         entryway = x + dungeon[x]["connections"][0]
-        if tn(4 + len(endPoints)) and "split" not in dungeon[entryway]["type"]:
+        if roll_for_tn(4 + len(endPoints)) and "split" not in dungeon[entryway]["type"]:
             dungeon[x]["type"].remove("dead end")
             dungeon[x]["type"].append("hidden")
             dungeon[entryway]["type"].append("dead end")
@@ -247,7 +247,7 @@ def deadEndsConversion(dungeon):
 
 
 def generate_initial_layout(setting : str, dungeon_size : int):
-    dungeon = newDungeon(setting, dungeon_size)
+    dungeon = initialize_dungeon(setting, dungeon_size)
     labelType(dungeon)
     labelAlternatives(dungeon)
     deadEndsConversion(dungeon)
