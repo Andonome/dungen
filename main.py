@@ -7,6 +7,8 @@ import graph as gph
 import vars
 
 
+TESTLIST = {}
+
 
 def gogoDungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.civilization):
     dungeon = ph1.makeDungeon(setting, dunSize)
@@ -16,10 +18,7 @@ def gogoDungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.ci
     return dungeon
 
 
-testList = {}
-
-
-def testDicPresence(dungeon, dic, testList=testList):
+def testDicPresence(dungeon, dic, testList=TESTLIST):
     for f in dic:
         testList[f] = 0
         for x in dungeon:
@@ -28,7 +27,7 @@ def testDicPresence(dungeon, dic, testList=testList):
     return testList
 
 
-def testD(noTests=10, testList=testList):
+def testD(noTests=10, testList=TESTLIST):
     for i in range(noTests):
         i = gogoDungeon()
         testList = testDicPresence(i, vars.enemies, testList)
