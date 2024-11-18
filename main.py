@@ -10,7 +10,7 @@ import vars
 TESTLIST = {}
 
 
-def gogoDungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.civilization):
+def generate_dungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.civilization):
     dungeon = ph1.makeDungeon(setting, dunSize)
     ph2.civilize(dungeon)
     ph3.rampage(dungeon)
@@ -29,14 +29,14 @@ def testDicPresence(dungeon, dic, testList=TESTLIST):
 
 def testD(noTests=10, testList=TESTLIST):
     for i in range(noTests):
-        i = gogoDungeon()
+        i = generate_dungeon()
         testList = testDicPresence(i, vars.enemies, testList)
     return testList
 
 
 
 def main():
-    dungeon = gogoDungeon()
+    dungeon = generate_dungeon()
 
 if __name__ == "__main__":
     main()
