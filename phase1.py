@@ -187,37 +187,93 @@ def label_rooms(dungeon):
 
     return dungeon
 
-# turn one dead end into an entrance
-def deadEndsConversion(dungeon):
-    endPoints = []
-    totalEntrances = 1
-    for x in range(len(dungeon)):
-        if "dead end" in dungeon[x]["type"]:
-            endPoints.append(x)
-    maxEnds = int(len(dungeon) / 10)
-    for _ in range(maxEnds):
-        if roll_for_tn(9 - len(endPoints)) and len(endPoints) > 0:
-            newEntrance = random.choice(endPoints)
-            endPoints.remove(newEntrance)
-            dungeon[newEntrance]["type"].remove("dead end")
-            if "end" in dungeon[newEntrance]["type"]:
-                dungeon[newEntrance]["type"].remove("end")
-            dungeon[newEntrance]["type"].append("entrance")
-            totalEntrances += 1
-        else:
-            break
-        break
-    for x in endPoints:
-        entryway = x + dungeon[x]["connections"][0]
-        if roll_for_tn(4 + len(endPoints)) and "split" not in dungeon[entryway]["type"]:
-            dungeon[x]["type"].remove("dead end")
-            dungeon[x]["type"].append("hidden")
-            dungeon[entryway]["type"].append("dead end")
-            if "end" in dungeon[x]["type"]:
-                dungeon[x]["type"].remove("end")
-            print("Hidden room: " + str(x))
-    print("Dead ends: " + str(len(endPoints)))
-    print("Entrances: " + str(totalEntrances))
+
+def convert_dead_ends(dungeon):
+    """
+    Converts some dead ends into entrances or hidden rooms.
+    Ensures at least one entrance exists, then may add more.
+
+    Algorithm:
+    1. Ensures at least one entrance exists by converting a dead end if needed
+    2. May convert one more dead end to a new entrance (with probability based on remaining dead ends)
+    3. Then tries to convert remaining dead ends into hidden rooms
+
+    Hidden rooms:
+    - Are former dead ends
+    - Their entry point becomes marked as a dead end instead
+    - Only created if the entry point isn't already a split
+
+    Args:
+        dungeon (list): List of room dictionaries containing types and connections
+
+    Returns:
+        list: The modified dungeon with converted dead ends
+    """
+
+    def convert_to_entrance(room, room_index):
+        """Converts a dead end room into an entrance."""
+        room["type"].remove("dead end")
+        if "end" in room["type"]:
+            room["type"].remove("end")
+        room["type"].append("entrance")
+        return room
+
+    def convert_to_hidden(dead_end_index, entry_room):
+        """Converts a dead end into a hidden room and marks its entry point."""
+        room = dungeon[dead_end_index]
+        room["type"].remove("dead end")
+        if "end" in room["type"]:
+            room["type"].remove("end")
+        room["type"].append("hidden")
+        entry_room["type"].append("dead end")
+        print(f"Hidden room: {dead_end_index}")
+
+    def has_entrance():
+        """Check if dungeon has at least one entrance."""
+        return any("entrance" in room["type"] for room in dungeon)
+
+    # Find all dead ends
+    dead_end_indices = [
+        i for i, room in enumerate(dungeon)
+        if "dead end" in room["type"]
+    ]
+
+    # Ensure at least one entrance exists
+    entrance_count = 0
+    if not has_entrance() and dead_end_indices:
+        new_entrance_index = random.choice(dead_end_indices)
+        dead_end_indices.remove(new_entrance_index)
+        dungeon[new_entrance_index] = convert_to_entrance(
+            dungeon[new_entrance_index],
+            new_entrance_index
+        )
+        entrance_count = 1
+    else:
+        entrance_count = sum(1 for room in dungeon if "entrance" in room["type"])
+
+    # Maybe add one more entrance
+    if roll_for_tn(9 - len(dead_end_indices)) and dead_end_indices:
+        new_entrance_index = random.choice(dead_end_indices)
+        dead_end_indices.remove(new_entrance_index)
+        dungeon[new_entrance_index] = convert_to_entrance(
+            dungeon[new_entrance_index],
+            new_entrance_index
+        )
+        entrance_count += 1
+
+    # Try to convert remaining dead ends to hidden rooms
+    for dead_end_index in dead_end_indices:
+        entry_index = dead_end_index + dungeon[dead_end_index]["connections"][0]
+        entry_room = dungeon[entry_index]
+
+        if roll_for_tn(4 + len(dead_end_indices)) and "split" not in entry_room["type"]:
+            convert_to_hidden(dead_end_index, entry_room)
+
+    # Status report
+    print(f"Dead ends: {len(dead_end_indices)}")
+    print(f"Entrances: {entrance_count}")
+
+    return dungeon
 
 def find_exit(dungeon, start=None):
     """
