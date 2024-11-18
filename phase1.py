@@ -41,7 +41,6 @@ def get_join_chance(setting : str) -> int:
 
     return setting_join_chance.get(setting, 5)
 
-
 def initialize_dungeon(setting: str, dungeon_size: int):
     """
     Initializes a new dungeon by its size, joining rooms based on its settings attribute for join chance.
@@ -112,7 +111,6 @@ def join_room(dungeon, room_index : int, join_chance : int):
             join_chance = join_room(dungeon, room_index, join_chance)
     return join_chance, dungeon
 
-
 # Now the dungeon gets features, like 'chasm', or 'mana
 # lakes'.
 # These come from the 'primitiveFeatures' list, then each one is checked to see if it fits in the current 'setting' ("mine", or "dungeon").
@@ -144,64 +142,48 @@ def giveFeatures(dungeon, setting):
 
 def label_rooms(dungeon):
     """
-    Labels rooms in a dungeon based on their connections to other rooms.
+    Labels rooms based on their connections to other rooms.
 
     Room types:
-    - "entrance": The first room in the dungeon
-    - "end": The final room in the dungeon
-    - "dead end": Room with only one connection (excluding entrance/exit)
+    - "dead end": Room with only one connection
     - "split": Room with more than two connections
     - "tunnel": Room with exactly two connections
+    - "end": The final room in the dungeon
 
     Args:
-        dungeon (list): List of room dictionaries
+        dungeon (list): List of room dictionaries containing connections and types
 
     Returns:
-        dungeon (list): Returns the dungeon. Not necessary but will make refactoring easier.
+        list: The modified dungeon. Not necessary but will make refactoring easier.
     """
-
-    def get_initial_room_type(connections, is_special_room):
-        """
-        Determines the initial room type based on number of connections.
-        Special rooms (entrance/exit) are not marked as dead ends.
-        """
-        if is_special_room:
-            return "tunnel" if len(connections) == 2 else "split"
-
-        num_connections = len(connections)
-        if num_connections == 1:
-            return "dead end"
-        elif num_connections > 2:
-            return "split"
-        return "tunnel"
-
-    def update_connected_room_type(room):
-        """Updates room type based on its role in the dungeon layout. Updates dead ends."""
-        if "dead end" in room["type"] and "entrance" not in room["type"] and "end" not in room["type"]:
-            room["type"].remove("dead end")
-
-        if "tunnel" in room["type"]:
-            room["type"].remove("tunnel")
-            if "split" not in room["type"]:
-                room["type"].append("split")
-        elif "split" not in room["type"]:
-            room["type"].append("tunnel")
-
-    # Mark entrance and exit
-    dungeon[0]["type"].append("entrance")
+    # Mark the last room as the end
     dungeon[-1]["type"].append("end")
 
-    # Initial room type assignment
-    for i, room in enumerate(dungeon):
-        is_special_room = i == 0 or i == len(dungeon) - 1  # entrance or exit
-        room_type = get_initial_room_type(room["connections"], is_special_room)
-        room["type"].append(room_type)
+    # Initial room type assignment based on connections
+    for room in dungeon:
+        if len(room["connections"]) == 1:
+            room["type"].append("dead end")
+        elif len(room["connections"]) > 2:
+            room["type"].append("split")
+        else:
+            room["type"].append("tunnel")
 
     # Update connected rooms' types
     for i, room in enumerate(dungeon):
         for connection in room["connections"]:
             connected_room = dungeon[i + connection]
-            update_connected_room_type(connected_room)
+
+            # Remove dead end status if room is connected to
+            if "dead end" in connected_room["type"]:
+                connected_room["type"].remove("dead end")
+
+            # Update tunnel/split status
+            if "tunnel" in connected_room["type"]:
+                connected_room["type"].remove("tunnel")
+                if "split" not in connected_room["type"]:
+                    connected_room["type"].append("split")
+            elif "split" not in connected_room["type"]:
+                connected_room["type"].append("tunnel")
 
     return dungeon
 
@@ -236,17 +218,6 @@ def deadEndsConversion(dungeon):
             print("Hidden room: " + str(x))
     print("Dead ends: " + str(len(endPoints)))
     print("Entrances: " + str(totalEntrances))
-
-
-def generate_initial_layout(setting : str, dungeon_size : int):
-    dungeon = initialize_dungeon(setting, dungeon_size)
-    dungeon = label_rooms(dungeon)
-    dungeon = label_alternatives(dungeon)
-    deadEndsConversion(dungeon)
-    giveFeatures(dungeon, setting)
-    # makeRiver(dungeon)
-    return dungeon
-
 
 def find_exit(dungeon, start=None):
     """
@@ -283,7 +254,6 @@ def find_exit(dungeon, start=None):
 
     # Return the shorter path
     return path1 if len(path1) <= len(path2) else path2
-
 
 def label_alternatives(dungeon):
     """
@@ -325,6 +295,17 @@ def label_alternatives(dungeon):
             dungeon[room_index]["type"].remove("alternative")
 
     return dungeon
+
+def generate_initial_layout(setting : str, dungeon_size : int):
+    dungeon = initialize_dungeon(setting, dungeon_size)
+    dungeon = label_rooms(dungeon)
+    dungeon = label_alternatives(dungeon)
+    deadEndsConversion(dungeon)
+    giveFeatures(dungeon, setting)
+    # makeRiver(dungeon)
+    return dungeon
+
+
 
 
 # I've never used this function, but I still like it. It
