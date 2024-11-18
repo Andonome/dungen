@@ -3,20 +3,38 @@ from vars import *
 from features import *
 
 
-def initialize_dungeon(setting : str, dungeon_size : int):
-    dungeon = []
 
-    if setting == "mine":
-        joinChance = 5
-    elif setting == "caves":
-        joinChance = 9
-    for x in range(dunSize):
-        dungeon.append({})
-        dungeon[x]["connections"] = []
-        dungeon[x]["features"] = []
-        dungeon[x]["creatures"] = []
-        dungeon[x]["type"] = []
-        joinChance = dunJoin(dungeon, x, joinChance)
+def get_join_chance(setting : str) -> int:
+    """ Until this is an attribute of an object, separating this out into its own function
+    will make it easier to refactor later.  Sets join change to '5' if the setting is not known, as 5
+    is a known-good number"""
+
+    setting_join_chance = {"mine":5,
+                           "caves":9}
+
+    return setting_join_chance.get(setting, 5)
+
+
+def initialize_dungeon(setting: str, dungeon_size: int):
+    """
+    Initializes a new dungeon by its size,
+    joining based on its settings attribute for join chance.
+    """
+    join_chance = get_join_chance(setting)
+
+    dungeon = [
+        {
+            "connections": [],
+            "features": [],
+            "creatures": [],
+            "type": []
+        }
+        for _ in range(dungeon_size)
+    ]
+
+    for room_index in range(dungeon_size):
+        join_chance = dunJoin(dungeon, room_index, join_chance)
+
     return dungeon
 
 
