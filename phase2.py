@@ -3,19 +3,24 @@ import features
 import traps
 import vars
 
-if civilization == "gnomes":
-    trapsNo = 3
-elif civilization == "dwarves":
-    trapsNo = 5
-else:
-    trapsNo = 7
-
-
 # We place the elves, dwarves, or whichever race has come
 # in to civilize the would-be dingy and boring dungeon.
 
+def get_traps_number(civilization : str):
+    """
+    Sets the traps number to 7 unless the traps number is set for a civilization.
+    Civilizations should be made into objects later, but this works fine for now.
+    """
+    traps_number_for_civilization = {"gnomes": 3,
+                                     "dwarves": 5}
 
-def civilize(dungeon):
+    return traps_number_for_civilization.get(civilization, 7)
+
+
+def civilize(dungeon, civilization : str):
+
+    traps_number = get_traps_number(civilization)
+
     vars.placeContents(
         dungeon,
         features.civilFeatures,
@@ -23,10 +28,10 @@ def civilize(dungeon):
         race=civilization,
         TN=5,
     )
-    vars.placeContents(dungeon, traps, contentType="traps", race=civilization, TN=trapsNo)
+    vars.placeContents(dungeon, traps, contentType="traps", race=civilization, TN=traps_number)
     vars.placeContents(
         dungeon,
-        traps.treasures,
+        features.treasures,
         contentType="treasures",
         race=civilization,
         TN=6,
