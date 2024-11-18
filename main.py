@@ -1,21 +1,18 @@
 #!/usr/bin/python
 
-# phase1 deals with stage 1: making the space
-from phase1 import *
-from phase2 import *
-from phase3 import *
-from graph import *
-from vars import *
-
-import random
-import time
+import phase1 as ph1
+import phase2 as ph2
+import phase3 as ph3
+import graph as gph
+import vars
 
 
-def gogoDungeon(setting=setting, dunSize=dunSize, civilization=civilization):
-    dungeon = makeDungeon(setting, dunSize)
-    civilize(dungeon)
-    rampage(dungeon)
-    graph(dungeon, setting, civilization)
+
+def gogoDungeon(setting=vars.setting, dunSize=vars.dunSize, civilization=vars.civilization):
+    dungeon = ph1.makeDungeon(setting, dunSize)
+    ph2.civilize(dungeon)
+    ph3.rampage(dungeon)
+    gph.graph(dungeon, setting, civilization)
     return dungeon
 
 
@@ -36,5 +33,5 @@ def testDicPresence(dungeon, dic, testList=testList):
 def testD(noTests=10, testList=testList):
     for i in range(noTests):
         i = gogoDungeon()
-        testList = testDicPresence(i, enemies, testList)
+        testList = testDicPresence(i, vars.enemies, testList)
     return testList
