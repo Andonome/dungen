@@ -3,12 +3,9 @@ from vars import *
 from features import *
 
 
-def newDungeon(setting, dunSize):
+def initialize_dungeon(setting : str, dungeon_size : int):
     dungeon = []
-    # 'x' always refers to the dungeon area number, so x=3
-    # means 'area 3'.
-    x = 1
-    join = False
+
     if setting == "mine":
         joinChance = 5
     elif setting == "caves":
