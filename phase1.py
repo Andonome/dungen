@@ -203,11 +203,11 @@ def add_features(dungeon, setting):
     def collect_valid_features():
         """Gathers features valid for this setting, limited by their max instances."""
         valid_features = []
-        feature_counts = {feature: 0 for feature in primative_features}
+        feature_counts = {feature: 0 for feature in primitive_features}
 
         for _ in range(5):  # Try to add up to 5 features
-            for feature_name in primative_features:
-                feature = primative_features[feature_name]
+            for feature_name in primitive_features:
+                feature = primitive_features[feature_name]
                 if (roll_for_tn(6) and
                         setting in feature["settings"] and
                         feature_counts[feature_name] < feature["number"]):
