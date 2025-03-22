@@ -1,6 +1,6 @@
 # Dun-Gen
 
-This script crates a fantasy RPG dungeon as a conceptual map.
+This script creates a fantasy RPG dungeon as a conceptual map.
 I wrote it to learn python, but still have not learned python, so the code is the technical equivalent of a midden.
 
 ## Usage
