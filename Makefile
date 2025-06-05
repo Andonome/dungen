@@ -1,25 +1,33 @@
-VENV = venv
-PYTHON = $(VENV)/bin/python3
-PIP = $(VENV)/bin/pip
+venv = venv
+mypy = $(venv)/bin/python3
+pybin != realpath `command -v python`
+version != basename $(pybin)
+pip = $(venv)/bin/pip
 
-# Check for system graphviz
-GRAPHVIZ_CHECK := $(shell which dot 2>/dev/null)
+output += $(wildcard $(venv))
+output += $(wildcard *.pdf)
+output += $(wildcard *.gv)
+output += $(wildcard __pycache__)
 
-run: $(VENV)/bin/activate
-	$(PYTHON) main.py 2>/dev/null
+out: run
 
-$(VENV)/bin/activate: requirements.txt check-graphviz
-	python3 -m venv $(VENV)
-	echo '*' > $(VENV)/.gitignore
-	$(PIP) install -r requirements.txt
+$(pip):
+	$(pybin) -m venv $(venv)
 
-check-graphviz:
-ifndef GRAPHVIZ_CHECK
-	$(error "Graphviz not found. Please install graphviz system package first (e.g., 'sudo apt install graphviz' or 'brew install graphviz')")
-endif
+$(mypy): $(pip)
+
+$(venv)/lib/$(version)/site-packages/: requirements.txt $(mypy)
+	$(pip) install -r $<
+
+ignore_file != dir .git/info/exclude || echo .gitignore
+
+$(ignore_file): $(output)
+	echo $^ | tr ' ' '\n' > $@
+
+.PHONY: run
+run: $(venv)/lib/$(version)/site-packages/ $(ignore_file)
+	$(mypy) main.py
 
 clean:
-	$(RM) -r __pycache__
-	$(RM) -r $(VENV)
-	$(RM) *.pdf
-	$(RM) *.gv
+	$(RM) -r $(output)
+

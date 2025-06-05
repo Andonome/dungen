@@ -8,7 +8,7 @@ import graphviz
 def graph(dungeon, setting, civilization):
     dunMap = graphviz.Digraph(
         engine="dot",
-        comment="Test Map",
+        comment="Test_Map",
     )
     dunMap.attr(
         "node",
@@ -63,4 +63,4 @@ def graph(dungeon, setting, civilization):
                 str(x),
                 str(x + connection),
             )
-    dunMap.render("Test Map.gv")
+    dunMap.render("Test_Map.gv")
